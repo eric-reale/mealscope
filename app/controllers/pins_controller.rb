@@ -23,7 +23,8 @@ class PinsController < ApplicationController
 
   def destroy
     @pin.destroy
-    redirect_to dashboard_path(current_user)
+    # ???:
+    redirect_to profile_path(current_user)
   end
 
   private

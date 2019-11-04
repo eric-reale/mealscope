@@ -15,12 +15,12 @@ class CollectionsController < ApplicationController
 
   def update
     @collection.update(collection_params)
-    redirect_to dashboard_path(current_user)
+    redirect_to profile_path(current_user)
   end
 
   def destroy
     @collection.destroy
-    redirect_to dashboard_path(current_user)
+    redirect_to profile_path(current_user)
   end
 
   private
