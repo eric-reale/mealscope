@@ -1,5 +1,5 @@
 class MealsController < ApplicationController
-  before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :set_meal, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @meals = Meal.all
@@ -9,8 +9,11 @@ class MealsController < ApplicationController
     @meal = Meal.new
   end
 
-  def create
+  def create ## Need to add in photos when cloudinary is up and running
     @meal = Meal.new(meal_params)
+    @restaurant = params[:meal][:restaurant]
+    @restaurant = Restaurant.find(@restaurant)
+    @meal.restaurant = @restaurant
       @meal.user = current_user
       if @meal.save
         params[:meal][:diet_meal_tag_ids].each do |tag|
@@ -25,10 +28,9 @@ class MealsController < ApplicationController
           CuisineMealTag.create(meal: @meal, cuisine_tag: cuisine_tags)
           end
         end
-        raise
-        redirect_to meal_path(@meal)
+        # Redirect isnt working yet
+      redirect_to meal_path(@meal)
       else
-        raise
       render :new
     end
   end
@@ -40,9 +42,13 @@ class MealsController < ApplicationController
   end
 
   def update
+    @meal.update(meal_params)
+    redirect_to meal_path(@meal)
   end
 
   def destroy
+    @meal.destroy
+    redirect_to meals_path
   end
 
   private

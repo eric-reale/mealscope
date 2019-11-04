@@ -10,6 +10,10 @@
           <%= f.input :name,
                     label: false,
                     placeholder: 'Name' %>
+          <%= f.input :restaurant,
+                    label: false,
+                    collection: Restaurant.all,
+                    placeholder: 'Restaurant' %>
           <%= f.input :description,
                     label: false,
                     placeholder: 'Description',
