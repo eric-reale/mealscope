@@ -1,6 +1,8 @@
 class Meal < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
+  has_many :diet_meal_tags
+  has_many :cuisine_meal_tags
   has_many :diet_tags, through: :diet_meal_tags
   has_many :cuisine_tags, through: :cuisine_meal_tags
   has_many :mealphotos, dependent: :destroy
