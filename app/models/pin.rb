@@ -1,4 +1,4 @@
 class Pin < ApplicationRecord
-  belongs_to :meal
+  has_one :meal
   belongs_to :collection
 end
