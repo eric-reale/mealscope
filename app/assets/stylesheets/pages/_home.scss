@@ -1,1 +1,36 @@
 // Specific CSS for your home-page
+
+#banner {
+  background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('background.jpeg');
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+   height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 0;
+  p {
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 3px;
+    opacity: 0.9;
+  }
+}
+
+.buttons-bundle {
+  // position: absolute;
+  // top: 500px;
+  margin: auto;
+  margin-bottom: 150px;
+  // padding-top: 50px;
+  display: flex;
+  // flex-direction: column;
+  justify-content: center;
+    p {
+      color: white;
+    }
+}
