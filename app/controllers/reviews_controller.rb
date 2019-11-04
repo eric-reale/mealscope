@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   def create
   @review = Review.new(review_params)
   authorize @review
-  authorize @meal
+  @review.user = current_user
   @review.meal = @meal
   if @review.save
     redirect_to meal_path(@meal)

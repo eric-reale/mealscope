@@ -6,16 +6,16 @@ class Review < ApplicationRecord
   validates :rating, presence: true
   validates :rating, inclusion: { in: [1, 2, 3, 4, 5] }
   validates_numericality_of :rating
+  after_create :calculate_average_rating
 
-  after_create :avg_review
-
-  def avg_review
-    ratings = self.reviews.pluck(:rating)
+  def calculate_average_rating
+    ratings = self.meal.reviews.pluck(:rating)
     average_rating = (ratings.sum.to_f / ratings.count).round(half: :up)
-    return average_rating
+    self.meal.average_rating = average_rating
+    self.meal.save
   end
 
-  def check_rating
+  def dislay_ratings
     case self.rating
     when 5
       return "<i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i>".html_safe
@@ -27,14 +27,6 @@ class Review < ApplicationRecord
       return "<i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i>".html_safe
     else
       return "<i class='fas fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i>".html_safe
-    end
-  end
-
-  def display_rating_count(count)
-    if count > 0
-      return " (#{count})" if count > 0
-    elsif count = 0
-      return ""
     end
   end
 end
