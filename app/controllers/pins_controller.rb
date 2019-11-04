@@ -18,7 +18,7 @@ class PinsController < ApplicationController
     @collection = Collection.find(params[:collection_id])
     @pin.collection = @collection
     @pin.save
-    # redirect_to ??
+    # redirect_to ?? (create a view first)
   end
 
   def destroy
@@ -32,7 +32,7 @@ class PinsController < ApplicationController
   def set_pin
     @pin = Pin.find(params[:id])
   end
-  # ???????:
+  # Even TA wasn't sure about it, will see later:
   def pin_params
     params.require(:pin).permit(:meal_id, :collection_id)
   end
