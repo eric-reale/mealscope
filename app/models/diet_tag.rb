@@ -1,0 +1,2 @@
+class DietTag < ApplicationRecord
+end
