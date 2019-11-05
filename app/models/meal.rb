@@ -1,14 +1,15 @@
 class Meal < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
+  # belongs_to :pin
 
-  has_many :diet_meal_tags
-  has_many :cuisine_meal_tags
+  has_many :diet_meal_tags, dependent: :destroy
+  has_many :cuisine_meal_tags, dependent: :destroy
   has_many :diet_tags, through: :diet_meal_tags
   has_many :cuisine_tags, through: :cuisine_meal_tags
   has_many :mealphotos, dependent: :destroy
   has_many :reviews, dependent: :destroy # Confirm
-  has_many :pins, dependent: :destroy # Confirm, also for tags
+  # has_many :pins, dependent: :destroy # Confirm, also for tags
 
   MEAL_TYPE = ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert", "Soft Drink", "Alcholic Drink"]
 
@@ -31,6 +32,14 @@ class Meal < ApplicationRecord
       return "<i class='fas fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i> <i class='far fa-star'></i>".html_safe
     else
       return "No reviews yet!"
+    end
+  end
+
+  def display_rating_count(count)
+    if count > 0
+      return " (#{count})"
+    elsif count == 0
+      return ""
     end
   end
 end

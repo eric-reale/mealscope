@@ -1,7 +1,15 @@
 class CollectionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_collection, only: [:edit, :update, :destroy]
+  before_action :set_collection, only: [:show, :edit, :update, :destroy]
 
+  def show
+    # @collection = Collection.find(params[:id])
+
+
+    @pins = @collection.pins
+     # @meal = Meal.find(params[:meal_id])
+    # @mealphoto = Mealphoto.find(params[:meal_id])
+  end
   # pop-up window:
   def create
     @collection = Collection.new(collection_params)

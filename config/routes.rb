@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :pins, only: [ :create, :edit, :update, :destroy ]
   end
 
-  resources :collections, only: [ :create, :edit, :update, :destroy ]
+  resources :collections, only: [ :show, :create, :edit, :update, :destroy ]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

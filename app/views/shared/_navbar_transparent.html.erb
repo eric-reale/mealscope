@@ -49,17 +49,17 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <%= simple_form_for(User.new, as: :user, url: user_session_path) do |f| %>
+          <%= simple_form_for(User.new, as: :user, url: user_session_path, html: { id: "login-form" } )do |f| %>
           <div class="form-inputs" id="login">
             <h3> Login </h3>
             <br>
           <%= f.input :email,
                           required: false,
                           autofocus: true,
-                          input_html: { autocomplete: "email" } %>
+                          input_html: { autocomplete: "email", id: "login-email" } %>
               <%= f.input :password,
                           required: false,
-                          input_html: { autocomplete: "current-password" } %>
+                          input_html: { autocomplete: "current-password", id: "login-password" } %>
               <%= f.input :remember_me, as: :boolean %>
             </div>
 
@@ -81,18 +81,18 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <%= simple_form_for(User.new, as: :user, url: user_registration_path, method: :post) do |f| %>
+          <%= simple_form_for(User.new, as: :user, url: user_registration_path, method: :post, id: "signup-form" ) do |f| %>
           <div class="form-inputs" id="login">
             <h3> Sign Up </h3>
             <br>
           <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email" }%>
+                    input_html: { autocomplete: "email", id: "signup-email" }%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
+                    input_html: { autocomplete: "new-password", id: "signup-password" } %>
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
