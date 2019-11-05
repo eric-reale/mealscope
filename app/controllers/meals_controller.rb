@@ -9,7 +9,7 @@ class MealsController < ApplicationController
     @meal = Meal.new
   end
 
-  def create ## Need to add in photos when cloudinary is up and running
+  def create
     @meal = Meal.new(meal_params)
     @restaurant = params[:meal][:restaurant]
     @restaurant = Restaurant.find(@restaurant)
@@ -28,8 +28,11 @@ class MealsController < ApplicationController
           CuisineMealTag.create(meal: @meal, cuisine_tag: cuisine_tags)
           end
         end
-        # Redirect isnt working yet
-      redirect_to meal_path(@meal)
+        params[:meal][:meal_photos].each do |photo|
+          po = Cloudinary::Uploader.upload(photo)
+          meal_photo = Mealphoto.create(meal: @meal, photo: po['url'] )
+        end
+        redirect_to meal_path(@meal)
       else
       render :new
     end
@@ -58,7 +61,6 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :price, :meal_type, :diet_meal_tag_ids, :cuisine_meal_tag_ids) # :dietary, :cuisine, :photo)
-    ## Match the names with the form. Params that are permitted are based on what's in the new meal form
+    params.require(:meal).permit(:name, :description, :price, :meal_type, :diet_meal_tag_ids, :cuisine_meal_tag_ids, :meal_photos)
   end
 end

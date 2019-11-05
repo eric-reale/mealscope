@@ -31,18 +31,21 @@
         </li>
       <% else %>
         <li class="nav-item mx-3">
-          <a class="nav-link" data-toggle="modal" data-target="#navbarModal">
+          <a class="nav-link" data-toggle="modal" data-target="#loginNavbarModal">
               Log In |
           </a>
 
-          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link", data: { target: "#navbar-modal"} %>
+          <a class="nav-link" data-toggle="modal" data-target="#signupNavbarModal">
+              Sign Up
+          </a>
+
         </li>
       <% end %>
     </ul>
   </div>
 </nav>
 
-  <div class="modal fade" id="navbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="loginNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -57,7 +60,7 @@
               <%= f.input :password,
                           required: false,
                           input_html: { autocomplete: "current-password" } %>
-              <%#= f.input :remember_me, as: :boolean if Devise::SessionsController.new.rememberable? %>
+              <%= f.input :remember_me, as: :boolean %>
             </div>
 
             <div class="form-actions">
@@ -73,3 +76,40 @@
       </div>
     </div>
  </div>
+
+  <div class="modal fade" id="signupNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <%= simple_form_for(User.new, as: :user, url: user_registration_path, method: :post) do |f| %>
+          <div class="form-inputs" id="login">
+            <h3> Sign Up </h3>
+            <br>
+          <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Sign Up", class: "btn btn-outline-dark btn-lg" %>
+            </div>
+
+            <div class="linkstoother">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link-login" %>
+              <%= link_to "Forgot your password?", user_registration_path, class: "nav-link-login" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>
+
+
