@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @collections = Collection.all
+    @collections = Collection.where(user: current_user)
   end
 
   def error

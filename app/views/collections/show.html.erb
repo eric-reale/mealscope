@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="pins">
+  <div class="header">
+    <h1>Collection name</h1>
+  </div>
+    <% @pins.each do |pin| %>
+
+      <div class="pin-item">
+        <%= pin.meal.name %>
+      </div>
+      <%= cl_image_tag pin.meal.mealphotos[0].photo %>
+    <% end %>
+  </div>
+</div>
