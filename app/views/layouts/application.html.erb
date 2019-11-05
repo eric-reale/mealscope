@@ -11,7 +11,11 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-   <!--  <%#= render 'shared/navbarcolor'unless current_page?(root_path||new_user_session) %> -->
+
+    <%= render 'shared/navbarcolor' unless controller_name == "registrations" || controller_name == "sessions" || action_name == "home" || controller_name == "meals" && action_name == "index" %>
+    <%= render 'shared/navbar_transparent' if controller_name == "registrations" || controller_name == "sessions" || action_name == "home" %>
+    <%= render 'shared/navbar_index' if controller_name == "meals" && action_name == "index" %>
+
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
