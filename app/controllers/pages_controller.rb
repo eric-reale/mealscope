@@ -4,13 +4,12 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dashboard
-  end
-
   def profile
+    @collections = Collection.all
   end
 
   def error
   end
+
 
 end

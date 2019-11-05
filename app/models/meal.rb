@@ -16,6 +16,7 @@ class Meal < ApplicationRecord
   validates :meal_type, inclusion: { in: MEAL_TYPE }
   validates_numericality_of :price
 
+
   def check_rating(rating)
     case rating
     when 5

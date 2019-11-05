@@ -35,7 +35,12 @@
                     collection: CuisineTag::CUISINE_TAG,
                     as: :check_boxes,
                     label: false %>
-          <%= f.submit %>
+          <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+          <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
+          <div class="mx-auto my-3" style="width: 50%;">
+          </div>
+          <div class="form-actions">
+          <%= f.button :submit, 'Add dish' , class: "btn btn-primary mb-2", style: "width: 100%;" %>
 
       <% end %>
 

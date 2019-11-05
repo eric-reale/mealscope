@@ -1,0 +1,52 @@
+.container-profile {
+  width: 800px;
+  height: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+}
+
+.link-color {
+  color: gray;
+    &:hover {
+      text-decoration: none;
+      color: #e26757;
+    }
+}
+
+
+
+.profile-card {
+  width: 750px;
+  margin: auto;
+  display: flex;
+  height: auto;
+  background-color: white;
+  // justify-content: space-between;
+  margin-bottom: 100px;
+  margin-top: 30px;
+  // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.ava {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: center;
+  align-item: center;
+  margin: auto;
+  text: center;
+
+}
+
+.avatar-container {
+  // box-shadow: 1px;
+  // background-color: white:
+  // border: 0.5px solid #E0E2E5;
+  width: 30%;
+  display: column;
+  // justify-content: start;
+}
+
+.avatar-info {
+  width: auto;
+}
