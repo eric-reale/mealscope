@@ -1,0 +1,25 @@
+.nav.nav-tabs {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+#my_reviews-tab, #edit_profile-tab, #collections-tab, #change_password-tab {
+  color: black !important;
+
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+  &.active {
+    opacity: 1;
+    border: transparent;
+    border-bottom: 4px solid #e26757;
+
+  }
+  &:hover {
+    border: transparent;
+    color: #e26757 !important;
+  }
+
+}
