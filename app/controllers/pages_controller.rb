@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @collections = Collection.all
   end
 end
