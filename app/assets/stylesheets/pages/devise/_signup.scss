@@ -1,0 +1,49 @@
+#banner {
+  background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('background.jpeg');
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+   height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 0;
+  p {
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 3px;
+    opacity: 0.9;
+  }
+}
+
+
+.signupform {
+  background-color: rgba(244, 240, 240, 0.500);
+  margin-right: 25%;
+  margin-top: 5%;
+  padding: 5%;
+}
+
+.linkstoother{
+  margin-top: 10%;
+  size:10%;
+}
+
+
+.nav-link-login {
+      color: white !important;
+      text-decoration: none !important;
+      font-size: 10px !important;
+      display: flex;
+      flex-direction: column;
+        &:hover{
+          color: rgba(25, 25, 24, 0.760) !important;
+          text-decoration: none !important;
+          font-size: 10px !important;
+          display: flex;
+          flex-direction: column;
+        }
+    }
