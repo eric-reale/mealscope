@@ -1,0 +1,50 @@
+<div class="d-flex justify-content my-5">
+  <div class="card justify-content-center text-center align-items-column m-auto py-4" style="width: 600px">
+
+      <h1>Add a new meal</h1>
+
+      <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
+
+
+        <div class="form-inputs align-items-center m-auto pt-3 " style="width: 75%;">
+          <%= f.input :name,
+                    label: false,
+                    placeholder: 'Name' %>
+          <%= f.input :restaurant,
+                    label: false,
+                    collection: Restaurant.all,
+                    placeholder: 'Restaurant' %>
+          <%= f.input :description,
+                    label: false,
+                    placeholder: 'Description',
+                    :as => :text,
+                    :input_html => { 'rows' => 5, 'cols' => 10 } %>
+          <%= f.input :price,
+                    label: false,
+                    placeholder: "Price" %>
+          <%= f.input :meal_type,
+                    collection: Meal::MEAL_TYPE,
+                    multiple: :true,
+                    include_blank: false,
+                    label: false %>
+          <%= f.association :diet_meal_tags,
+                    collection: DietTag::DIET_TAG,
+                    as: :check_boxes,
+                    label: false %>
+          <%= f.association :cuisine_meal_tags,
+                    collection: CuisineTag::CUISINE_TAG,
+                    as: :check_boxes,
+                    label: false %>
+          <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+          <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
+          <div class="mx-auto my-3" style="width: 50%;">
+          </div>
+          <div class="form-actions">
+          <%= f.button :submit, 'Add dish' , class: "btn btn-primary mb-2", style: "width: 100%;" %>
+
+      <% end %>
+
+  </div>
+</div>
+</div>
+

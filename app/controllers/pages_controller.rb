@@ -7,4 +7,9 @@ class PagesController < ApplicationController
   def profile
     @collections = Collection.all
   end
+
+  def error
+  end
+
+
 end
