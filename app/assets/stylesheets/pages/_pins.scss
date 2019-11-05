@@ -1,0 +1,21 @@
+.pins {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 10px;
+}
+
+.header {
+  grid-column: 3/3;
+  grid-row: 1;
+}
+
+.pin-item {
+  grid-column: 1/3;
+  grid-row: auto;
+  height: auto;
+}
+
+.pin-item:nth-child(2) {
+
+}

@@ -1,6 +1,8 @@
 class PinsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_pin, only: [:edit, :update, :destroy]
+
+
   def create
     # @pin = Pin.new(pin_params)
     # @meal = Meal.find(params[:meal_id])

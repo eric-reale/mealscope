@@ -1,6 +1,7 @@
 class Meal < ApplicationRecord
   belongs_to :user
   belongs_to :restaurant
+  # belongs_to :pin
 
   has_many :diet_meal_tags
   has_many :cuisine_meal_tags
@@ -8,7 +9,7 @@ class Meal < ApplicationRecord
   has_many :cuisine_tags, through: :cuisine_meal_tags
   has_many :mealphotos, dependent: :destroy
   has_many :reviews, dependent: :destroy # Confirm
-  has_many :pins, dependent: :destroy # Confirm, also for tags
+  # has_many :pins, dependent: :destroy # Confirm, also for tags
 
   MEAL_TYPE = ["Breakfast", "Lunch", "Dinner", "Snack", "Dessert", "Soft Drink", "Alcholic Drink"]
 
