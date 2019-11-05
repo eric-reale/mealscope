@@ -39,7 +39,6 @@ class MealsController < ApplicationController
           meal_photo = Mealphoto.new(meal: @meal)
           meal_photo.remote_photo_url = po["url"]
           meal_photo.save
-
         end
         redirect_to meal_path(@meal)
       else

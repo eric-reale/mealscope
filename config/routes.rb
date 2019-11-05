@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/error', to: 'pages#error'
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   get 'profile', to: 'pages#profile', as: :profile
+  get 'test', to: 'pages#test', as: :test
 
   resources :meals do
     resources :reviews, only: [ :new, :create, :destroy ]
