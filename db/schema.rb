@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_075935) do
+ActiveRecord::Schema.define(version: 2019_11_05_092345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,21 @@ ActiveRecord::Schema.define(version: 2019_11_04_075935) do
   end
 
   create_table "diet_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meal_type_tags", force: :cascade do |t|
+    t.bigint "meal_type_id"
+    t.bigint "meal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_meal_type_tags_on_meal_id"
+    t.index ["meal_type_id"], name: "index_meal_type_tags_on_meal_type_id"
+  end
+
+  create_table "meal_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,6 +142,8 @@ ActiveRecord::Schema.define(version: 2019_11_04_075935) do
   add_foreign_key "cuisine_meal_tags", "meals"
   add_foreign_key "diet_meal_tags", "diet_tags"
   add_foreign_key "diet_meal_tags", "meals"
+  add_foreign_key "meal_type_tags", "meal_types"
+  add_foreign_key "meal_type_tags", "meals"
   add_foreign_key "mealphotos", "meals"
   add_foreign_key "meals", "restaurants"
   add_foreign_key "meals", "users"
