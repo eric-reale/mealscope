@@ -1,0 +1,8 @@
+
+<p> <%= @meal.name %></p>
+<p> <%= @meal.price %></p>
+<p> <%= @meal.restaurant.name %></p>
+
+<button class="btn btn-2 btn-light my-2 my-sm-0 text-center" type="submit" style="margin-left: 8px"><%= link_to 'Edit', edit_meal_path %></button>
+<%= link_to meal_path(@meal)  , method: :delete, data: { confirm: 'Are you sure?' }  do %><i class="fas fa-trash"></i><% end %>
+
