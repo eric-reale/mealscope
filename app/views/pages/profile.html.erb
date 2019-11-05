@@ -1,0 +1,86 @@
+<div class="container-profile" >
+    <div class="profile-card pt-3 pl-5">
+      <div class="avatar-container align-items-center  ml-2" >
+        <div class="d-flex flex-column text-center " style="width: 95%;">
+          <% unless current_user.avatar.blank? %>
+          <%= cl_image_tag current_user.avatar , class: "ava my-2" %>
+          <% else %>
+          <%= image_tag 'person-placeholder.jpg' , class: "ava my-2" %>
+          <% end %>
+          <tr><td><%= link_to "Update photo", error_path, class: "link-color mb-2" %></td></tr>
+        </div>
+
+      </div>
+
+
+      <div class="avatar-info ml-5" style="width: 55%">
+        <h1>Hey, I'm <%= current_user.first_name %></h1>
+        <tr><td><p class="my-1"><i class="fas fa-map-marker-alt" style="color: #e26757;"></i> <%= current_user.location %></p></td></tr>
+
+        <hr class="mt-1 mb-3 ml-0 p-0" style="width: 30%;">
+
+        <p class="mb-1 pb-0">About me:</p>
+        <p class="mt-0 pt-0">"<%= current_user.about_me %>"</p>
+      </div>
+    </div>
+
+
+
+    <div class="tabs">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link profile-tab active" id="collections-tab" data-toggle="tab" href="#collections" role="tab" aria-controls="collections" aria-selected="true">Collections</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="my_reviews-tab" data-toggle="tab" href="#my_reviews" role="tab" aria-controls="my_reviews" aria-selected="false">My reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="edit_profile-tab" data-toggle="tab" href="#edit_profile" role="tab" aria-controls="edit_profile" aria-selected="false">Edit profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="change_password-tab" data-toggle="tab" href="#change_password" role="tab" aria-controls="change_password" aria-selected="false">Change password</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="collections" role="tabpanel" aria-labelledby="collections-tab">
+<!-- collections -->
+<p>Collections are here. Just cannot test them yet</p>
+<div class="cards">
+  <% @collections.each do |collection| %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), <%= cl_image_tag  %>">
+    <%= link_to collection.name, meal_pins_path %>
+  </div>
+
+  <% end %>
+</div>
+<!-- collections -->
+        </div>
+        <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab"><p>Listing reviews added by me</p></div>
+        <div class="tab-pane fade" id="edit_profile" role="tabpanel" aria-labelledby="edit_profile-tab">
+          <!-- edit profile page form -->
+          <p>Edit profile form</p>
+          <!-- edit profile page form -->
+        </div>
+        <div class="tab-pane fade" id="change_password" role="tabpanel" aria-labelledby="change_password-tab">
+          <!-- edit password page form -->
+          <p>Edit password form</p>
+          <!-- edit password page form -->
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
