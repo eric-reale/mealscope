@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
   root to: 'pages#home'
   get '/error', to: 'pages#error'
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
