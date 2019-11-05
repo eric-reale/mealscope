@@ -1,123 +1,18 @@
-<nav class="navbar navbar-light navbar-expand-lg fixed-top navbar-mealscope-color">
+<!--  CARDS INDEX -->
 
-        <%= link_to image_tag("logo-black.png"), meals_path, class: "navbar-brand"%>
+<div class="meals">
+  <% @meals.each do |m| %>
+    <% m.mealphotos.each do |mealphoto| %>
+    <div class="item">
+             <p class='mealname'> <%= m.name.strip %> </p>
+    <%= cl_image_tag mealphoto.photo, class:"mealimage" %>
+      <div class="overlay"></div>
 
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-<!-- SEARCH BUTTON -->
-
-  <div class="searchcontainer">
-      <form class="example" action="action_page.php">
-      <input class="sinput" type="text" placeholder="search meal or cuisine" name="search">
-      <button class="loopicon" type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-
-<!-- END SEARCH BUTTON -->
-
-<!-- NAV BAR -->
-
-  <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <% unless current_user.avatar.blank? %>
-            <%= cl_image_tag current_user.avatar , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag 'person-placeholder.jpg' , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile", profile_path, class: "dropdown-item" %>
-            <hr class="mx-auto mt-1 mb-0 p-0 d-flex" style="width: 75%;">
-            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
-            <hr class="mx-auto mt-1 mb-0 p-0 d-flex" style="width: 75%;">
-
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item mx-3">
-          <a class="nav-link" data-toggle="modal" data-target="#loginNavbarModal">
-              Log In |
-          </a>
-
-          <a class="nav-link" data-toggle="modal" data-target="#signupNavbarModal">
-              Sign Up
-          </a>
-
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-
-  <div class="modal fade" id="loginNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <%= simple_form_for(User.new, as: :user, url: user_session_path) do |f| %>
-          <div class="form-inputs" id="login">
-            <h3> Login </h3>
-            <br>
-          <%= f.input :email,
-                          required: false,
-                          autofocus: true,
-                          input_html: { autocomplete: "email" } %>
-              <%= f.input :password,
-                          required: false,
-                          input_html: { autocomplete: "current-password" } %>
-              <%= f.input :remember_me, as: :boolean %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit, "Log in", class: "btn btn-outline-dark btn-lg" %>
-            </div>
-
-            <div class="linkstoother">
-              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link-login" %>
-              <%= link_to "Forgot your password?", user_registration_path, class: "nav-link-login" %>
-            </div>
-          <% end %>
-        </div>
       </div>
-    </div>
- </div>
 
-  <div class="modal fade" id="signupNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <%= simple_form_for(User.new, as: :user, url: user_registration_path, method: :post) do |f| %>
-          <div class="form-inputs" id="login">
-            <h3> Sign Up </h3>
-            <br>
-          <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" }%>
-        <%= f.input :password,
-                    required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: true,
-                    input_html: { autocomplete: "new-password" } %>
-            </div>
+    <% end %>
 
-            <div class="form-actions">
-              <%= f.button :submit, "Sign Up", class: "btn btn-outline-dark btn-lg" %>
-            </div>
+<% end %>
+</div>
 
-            <div class="linkstoother">
-              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link-login" %>
-              <%= link_to "Forgot your password?", user_registration_path, class: "nav-link-login" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
- </div>
-
- <!-- END NAV BAR -->
+<!-- END CARDS INDEX -->

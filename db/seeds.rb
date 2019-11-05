@@ -8,7 +8,10 @@ restaurant_attributes = [
    address:           'Pantai Batu Bolong St No.31A, Canggu, North Kuta, Badung Regency, Bali 80361',
    website_url:       'https://sensoriumbali.co.id/',
    instagram_handle:  'sensorium_bali'
-  } #,
+  }
+
+
+  #,
 #   {
 #    name:              'Cabina Bali',
 #    address:           'Jl. Batu Belig Gg. Daksina No.1, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
