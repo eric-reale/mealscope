@@ -1,5 +1,54 @@
 puts 'Cleaning database...'
+CuisineMealTag.destroy_all
+DietMealTag.destroy_all
+Meal.destroy_all
+User.destroy_all
 Restaurant.destroy_all
+DietTag.destroy_all
+CuisineTag.destroy_all
+
+puts 'Creating users...'
+user_attributes = [
+
+  {
+    email:      'polina@gmail.com',
+    password:    '1234567',
+    first_name: 'Polina',
+    last_name: 'D',
+    location: "Canggu, Bali",
+    remote_avatar_url: 'https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1145&q=80',
+    about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+  },
+  {
+    email:      'eric@gmail.com',
+    password:    '1234567',
+    first_name: 'Eric',
+    last_name:  'R',
+    location: "Canggu, Bali",
+    remote_avatar_url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80',
+    about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+  },
+  {
+    email:      'sacha@gmail.com',
+    password:    '1234567',
+    first_name: 'Sacha',
+    last_name:  "M",
+    location: "Canggu, Bali",
+    remote_avatar_url: 'https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=633&q=80',
+    about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+  },
+  {
+    email:      'sebastian@gmail.com',
+    password:    '1234567',
+    first_name: 'Sebastian',
+    last_name:  "L",
+    location: "Canggu, Bali",
+    remote_avatar_url: 'https://images.unsplash.com/photo-1529429617124-95b109e86bb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80',
+    about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+  },
+ ]
+
+User.create!(user_attributes)
 
 puts "Generating Canggu restuarants..."
 restaurant_attributes = [
@@ -7,7 +56,31 @@ restaurant_attributes = [
    name:              'Sensorium Bali',
    address:           'Pantai Batu Bolong St No.31A, Canggu, North Kuta, Badung Regency, Bali 80361',
    website_url:       'https://sensoriumbali.co.id/',
-   instagram_handle:  'sensorium_bali'
+   instagram_handle:  'sensorium_bali',
+  },
+  {
+   name:              'La Brisa Bali',
+   address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
+   website_url:       'http://www.labrisabali.com/',
+   instagram_handle:  'labrisabali'
+  },
+  {
+   name:              'The Lawn',
+   address:           'Jl. Pura Dalem, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
+   website_url:       'https://thelawncanggu.com/',
+   instagram_handle:  'thelawncanggu'
+  },
+  {
+   name:              'Poke Poke Canggu',
+   address:           'Jl. Munduk Catu No.36, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali',
+   website_url:       'https://www.instagram.com/pokepokecanggu/',
+   instagram_handle:  'pokepokecanggu'
+  },
+  {
+   name:              'Bottega Italiana Canggu',
+   address:           'Pantai Batu Bolong St No.77, Canggu, North Kuta, Badung Regency, Bali 80361',
+   website_url:       'https://www.bottegaitalianabali.com/',
+   instagram_handle:  'bottegaitalianabali'
   } #,
 #   {
 #    name:              'Cabina Bali',
@@ -74,12 +147,6 @@ restaurant_attributes = [
 #    address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80351',
 #    website_url:       'https://www.surfsidecafe.id/',
 #    instagram_handle:  'surfsidecafe17'
-#   },
-#     {
-#    name:              'La Brisa Bali',
-#    address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
-#    website_url:       'http://www.labrisabali.com/',
-#    instagram_handle:  'labrisabali'
 #   },
 #     {
 #    name:              'Santorini Greek Restaurant Echo Beach, Canggu',
@@ -249,18 +316,6 @@ restaurant_attributes = [
 #    website_url:       'http://canggufields.com/',
 #    instagram_handle:  'canggufields'
 #   },
-#         {
-#    name:              'Poke Poke Canggu',
-#    address:           'Jl. Munduk Catu No.36, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali',
-#    website_url:       'https://www.instagram.com/pokepokecanggu/',
-#    instagram_handle:  'pokepokecanggu'
-#   },
-#           {
-#    name:              'The Lawn',
-#    address:           'Jl. Pura Dalem, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
-#    website_url:       'https://thelawncanggu.com/',
-#    instagram_handle:  'thelawncanggu'
-#   },
 #           {
 #    name:              'Seaweedresto',
 #    address:           'Pantai Batu Bolong St, Canggu, North Kuta, Badung Regency, Bali',
@@ -404,12 +459,6 @@ restaurant_attributes = [
 #    address:           'Jl Batu Bolong, Gg. Nyepi, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
 #    website_url:       'http://thai-corner.com/',
 #    instagram_handle:  'thaiandcobali'
-#   },
-#             {
-#    name:              'Bottega Italiana Canggu',
-#    address:           'Pantai Batu Bolong St No.77, Canggu, North Kuta, Badung Regency, Bali 80361',
-#    website_url:       'https://www.bottegaitalianabali.com/',
-#    instagram_handle:  'bottegaitalianabali'
 #   },
 #             {
 #    name:              'Peekaboo',
@@ -691,6 +740,155 @@ restaurant_attributes = [
 ]
 # p restaurant_attributes.count
 
-
 Restaurant.create!(restaurant_attributes)
 puts "Restaurants created!"
+
+puts "Generating meals..."
+meal_attributes = [
+  {
+    name:  'Bowl bowl bowl',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Spicy salmon roll',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Poke bowl',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Chicken marsala',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Spaghetti',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Pizza pizza',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Chef salad',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Steak and eggs',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Breakfast burrito',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  },
+    {
+    name:  'Avocado toast',
+    description:  'Check out this bowl',
+    price:   (rand(1..20)),
+    meal_type: Meal::MEAL_TYPE.sample,
+    user:   User.all.sample,
+    restaurant: Restaurant.all.sample
+  }
+
+
+]
+
+PHOTOS = [
+'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
+'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+'https://images.unsplash.com/photo-1534070189982-818bb5622474?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+'https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80',
+'https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=637&q=80',
+'https://images.unsplash.com/photo-1548156970-a18b04d45626?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+'https://images.unsplash.com/photo-1485963631004-f2f00b1d6606?ixlib=rb-1.2.1&auto=format&fit=crop&w=968&q=80'
+ ]
+
+DietTag::DIET_TAG.each do |tag|
+  DietTag.create(name: tag)
+end
+
+CuisineTag::CUISINE_TAG.each do |tag|
+  CuisineTag.create(name: tag)
+end
+
+
+meal_attributes.each do |f|
+
+  meal = Meal.create!(f)
+  Mealphoto.create!(meal: meal, remote_photo_url: PHOTOS.sample)
+
+  diet = DietTag.all.sample
+  DietMealTag.create!(meal: meal, diet_tag: diet)
+
+  cuisine = CuisineTag.all.sample
+  CuisineMealTag.create!(meal: meal, cuisine_tag: cuisine)
+end
+
+# Meal.create!(meal_attributes)
+puts "Meals created!"
+
+# puts "Generating collections"
+# collection_attributes [
+# {
+#   name: "Favorites",
+#   user_id:   User.last
+# },
+# {
+#   name: "Brunch",
+#   user_id:   User.last
+# },
+# {
+#   name: "Canguu",
+#   user_id:   User.last
+# }
+# ]
+
+# Collection.create!(collection_attributes)
+# puts "Collections created!"
+
+# puts "Generating pins"
+# pin_attributes [
+# {
+#   meal: Meal.all.sample,
+#   collection: Collection.all.sample
+# }
+# ]
+
+# Pin.create!(pin_attributes)
+# puts "Pins created!"
