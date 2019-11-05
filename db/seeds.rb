@@ -1,11 +1,13 @@
 puts 'Cleaning database...'
 CuisineMealTag.destroy_all
 DietMealTag.destroy_all
+MealTypeTag.destroy_all
 Meal.destroy_all
 User.destroy_all
 Restaurant.destroy_all
 DietTag.destroy_all
 CuisineTag.destroy_all
+MealType.destroy_all
 
 puts 'Creating users...'
 user_attributes = [
@@ -751,7 +753,6 @@ meal_attributes = [
     name:  'Bowl bowl bowl',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -759,7 +760,6 @@ meal_attributes = [
     name:  'Spicy salmon roll',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -767,7 +767,6 @@ meal_attributes = [
     name:  'Poke bowl',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -775,7 +774,6 @@ meal_attributes = [
     name:  'Chicken marsala',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -783,7 +781,6 @@ meal_attributes = [
     name:  'Spaghetti',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -791,7 +788,6 @@ meal_attributes = [
     name:  'Pizza pizza',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -799,7 +795,6 @@ meal_attributes = [
     name:  'Chef salad',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -807,7 +802,6 @@ meal_attributes = [
     name:  'Steak and eggs',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -815,7 +809,6 @@ meal_attributes = [
     name:  'Breakfast burrito',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
@@ -823,7 +816,6 @@ meal_attributes = [
     name:  'Avocado toast',
     description:  'Check out this bowl',
     price:   (rand(1..20)),
-    meal_type: Meal::MEAL_TYPE.sample,
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   }
@@ -849,6 +841,10 @@ CuisineTag::CUISINE_TAG.each do |tag|
   CuisineTag.create(name: tag)
 end
 
+MealType::MEAL_TYPE.each do |tag|
+  MealType.create(name: tag)
+end
+
 
 meal_attributes.each do |f|
 
@@ -860,6 +856,9 @@ meal_attributes.each do |f|
 
   cuisine = CuisineTag.all.sample
   CuisineMealTag.create!(meal: meal, cuisine_tag: cuisine)
+
+  meal_type = MealType.all.sample
+  MealTypeTag.create!(meal: meal, meal_type: meal_type)
 end
 
 # Meal.create!(meal_attributes)

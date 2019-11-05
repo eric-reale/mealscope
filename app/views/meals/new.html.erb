@@ -14,6 +14,7 @@
                     placeholder: 'Name' %>
           <%= f.input :restaurant,
                     label: false,
+                    input_html: {class: "opacity-style"},
                     collection: Restaurant.all,
                     include_blank: 'Restaurant'%>
           <%= f.input :description,
@@ -24,27 +25,6 @@
           <%= f.input :price,
                     label: false,
                     placeholder: "Price" %>
-          <%= f.input :meal_type,
-                    collection: Meal::MEAL_TYPE,
-                    multiple: :true,
-                    include_blank: false,
-                    label: false,
-                    include_blank: 'Choose a meal type' %>
-
-          <div class="btn-group text-left">
-            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
-              Dietary Restrictions
-            </button>
-            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left p-5">
-                        <div class="form-checkboxes">
-                    <%= f.association :diet_meal_tags,
-                              collection: DietTag::DIET_TAG,
-                              as: :check_boxes,
-                              label: false %>
-                    </div>
-            </div>
-          </div>
-          <div class='mt-3'></div>
 
           <div class="btn-group">
             <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
@@ -61,6 +41,37 @@
           </div>
 
 
+        <div class='mt-3'></div>
+
+          <div class="btn-group text-left">
+            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+              Dietary Restrictions
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left p-5">
+                        <div class="form-checkboxes">
+                    <%= f.association :diet_meal_tags,
+                              collection: DietTag::DIET_TAG,
+                              as: :check_boxes,
+                              label: false %>
+                    </div>
+            </div>
+          </div>
+
+            <div class='mt-3'></div>
+
+         <div class="btn-group text-left">
+            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+              Type of Meal
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left p-5">
+                        <div class="form-checkboxes">
+                    <%= f.association :meal_type_tags,
+                              collection: MealType::MEAL_TYPE,
+                              as: :check_boxes,
+                              label: false %>
+                   </div>
+            </div>
+          </div>
 
 
           <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
