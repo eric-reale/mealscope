@@ -1,35 +1,75 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+
+<!-- TRANSPARENT NAVBAR -->
+
+<nav class="navbar navbar-light navbar-expand-lg fixed-top navbar-mealscope-transparent">
+
+        <%= link_to image_tag("logo-white.png"), meals_path, class: "navbar-brand"%>
+
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% unless current_user.avatar.blank? %>
+            <%= cl_image_tag current_user.avatar , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag 'person-placeholder.jpg' , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "Profile", profile_path, class: "dropdown-item" %>
+            <hr class="mx-auto mt-1 mb-0 p-0 d-flex" style="width: 75%;">
+            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
+            <hr class="mx-auto mt-1 mb-0 p-0 d-flex" style="width: 75%;">
+
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <li class="nav-item mx-3">
+          <a class="nav-link" data-toggle="modal" data-target="#navbarModal">
+              Log In |
+          </a>
+
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-link", data: { target: "#navbar-modal"} %>
         </li>
       <% end %>
     </ul>
   </div>
-</div>
+</nav>
+
+  <div class="modal fade" id="navbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <%= simple_form_for(User.new, as: :user, url: user_session_path) do |f| %>
+          <div class="form-inputs" id="login">
+            <h3> Login </h3>
+            <br>
+          <%= f.input :email,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" } %>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "current-password" } %>
+              <%#= f.input :remember_me, as: :boolean if Devise::SessionsController.new.rememberable? %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Log in", class: "btn btn-outline-dark btn-lg" %>
+            </div>
+
+            <div class="linkstoother">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link-login" %>
+              <%= link_to "Forgot your password?", user_registration_path, class: "nav-link-login" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+ </div>

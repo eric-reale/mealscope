@@ -1,12 +1,25 @@
-.navbar-lewagon {
+.navbar-mealscope-transparent {
   justify-content: space-between;
-  background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-mealscope-transparent .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-mealscope-transparent .navbar-brand img {
+  width: 150px;
+}
+
+.nav-item {
+  color: white;
+  a {
+      display: inline;
+      color: white !important;
+      text-decoration: none;
+    }
+
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(244, 244, 244, 1.000)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")!important;
 }
