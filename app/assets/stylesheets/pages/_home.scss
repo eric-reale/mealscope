@@ -1,5 +1,3 @@
-// Specific CSS for your home-page
-
 #banner {
   background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('background.jpeg');
 }
@@ -34,3 +32,53 @@
       color: white;
     }
 }
+
+.meals {
+  padding: 10px;
+  max-width: 1000px;
+  margin-top: 90px;
+  height: 470px;
+  display: flex;
+  flex-flow: column wrap; /* Shorthand – you could use ‘flex-direction: column’ and ‘flex-wrap: wrap’ instead */
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+
+.item {
+  height: 150px;
+  width: 31%;
+  // margin: 1%;
+  padding: 10px;
+  p{
+    position:absolute;
+  }
+}
+
+.item:nth-child(2) {
+  height: 250px;
+}
+
+.item:nth-child(3) {
+  height: 190px;
+}
+
+.item:nth-child(4) {
+  height: 220px;
+}
+
+.item:nth-child(5) {
+  height: 300px;
+}
+
+
+.mealimage{
+  width:100%;
+  height:auto;
+}
+
+
+
+
+

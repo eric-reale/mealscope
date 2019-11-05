@@ -1,0 +1,37 @@
+.searchcontainer{
+
+}
+
+.sinput {
+  text-align: center;
+  padding: 5px;
+  width: 500px;
+  border-radius: 10px;
+  border: solid 1px #eaeaea;
+  height: 40px;
+}
+
+.loopicon {
+  width: 80px;
+  color: white;
+  border:none;
+  background-color: #eb4a3d;
+  border-radius: 10px;
+  padding: 5px;
+  height: 40px;
+  &:hover{
+      background-color: #f84e41;
+}
+}
+
+
+.addamealbtn a{
+  padding: 10px;
+  background-color: #eb4a3d;
+  text-decoration: none;
+  color:white;
+  border-radius: 10px;
+    &:hover{
+      background-color: #f84e41;
+    }
+}

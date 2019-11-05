@@ -1,0 +1,18 @@
+<!--  CARDS INDEX -->
+
+<div class="meals">
+  <% @meals.each do |m| %>
+    <% m.mealphotos.each do |mealphoto| %>
+    <div class="item">
+             <p class='mealname'> <%= m.name.strip %> </p>
+    <%= cl_image_tag mealphoto.photo, class:"mealimage" %>
+      <div class="overlay"></div>
+
+      </div>
+
+    <% end %>
+
+<% end %>
+</div>
+
+<!-- END CARDS INDEX -->

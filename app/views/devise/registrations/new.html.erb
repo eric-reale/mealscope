@@ -1,6 +1,5 @@
 <div class="banner d-flex align-items-end justify-content-center flex-column" id="banner">
 
-
   <div class="signupform">
     <h2>Sign up</h2>
 
@@ -11,11 +10,11 @@
         <%= f.input :email,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email" }%>
+                    input_html: { autocomplete: "email", id: "devise-signup-email" }%>
         <%= f.input :password,
                     required: true,
                     hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                    input_html: { autocomplete: "new-password" } %>
+                    input_html: { autocomplete: "new-password", id: "devise-signup-password" } %>
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
