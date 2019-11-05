@@ -32,4 +32,12 @@ class Meal < ApplicationRecord
       return "No reviews yet!"
     end
   end
+
+  def display_rating_count(count)
+    if count > 0
+      return " (#{count})"
+    elsif count == 0
+      return ""
+    end
+  end
 end

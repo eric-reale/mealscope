@@ -15,7 +15,7 @@ class Review < ApplicationRecord
     self.meal.save
   end
 
-  def dislay_ratings
+  def display_ratings
     case self.rating
     when 5
       return "<i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i>".html_safe

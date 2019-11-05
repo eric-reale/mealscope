@@ -1,9 +1,12 @@
 
 
-<div class="container-fluid" style='padding-top: 200px'>
-  <div class="row">
-    <div class="col-md-6 py-4">
+<div class="container-fluid my-5 pb-4" style='padding-top: 200px'>
+  <%= link_to '<< Back', meals_path, class: "link" %>
+  <div class="row mt-3 mb-5">
+    <div class="col-md-6 justify-content-between py-4">
       <h2> <%= @meal.name %> </h2>
+      <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
+
 
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -55,14 +58,14 @@
         <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
           <!-- box avatar and name -->
           <div class="avatar-name d-flex justify-content-start ">
-            <% user_id = Meal.find(r.meal_id) %>
-            <% user = User.find(user_id) %>
+            <% meal = Meal.find(r.meal_id) %>
+            <% user = User.find(meal.user_id) %>
             <%#= cl_image_tag(user.avatar.url, class: "avatar-review" ) %>
 
-            <p class="my-auto ml-3"> <%= user.name %> </p>
+            <p class="my-auto ml-3"> <%= r.user.first_name %> </p>
           </div>
           <div class="my-auto" style="color: yellow">
-            <p> <%= r.check_rating  %></p>
+            <p> <%= r.display_ratings  %></p>
             <!-- <p class="my-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p> -->
           </div>
         <!-- box text -->
@@ -76,10 +79,10 @@
     </div>
   </div>
     </div>
-    <div class="col-md-6">
-      <h3>
+    <div class="col-md-6 py-4">
+      <h2>
         <%= @meal.restaurant.name %>
-      </h3>
+      </h2>
     </div>
   </div>
 </div>
