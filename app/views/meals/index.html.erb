@@ -1,18 +1,41 @@
-<!--  CARDS INDEX -->
 
-<div class="meals">
-  <% @meals.each do |m| %>
-    <% m.mealphotos.each do |mealphoto| %>
-    <div class="item">
-             <p class='mealname'> <%= m.name.strip %> </p>
-    <%= cl_image_tag mealphoto.photo, class:"mealimage" %>
-      <div class="overlay"></div>
+<div class="container-fluid">
 
-      </div>
-
-    <% end %>
-
-<% end %>
-</div>
+    <div id="gallery" style="display:none; width: 70%">
+        <% @meals.each do |m| %>
+          <% m.mealphotos.each do |mealphoto| %>
+          <%= cl_image_tag mealphoto.photo, alt:"#{m.name}", class:"", :data => { :description => '<a href="www.goooldd.ccom"></a>' }   %>
+          <% end %>
+      <% end %>
+    </div>
+ </div>
 
 <!-- END CARDS INDEX -->
+
+
+
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+        $("#gallery").unitegallery({
+          gallery_theme: "tiles",
+          gallery_width:"100%",
+          tile_border_color:"#7a7a7a",
+          tile_outline_color:"#8B8B8B",
+          tile_enable_shadow:true,
+          tile_shadow_color:"#8B8B8B",
+          tile_overlay_opacity:0.3,
+          tile_show_link_icon:true,
+          // tile_as_link: true,
+          tile_image_effect_type:"sepia",
+          tile_image_effect_reverse:true,
+          tile_enable_textpanel:true,
+          lightbox_textpanel_title_color:"e5e5e5",
+          tiles_col_width:230,
+          tiles_space_between_cols:20
+
+        });
+
+      });
+
+    </script>
