@@ -1,14 +1,48 @@
-<div class="container">
-  <div class="pins">
-  <div class="header">
-    <h1>Collection name</h1>
-  </div>
-    <% @pins.each do |pin| %>
+<h1 class="text-center mt-3"><%= @collection.name %></h1>
+<div class="container mt-0">
+<div class="container-fluid" style="width: 100%">
+    <%= link_to '<< Back', profile_path, class: 'link-color ml-4' %>
+    <div class="mx-auto my-2" id="gallery" style="display:none; width: 100%">
+        <% @pins.each do |pin| %>
 
-      <div class="pin-item">
-        <%= pin.meal.name %>
-      </div>
-      <%= cl_image_tag pin.meal.mealphotos[0].photo %>
-    <% end %>
-  </div>
-</div>
+          <% pin.meal.mealphotos.each do |mealphoto| %>
+
+          <%= link_to cl_image_tag(mealphoto.photo, alt:"#{pin.meal.name} <br> @#{pin.meal.restaurant.name} ", class:""), meal_path(pin.meal)   %>
+
+          <% end %>
+      <% end %>
+    </div>
+ </div>
+ </div>
+<!-- END CARDS INDEX -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#gallery").unitegallery({
+          gallery_theme: "tiles",
+          gallery_width:"100%",
+          tile_textpanel_appear_type: "fade",
+          tile_enable_icons: false,
+          tile_overlay_opacity:0.3,
+          tile_show_link_icon: false,
+          tile_as_link: true,
+          tiles_min_columns: 1,         //min columns
+          tiles_max_columns: 3,
+          tile_image_effect_type:"sepia",
+          tile_image_effect_reverse:true,
+          tile_enable_textpanel:true,
+          lightbox_textpanel_title_color:"e5e5e5",
+          tiles_col_width:250,
+          tiles_space_between_cols:20,
+          tile_enable_textpanel: true,     //enable textpanel
+          tile_textpanel_source: "title",
+          tile_textpanel_title_text_align: null,   //cut some space for text from right
+          tile_textpanel_padding_left: 20,
+        });
+      });
+    </script>
+
+<!-- pin.meal.restaurant.name -->
+
+      <!-- cl_image_tag pin.meal.mealphotos[0].photo -->
+
+        <!-- pin.meal.name -->

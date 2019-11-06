@@ -1,0 +1,25 @@
+.container {
+  margin-top: 30px;
+  width: 900px;
+}
+
+.grid {
+  width: 900px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: minmax(220px, auto);
+  grid-gap: 10px;
+
+}
+
+
+.grid-item {
+  grid-column: 1/3;
+  grid-row: auto;
+  height: auto;
+}
+
+.grid-item:nth-child(2) {
+
+}

@@ -44,17 +44,24 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="collections" role="tabpanel" aria-labelledby="collections-tab">
 <!-- collections -->
-<p>Collections are here. Just cannot test them yet</p>
 <div class="cards">
   <% @collections.each do |collection| %>
-  <% collection.pins.each do |pin| %>
-  <%# raise %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pin.meal.mealphotos[0].photo %>')">
-    <%= link_to collection.name, collection_path(collection) %>
+
+  <!-- carousel? -->
+  <div class="card">
+    <%= cl_image_tag collection.pins[0].meal.mealphotos[0].photo, class: "card-category" %>
+
+    <div class="card-info mx-2">
+      <h2> <%= link_to collection.name, collection_path(collection) %></h2>
+      <p><%= collection.pins.length %> meals</p>
+    </div>
   </div>
-  <% end %>
+
   <% end %>
 </div>
+  <!-- carousel -->
+  <%# raise %>
+
 <!-- collections -->
         </div>
         <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab"><p>Listing reviews added by me</p></div>
