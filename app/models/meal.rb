@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
+  LOCATIONS = ['Canggu']
   belongs_to :user
   belongs_to :restaurant
 
@@ -17,7 +18,6 @@ class Meal < ApplicationRecord
   validates :name, presence: true
   # validate the restaurant selection
   validates_numericality_of :price
-
 
   def check_rating(rating)
     case rating

@@ -78,7 +78,50 @@
   height:auto;
 }
 
+.form-container {
+ background-color: white;
+ height: 380px;
+ border-radius: 6px;
+ max-width: 360px;
+ opacity: .8;
+}
+
+.form-container-header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 6px;
+  color: black;
+}
+
+.form-container-search {
+  height: 220px;
+  padding: 15px;
+  border-radius: 6px;
+}
 
 
+.search-meal-form {
+  padding: 10px;
+}
+
+.search-meal-form-2 {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+#location {
+  background-color: #F5F5F5
+}
+
+#query {
+  background-color: #F5F5F5
+}
+
+.home-button {
+opacity: 1;
+}
 
 
