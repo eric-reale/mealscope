@@ -30,8 +30,8 @@
                     placeholder: "Price" %>
   <div class='mt-3'></div>
 
-<div class="container d-flex">
-          <div class="container mx-auto text-left">
+<div class="container d-flex" style="margin-bottom: 50px">
+          <div class="text-left">
           <div class="btn-group dropup">
             <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
               Cuisines
@@ -50,7 +50,7 @@
 
         <div class='mt-3'></div>
 
-        <div class="container mx-auto text-left">
+        <div class="text-left">
           <div class="btn-group text-left dropup">
             <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
               Dietary Restrictions
@@ -66,8 +66,8 @@
           </div>
           </div>
 
-            <div class='mt-3'></div>
-        <div class="container mx-auto text-left">
+            <div></div>
+        <div class="text-left">
          <div class="btn-group text-left dropup">
             <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
               Type of Meal
@@ -84,7 +84,7 @@
           </div>
 </div>
 
-          <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
+          <hr class="mx-auto mt-2 mb-2" style="width: 75%;">
           <div><p>Add some photos 📷 </p></div>
           <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
           <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
