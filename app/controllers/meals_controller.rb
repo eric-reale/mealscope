@@ -28,12 +28,17 @@ class MealsController < ApplicationController
           CuisineMealTag.create(meal: @meal, cuisine_tag: cuisine_tags)
           end
         end
+        params[:meal][:meal_type_tag_ids].each do |tag|
+          if tag.length > 0
+          meal_types = MealType.find_by_name(tag)
+          MealTypeTag.create(meal: @meal, meal_type: meal_types)
+          end
+        end
         params[:meal][:meal_photos].each do |photo|
           po = Cloudinary::Uploader.upload(photo)
           meal_photo = Mealphoto.new(meal: @meal)
           meal_photo.remote_photo_url = po["url"]
           meal_photo.save
-
         end
         redirect_to meal_path(@meal)
       else
