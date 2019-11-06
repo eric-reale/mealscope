@@ -12,7 +12,7 @@ Geocoder.configure(
   # cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
 
   # Exceptions that should not be rescued by default
-  # (if you want to implement custom error handling);
+  # (if you want to implement custom erropr handling);
   # supports SocketError and Timeout::Error
   # always_raise: [],
 
