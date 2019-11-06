@@ -21,6 +21,11 @@
   text-align: justify;
 }
 
+.form-checkboxes-6 {
+  column-count: 6;
+  text-align: justify;
+}
+
 .meal-form-body-new {
     background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
     background-repeat: no-repeat;
@@ -125,11 +130,11 @@
 }
 
 .diet-list {
-  height: 100px;
+  height: 120px;
 }
 
 .meal-list {
-  height: 50px;
+  height: 60px;
 }
 
 .filter-checkboxes {
