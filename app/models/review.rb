@@ -7,6 +7,7 @@ class Review < ApplicationRecord
   validates :rating, inclusion: { in: [1, 2, 3, 4, 5] }
   validates_numericality_of :rating
   after_create :calculate_average_rating
+  after_destroy :calculate_average_rating
 
   def calculate_average_rating
     ratings = self.meal.reviews.pluck(:rating)

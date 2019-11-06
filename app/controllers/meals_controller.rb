@@ -1,3 +1,6 @@
+require 'json'
+require 'open-uri'
+
 class MealsController < ApplicationController
   before_action :set_meal, only: [ :show, :edit, :update, :destroy ]
 
@@ -42,6 +45,17 @@ class MealsController < ApplicationController
   end
 
   def show
+    restaurant = @meal.restaurant
+    url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
+    user_serialized = open(url).read
+    data = JSON.parse(user_serialized)
+    counter = 0
+    @photos = []
+    10.times do
+      photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
+      @photos << photo
+      counter += 1
+    end
   end
 
   def edit
@@ -67,3 +81,5 @@ class MealsController < ApplicationController
     params.require(:meal).permit(:name, :description, :price, :meal_type, :diet_meal_tag_ids, :cuisine_meal_tag_ids, :meal_photos)
   end
 end
+
+

@@ -35,6 +35,12 @@ class Meal < ApplicationRecord
     end
   end
 
+
+  def class_colors
+    number = self.average_rating.to_i
+    return "rate-#{number}"
+  end
+
   def display_rating_count(count)
     if count > 0
       return " (#{count})"
