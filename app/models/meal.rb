@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
+  LOCATIONS = ['Canggu']
   belongs_to :user
   belongs_to :restaurant
 
@@ -18,8 +19,6 @@ class Meal < ApplicationRecord
   # validate the restaurant selection
   validates_numericality_of :price
 
-
-
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [:name, :meal_type],
@@ -31,8 +30,6 @@ class Meal < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-
 
   def check_rating(rating)
     case rating
