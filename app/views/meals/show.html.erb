@@ -1,10 +1,15 @@
-<div class="container-pagemover" style="width: 1000px;">
+
+<div class="container-pagemover" style="max-width: 1000px;">
+
   <%= link_to '<< Back', meals_path, class: "link" %>
 </div>
-<div class="container-fluid my-5 pb-4" style='padding-top: 200px'>
-  <div class="row mt-3 mb-5">
+<div class="container-fluid" style='padding-top: 50px'>
+  <div class="row">
     <div class="col-md-6 justify-content-between py-4">
-      <h2> <%= @meal.name %> </h2> <p> <%= @meal.price %></p>
+      <div class="row-title d-flex justify-content-between">
+        <h2> <%= @meal.name %> </h2> <p> <%= @meal.price %> $</p>
+      </div>
+
       <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
 
 
@@ -37,9 +42,7 @@
 
 
 
-      <div class="col-12 filter-container ml-0">
-        <span class="badge badge-default">Label</span>
-      </div>
+      <div class="col-12 filter-container ml-0"><span class="badge badge-default">#keto #vegetarian</span></div>
 
 
 <div class="nav-tabs">
@@ -60,7 +63,7 @@
           <div class="avatar-name d-flex justify-content-start ">
             <% meal = Meal.find(r.meal_id) %>
             <% user = User.find(meal.user_id) %>
-            <%#= cl_image_tag(user.avatar.url, class: "avatar-review" ) %>
+            <%= cl_image_tag(user.avatar.url, class: "avatar-review" ) %>
 
             <p class="my-auto ml-3"> <%= r.user.first_name %> </p>
           </div>
