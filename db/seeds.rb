@@ -8,6 +8,9 @@ Restaurant.destroy_all
 DietTag.destroy_all
 CuisineTag.destroy_all
 MealType.destroy_all
+Review.destroy_all
+# Pin.destroy_all
+# Collection.destroy_all
 
 puts 'Creating users...'
 user_attributes = [
@@ -863,6 +866,103 @@ end
 
 # Meal.create!(meal_attributes)
 puts "Meals created!"
+
+puts "Generating reviews"
+reviews_attributes = [
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+},
+{
+  rating: (rand(1..5)),
+  content: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  meal:    Meal.all.sample,
+  user:    User.all.sample
+}
+]
+
+Review.create!(reviews_attributes)
+puts "Reviews created"
 
 # puts "Generating collections"
 # collection_attributes [
