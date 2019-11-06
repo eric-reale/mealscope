@@ -1,10 +1,15 @@
 
 .container-profile {
   width: 800px;
-  height: 800px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   background-color: white;
+  margin-bottom: 100px;
+}
+.carousel-inner {
+  height: 300px;
+  object-fit: cover;
 }
 
 .link-color {
@@ -24,6 +29,17 @@
     }
 }
 
+.formbtn {
+  width: 100%;
+  padding: 10px;
+  background-color: #eb4a3d;
+  text-decoration: none;
+  color:white;
+  border-radius: 10px;
+    &:hover{
+      background-color: #f84e41;
+    }
+}
 .card-info p {
   color: gray;
   font-size: 13px;
@@ -36,13 +52,13 @@
   height: auto;
   background-color: white;
   // justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
   margin-top: 30px;
   // box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
 .ava {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: center;
   align-item: center;

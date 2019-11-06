@@ -1,6 +1,10 @@
 <h1 class="text-center mt-3"><%= @collection.name %></h1>
+<div class="hero">
+
+</div>
 <div class="container mt-0">
 <div class="container-fluid" style="width: 100%">
+  <hr style="width: 95%">
     <%= link_to '<< Back', profile_path, class: 'link-color ml-4' %>
     <div class="mx-auto my-2" id="gallery" style="display:none; width: 100%">
         <% @pins.each do |pin| %>
