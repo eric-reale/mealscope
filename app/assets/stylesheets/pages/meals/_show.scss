@@ -21,7 +21,14 @@
   text-align: justify;
 }
 
-.meal-form-body {
+.meal-form-body-new {
+    background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 90vh;
+}
+
+.meal-form-body-edit {
     background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
     background-repeat: no-repeat;
     background-size: 100%;
