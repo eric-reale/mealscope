@@ -11,7 +11,39 @@
 
 <!-- CARD HOME PAGE (ENTER LOCATION AND MEAL(OPTIONAL) -->
 
-  <div class="homeform">
+ <!--  <div class="homeform">
+ -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+    </div>
+    <div class="col-sm-4 form-container">
+      <div class='form-container-header'>
+        <h3><strong>Discover your next favorite meal.</strong></h3>
+      </div>
+      <div class='form-container-search'>
+
+        <%= form_tag meals_path, method: :get, class:"search-meal-form" do %>
+
+
+            <select name="location" id="" class="form-control">
+              <% Meal::LOCATIONS.each do |location| %>
+                <option value="<%= location %>"><%= location %></option>
+              <% end %>
+            </select>
+
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control search-meal-form search-meal-form-2",
+            placeholder:"Search for a meal (optional)"
+          %>
+        <%= submit_tag 'Search', class: 'btn btn-warning home-button btn-lg btn-block' %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
  </div>
 
