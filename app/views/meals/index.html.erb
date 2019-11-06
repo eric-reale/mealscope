@@ -1,18 +1,95 @@
-<!--  CARDS INDEX -->
 
-<div class="meals">
-  <% @meals.each do |m| %>
-    <% m.mealphotos.each do |mealphoto| %>
-    <div class="item">
-             <p class='mealname'> <%= m.name.strip %> </p>
-    <%= cl_image_tag mealphoto.photo, class:"mealimage" %>
-      <div class="overlay"></div>
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-8">
+      <% if @meals.empty? %>
 
-      </div>
 
-    <% end %>
+<!-- ERROR SECTION -->
 
-<% end %>
-</div>
+          <section class="page_404">
+                <div class="container">
+                  <div class="row">
+                  <div class="col-sm-12 ">
+                  <div class="col-sm-10 col-sm-offset-1  text-center">
+                  <div class="four_zero_four_bg">
+                    <h1 class="text-center ">Oops</h1> <br>
+
+
+                  </div>
+
+                  <div class="contant_box_404">
+                  <h3 class="h2">
+                  We didn't find any corresponding <strong>meals</strong>!
+                  </h3>
+                  <br>
+                  <br>
+                  <a href="/meals" class="addamealbtn" >Go back</a>
+                </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </section>
+
+
+<!-- END OF ERROR  -->
+
+        <% else %>
+    <div id="gallery" style="display:none; width: 100%">
+      <% if @meals %>
+        <% @meals.each do |m| %>
+          <% m.mealphotos.each do |mealphoto| %>
+          <%= link_to cl_image_tag(mealphoto.photo, alt:"#{m.name} <br> @#{m.restaurant.name}", class:""), meal_path(m)   %>
+          <% end %>
+        <% end %>
+        <% end %>
+    </div>
+   <% end %>
+    </div>
+
+
 
 <!-- END CARDS INDEX -->
+
+
+    <div class="col-4">
+      <div
+        id="map"
+        style="width: 32%;
+        height: 745px;"
+        data-markers="<%= @markers.to_json %>"
+      ></div>
+    </div>
+  </div>
+
+ </div>
+<!-- END CARDS INDEX -->
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
+    <script type="text/javascript">
+     const gallery = document.querySelector("#gallery")
+      $(document).ready(function(){
+        if (gallery) {
+                  $("#gallery").unitegallery({
+          gallery_theme: "tiles",
+          gallery_width:"100%",
+          // tile_border_color:"#7a7a7a",
+          // tile_outline_color:"#8B8B8B",
+          // tile_enable_shadow:true,
+          // tile_shadow_color:"#8B8B8B",
+          tile_overlay_opacity:0.3,
+          tile_enable_icons:false,
+          tile_as_link: true,
+          tile_image_effect_type:"sepia",
+          tile_image_effect_reverse:true,
+          tile_enable_textpanel:true,
+          lightbox_textpanel_title_color:"e5e5e5",
+          tiles_col_width:230,
+          tiles_space_between_cols:20
+
+        });
+
+        }
+      });
+
+    </script>

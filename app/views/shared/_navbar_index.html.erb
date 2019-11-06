@@ -6,10 +6,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-<!-- ADD A MEAL BUTTON -->
-  <div class="addamealbtn">
-      <%= link_to "Add a Meal", new_meal_path, class: "addamealbtn" %>
-  </div>
+
+ <!--  SEARCH  -->
+    <form class="example" action="/meals">
+      <input type="text" placeholder="Search for a meal or diet" name="query" class="sinput">
+      <button type="submit" class="loopicon"><i class="fa fa-search"></i></button>
+    </form>
+    <!--   SEARCH -->
+
+    <!-- ADD A MEAL BUTTON -->
+      <div class="addamealbtn">
+          <%= link_to "Add a Meal", new_meal_path, class: "addamealbtn" %>
+      </div>
+
 
 <!-- ADD A MEAL END -->
 

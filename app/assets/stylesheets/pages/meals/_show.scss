@@ -17,11 +17,29 @@
   text-align: justify;
 }
 
-// .meal-form-body {
-//     background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
-//     background-repeat: no-repeat;
-// //     background-size: 50%
-// // }
+.form-checkboxes-2 {
+  column-count: 2;
+  text-align: justify;
+}
+
+.form-checkboxes-4 {
+  column-count: 4;
+  text-align: justify;
+}
+
+.meal-form-body-new {
+    background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 90vh;
+}
+
+.meal-form-body-edit {
+    background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 90vh;
+}
 
 
 // .banner-new-meal {
@@ -30,12 +48,14 @@
 // }
 
 .form-right {
-  color: black
+  color: black;
+  border: none;
 }
 
 .meal_cuisine_meal_tags>legend {
     display: none;
 }
+
 
 .link {
 
@@ -177,5 +197,16 @@
 
 
 
+.meal_diet_meal_tags>legend {
+    display: none;
+}
 
+.meal_meal_type_tags>legend {
+    display: none;
+}
+
+
+.style {
+  opacity: .8;
+}
 

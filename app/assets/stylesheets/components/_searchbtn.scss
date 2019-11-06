@@ -35,3 +35,18 @@
       background-color: #f84e41;
     }
 }
+
+
+.addamealbtn {
+  margin: 10px;
+  padding: 15px;
+  background-color: #eb4a3d;
+  text-decoration: none;
+  color:white;
+  border-radius: 10px;
+    &:hover{
+      background-color: #f84e41;
+      text-decoration: none;
+      color: white;
+    }
+}
