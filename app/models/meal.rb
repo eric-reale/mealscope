@@ -19,6 +19,18 @@ class Meal < ApplicationRecord
   # validate the restaurant selection
   validates_numericality_of :price
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:name, :meal_type],
+    associated_against: {
+      restaurant: [:name],
+      cuisine_tags:[:name],
+      diet_tags: [:name]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
   def check_rating(rating)
     case rating
     when 5

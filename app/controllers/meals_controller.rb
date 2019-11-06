@@ -2,21 +2,35 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    if params[:location].blank? # currently a drop down so no option of being blank
-        redirect_to root_path
+
+    if params[:query] && params[:query] != "" && params[:query] != " "
+        @meals = Meal.global_search(params[:query])
     else
-      if Meal::LOCATIONS.include? params[:location]
-        if params[:query].present?
-          sql_query = 'name ILIKE :query OR description ILIKE :query'
-          @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
-         else
-           @meals = Meal.all
-         end
-       else
-        redirect_to root_path
-       end
-     end
-   end
+      @meals = Meal.all
+    end
+  end
+
+#       if params[:location].blank? # currently a drop down so no option of being blank
+#         redirect_to root_path
+#     else
+#       if Meal::LOCATIONS.include? params[:location]
+#         if params[:meal_query].present?
+#           sql_query = 'name ILIKE :query OR description ILIKE :query'
+#           @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
+#          else
+#            @meals = Meal.all
+#          end
+#        else
+#         redirect_to root_path
+#        end
+#      end
+#    end
+  
+  
+  
+  def new
+    @meal = Meal.new
+  end
 
   def create
     @meal = Meal.new(meal_params)
