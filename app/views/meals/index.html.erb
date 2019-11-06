@@ -5,9 +5,44 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-8">
+      <% if @meals.empty? %>
 
-    <div id="gallery" style="display:none; width: 70%">
+
+<!-- ERROR SECTION -->
+
+          <section class="page_404">
+                <div class="container">
+                  <div class="row">
+                  <div class="col-sm-12 ">
+                  <div class="col-sm-10 col-sm-offset-1  text-center">
+                  <div class="four_zero_four_bg">
+                    <h1 class="text-center ">Oops</h1> <br>
+
+
+                  </div>
+
+                  <div class="contant_box_404">
+                  <h3 class="h2">
+                  We didn't find any corresponding <strong>meals</strong>!
+                  </h3>
+                  <br>
+                  <br>
+                  <a href="/meals" class="addamealbtn" >Go back</a>
+                </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+              </section>
+
+
+<!-- END OF ERROR  -->
+
+        <% else %>
+    <div id="gallery" style="display:none; width: 100%">
       <% if @meals %>
         <% @meals.each do |m| %>
           <% m.mealphotos.each do |mealphoto| %>
@@ -16,16 +51,32 @@
         <% end %>
         <% end %>
     </div>
- </div>
+   <% end %>
+    </div>
+
+
 
 <!-- END CARDS INDEX -->
 
 
+    <div class="col-4">
+      <div
+        id="map"
+        style="width: 32%;
+        height: 745px;"
+        data-markers="<%= @markers.to_json %>"
+      ></div>
+    </div>
+  </div>
 
+ </div>
+<!-- END CARDS INDEX -->
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
     <script type="text/javascript">
-
+     const gallery = document.querySelector("#gallery")
       $(document).ready(function(){
-        $("#gallery").unitegallery({
+        if (gallery) {
+                  $("#gallery").unitegallery({
           gallery_theme: "tiles",
           gallery_width:"100%",
           // tile_border_color:"#7a7a7a",
@@ -44,6 +95,7 @@
 
         });
 
+        }
       });
 
     </script>

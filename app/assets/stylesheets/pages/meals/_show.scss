@@ -2,8 +2,14 @@
 .filter-container{
   width: 100%;
   background-color: rgba(244, 240, 240, 0.500);
-  height: 50px;
-  margin: 20px;
+
+}
+
+.nav-tabs {
+  width: 100%;
+  background-color: rgba(244, 240, 240, 0.500);
+  margin-top: 20px;
+
 }
 
 .form-checkboxes {
@@ -113,6 +119,89 @@
 
 }
 
+.cards-resto {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-resto {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-resto {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-resto {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-resto {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-resto {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.cards-resto img {
+  width: 100%;
+
+}
+
+
+.row-title-resto p {
+  font-size: 12px;
+
+}
+
+.carousel-inner{
+  margin-top: 30px;
+
+}
+
+.tab-pane {
+  text-align: center;
+
+}
+
+.container-fluid {
+  padding: 0px;
+  margin: 0px;
+}
+
+.rate-5 {
+  font-weight: bold;
+  color: #FFB40F
+}
+
+.rate-4{
+  color: green;
+}
+
+.rate-3 {
+  color: #D45F00;
+
+}
+
+
+
 .meal_diet_meal_tags>legend {
     display: none;
 }
@@ -120,6 +209,7 @@
 .meal_meal_type_tags>legend {
     display: none;
 }
+
 
 .style {
   opacity: .8;

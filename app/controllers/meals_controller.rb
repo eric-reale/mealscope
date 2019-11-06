@@ -1,17 +1,44 @@
+require 'json'
+require 'open-uri'
+
 class MealsController < ApplicationController
-  before_action :set_meal, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
+#     # params[:meals] = [2,3,4,6,88,9,12]
+#     if params[:query] && params[:query] != "" && params[:query] != " "
+#         @meals = Meal.global_search(params[:query])
+#         @query = params[:query]
 
-
-    # params[:meals] = [2,3,4,6,88,9,12]
     if params[:query] && params[:query] != "" && params[:query] != " "
-        @meals = Meal.global_search(params[:query])
-        @query = params[:query]
+      @meals = Meal.global_search(params[:query])
+      @restaurants = []
+      meals_ids = @meals.pluck(:restaurant_id)
+      meals_ids.each do |id|
+        resto = Restaurant.find(id)
+        @restaurants << resto
+      end
+
     else
       @meals = Meal.all
+      @restaurants = []
+      meals_ids = @meals.pluck(:restaurant_id)
+      meals_ids.each do |id|
+        resto = Restaurant.find(id)
+        @restaurants << resto
+      end
+    end
+    @markers = @restaurants.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude
+        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        # Uncomment the above line if you want each of your markers to display a info window when clicked
+        # (you will also need to create the partial "/flats/map_box")
+      }
     end
   end
+
 
 #       if params[:location].blank? # currently a drop down so no option of being blank
 #         redirect_to root_path
@@ -28,8 +55,6 @@ class MealsController < ApplicationController
 #        end
 #      end
 #    end
-
-
 
   def new
     @meal = Meal.new
@@ -73,6 +98,17 @@ class MealsController < ApplicationController
   end
 
   def show
+    restaurant = @meal.restaurant
+    url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
+    user_serialized = open(url).read
+    data = JSON.parse(user_serialized)
+    counter = 0
+    @photos = []
+    10.times do
+      photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
+      @photos << photo
+      counter += 1
+    end
   end
 
   def edit
@@ -98,3 +134,5 @@ class MealsController < ApplicationController
     params.require(:meal).permit(:name, :description, :price, :meal_type, :diet_meal_tag_ids, :cuisine_meal_tag_ids, :meal_photos)
   end
 end
+
+

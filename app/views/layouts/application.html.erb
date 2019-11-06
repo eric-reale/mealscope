@@ -8,7 +8,9 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
-        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/js/unitegallery.min.js'></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/unitegallery/1.7.40/themes/tiles/ug-theme-tiles.js'></script>
 
@@ -22,6 +24,7 @@
   </head>
   <body>
 
+
     <%= render 'shared/navbarcolor' unless controller_name == "registrations" || controller_name == "sessions" || action_name == "home" || controller_name == "meals" && action_name == "index" %>
     <%= render 'shared/navbar_transparent' if controller_name == "registrations" || controller_name == "sessions" || action_name == "home" %>
     <%= render 'shared/navbar_index' if controller_name == "meals" && action_name == "index" %>
@@ -29,6 +32,8 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+
     <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag "map" %>
   </body>
 </html>
