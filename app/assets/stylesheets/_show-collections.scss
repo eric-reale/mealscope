@@ -1,7 +1,22 @@
 .container {
-  margin-top: 30px;
+  // margin-top: 30px;
   width: 1000px;
+  margin-bottom: 150px;
 }
+
+.hero {
+  // background-position: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1)), asset_url('meal.jpg');
+  background-size: cover;
+  background-position: top;
+  padding: 150px 0;
+  height: 150px;
+}
+  .hero img {
+  object-fit: cover;
+  // width: auto;
+
+  }
 
 .grid {
   width: 900px;
