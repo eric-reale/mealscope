@@ -1,4 +1,4 @@
-.modal-dialog {
+.modal-dialog-navbar {
  justify-content: center;
  align-items:center;
  margin-top: 15%;
@@ -7,11 +7,28 @@ text-align: center;
 
 }
 
-.modal-content {
+.modal-content-navbar {
   width: 300px;
  background-color: rgba(244, 240, 240, 0.500);
   margin-right: 40%;
   margin-top: 10%;
   padding: 5%;
+}
+
+.modal-content-filters {
+  width: 800px;
+  height: 600px;
+  background-color: white;
+  opacity: 1;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
 
 }
+
+.modal-body-filters {
+  height: 600px;
+  opacity: 1;
+}
+

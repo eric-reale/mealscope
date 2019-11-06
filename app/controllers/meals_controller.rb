@@ -3,6 +3,7 @@ class MealsController < ApplicationController
 
   def index
 
+    # params[:meals] = [2,3,4,6,88,9,12]
     if params[:query] && params[:query] != "" && params[:query] != " "
         @meals = Meal.global_search(params[:query])
     else
@@ -25,9 +26,9 @@ class MealsController < ApplicationController
 #        end
 #      end
 #    end
-  
-  
-  
+
+
+
   def new
     @meal = Meal.new
   end

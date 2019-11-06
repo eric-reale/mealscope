@@ -46,8 +46,8 @@
 </nav>
 
   <div class="modal fade" id="loginNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog-navbar" role="document">
+      <div class="modal-content-navbar">
         <div class="modal-header">
           <%= simple_form_for(User.new, as: :user, url: user_session_path, html: { id: "login-form" } )do |f| %>
           <div class="form-inputs" id="login">
@@ -78,8 +78,8 @@
  </div>
 
   <div class="modal fade" id="signupNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog-navbar" role="document">
+      <div class="modal-content-navbar">
         <div class="modal-header">
           <%= simple_form_for(User.new, as: :user, url: user_registration_path, method: :post, id: "signup-form" ) do |f| %>
           <div class="form-inputs" id="login">

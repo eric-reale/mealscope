@@ -120,3 +120,19 @@
   opacity: .8;
 }
 
+.cuisine-list {
+  height: 200px;
+}
+
+.diet-list {
+  height: 100px;
+}
+
+.meal-list {
+  height: 50px;
+}
+
+.filter-checkboxes {
+  display: flex;
+  justify-content: space-between;
+}

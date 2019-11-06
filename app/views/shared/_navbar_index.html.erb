@@ -11,13 +11,17 @@
     <form class="example" action="/meals">
       <input type="text" name="query" class="sinput">
       <button type="submit" class="loopicon"><i class="fa fa-search"></i></button>
-    </form>
     <!--   SEARCH -->
-      <div class="addamealbtn">
-          <%= link_to "Add a Meal", new_meal_path, class: "addamealbtn" %>
-      </div>
 
-    </div>
+<div>
+        <a data-toggle="modal" data-target="#filter-modal">
+              Filter
+        </a>
+</div>
+  </div>
+
+
+
 
     <!-- ADD A MEAL BUTTON -->
       <div class="addamealbtn">
@@ -63,9 +67,71 @@
   </div>
 </nav>
 
+
+ <div class="modal" id="filter-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog-filters" role="document">
+    <div class="modal-content-filters">
+      <div class="modal-header">
+        <h5 class="modal-title">Select some filters</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body modal-body-filters">
+
+
+                  <!--  </div>
+            </div> -->
+      <h4>Cuisines</h4>
+        <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
+        <div class="form-check form-checkboxes-4 cuisine-list">
+        <% CuisineTag::CUISINE_TAG.each do |tag| %>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= tag %>
+            </label>
+          <% end %>
+        </div>
+
+
+        <h4>Dietary Restrictions</h4>
+          <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
+      <div class="form-check form-checkboxes-4 diet-list">
+        <% DietTag::DIET_TAG.each do |tag| %>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= tag %>
+            </label>
+          <% end %>
+        </div>
+
+        <h4>Types of Meals</h4>
+          <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
+        <div class="form-check form-checkboxes-2 meal-list">
+        <% MealType::MEAL_TYPE.each do |tag| %>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            <%= tag %>
+            </label>
+          <% end %>
+        </div>
+
+        <button type="submit" class="loopicon"><i class="fa fa-search"></i></button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Apply filters</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
   <div class="modal fade" id="loginNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
+    <div class="modal-dialog-navbar" role="document">
+      <div class="modal-content-navbar">
         <div class="modal-header">
           <%= simple_form_for(User.new, as: :user, url: user_session_path, html: { id: "login-form" }) do |f| %>
           <div class="form-inputs" id="login">
@@ -97,7 +163,7 @@
 
   <div class="modal fade" id="signupNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content-navbar">
         <div class="modal-header">
           <%= simple_form_for(User.new, as: :user, url: user_registration_path, method: :post, html: { id: "signup-form" }) do |f| %>
           <div class="form-inputs" id="login">
@@ -131,3 +197,4 @@
  </div>
 
  <!-- END NAV BAR -->
+
