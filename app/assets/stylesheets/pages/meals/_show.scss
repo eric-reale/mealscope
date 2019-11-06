@@ -11,11 +11,29 @@
   text-align: justify;
 }
 
-// .meal-form-body {
-//     background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
-//     background-repeat: no-repeat;
-// //     background-size: 50%
-// // }
+.form-checkboxes-2 {
+  column-count: 2;
+  text-align: justify;
+}
+
+.form-checkboxes-4 {
+  column-count: 4;
+  text-align: justify;
+}
+
+.meal-form-body-new {
+    background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 90vh;
+}
+
+.meal-form-body-edit {
+    background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 90vh;
+}
 
 
 // .banner-new-meal {
@@ -24,10 +42,81 @@
 // }
 
 .form-right {
-  color: black
+  color: black;
+  border: none;
 }
 
 .meal_cuisine_meal_tags>legend {
     display: none;
+}
+
+
+.link {
+
+  color: #a6a6a6;
+  text-decoration: none;
+}
+
+.fa-star {
+  color: #F9EA3E;
+
+}
+
+.fa-edit {
+  color: #a6a6a6;
+  text-decoration: none;
+  &:hover {
+      text-decoration: none;
+      color:black;
+    }
+}
+
+.fa-trash {
+  color: #a6a6a6;
+  text-decoration: none;
+  &:hover {
+      text-decoration: none;
+      color:black;
+    }
+}
+
+.review {
+  width: 90%;
+  margin: auto;
+}
+
+.badge {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin: 13px;
+
+}
+
+.avatar-review {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+
+}
+
+
+.row-title p {
+  font-size: 25px;
+  font-weight: normal;
+
+}
+
+.meal_diet_meal_tags>legend {
+    display: none;
+}
+
+.meal_meal_type_tags>legend {
+    display: none;
+}
+
+.style {
+  opacity: .8;
 }
 
