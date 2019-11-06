@@ -7,7 +7,6 @@
           <% else %>
           <%= image_tag 'person-placeholder.jpg' , class: "ava my-2" %>
           <% end %>
-          <tr><td><%= link_to "Update photo", error_path, class: "link-color mb-2" %></td></tr>
         </div>
 
       </div>
@@ -44,17 +43,38 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="collections" role="tabpanel" aria-labelledby="collections-tab">
 <!-- collections -->
-<p>Collections are here. Just cannot test them yet</p>
 <div class="cards">
   <% @collections.each do |collection| %>
-  <% collection.pins.each do |pin| %>
-  <%# raise %>
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path pin.meal.mealphotos[0].photo %>')">
-    <%= link_to collection.name, collection_path(collection) %>
-  </div>
-  <% end %>
+    <% @photos = [] %>
+    <% @meals_ids = collection.pins.pluck(:meal_id) %>
+    <% @meals_ids.each { |id| @photos << Meal.find(id).mealphotos.first.photo } %>
+
+
+    <div class="card">
+      <!-- carousel -->
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <%= link_to collection_path(collection) do %>
+        <div class="carousel-inner">
+          <% @photos.each_with_index do |photo, index|  %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <%= cl_image_tag photo, class: "d-block w-100 " %>
+            </div>
+            <% end %>
+        </div>
+          <% end %>
+      </div>
+      <!-- carousel? -->
+    <div class="card-info mx-2">
+      <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
+      <p><%= collection.pins.length %> meals</p>
+    </div>
+    </div>
+
+
   <% end %>
 </div>
+  <%# raise %>
+
 <!-- collections -->
         </div>
         <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab"><p>Listing reviews added by me</p></div>
@@ -62,7 +82,48 @@
           <!-- edit profile page form -->
           <div class="my-5">
             <div class="card d-flex justify-content-center text-center align-items-column m-auto py-4" style="max-width: 550px">
-            <p>Form</p>
+            <%= simple_form_for(current_user,  url: registration_path(current_user), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
+
+              <div class="form-inputs mx-auto" style="max-width: 350px">
+                <%= f.input :email,
+                            hint: "leave it blank if you don't want to change it",
+                            # placeholder: true,
+                            required: false,
+                            input_html: { autocomplete: "email" } %>
+                <%= f.input :first_name,
+                            # hint: "leave it blank if you don't want to change it",
+                            # placeholder: true,
+                            required: false %>
+                <%= f.input :last_name,
+                            # hint: "leave it blank if you don't want to change it",
+                            # placeholder: true,
+                            required: false %>
+                <%= f.input :location,
+                            # hint: "leave it blank if you don't want to change it",
+                            # placeholder: true,
+                            required: false %>
+                <%= f.input :about_me,
+                            label: false,
+                            # placeholder,
+                            :as => :text,
+                            :input_html => { 'rows' => 4, 'cols' => 10 } %>
+                <div class="mx-auto my-3" style="width: 55%;">
+                  <%= f.input :avatar,
+                              label: false %>
+                  <%= f.input :avatar_cache,
+                              as: :hidden %>
+                </div>
+                <%= f.input :current_password,
+                            input_html: {value: ''},
+                            hint: "we need your current password to confirm your changes",
+                            required: true %>
+              </div>
+
+              <div class="form-actions mx-auto" style="max-width: 350px">
+                <%= f.button :submit, "Update", class: 'formbtn' %>
+              </div>
+            <% end %>
             </div>
           </div>
           <!-- edit profile page form -->
@@ -71,7 +132,34 @@
           <!-- edit password page form -->
           <div class="my-5">
             <div class="card d-flex justify-content-center text-center align-items-column m-auto py-4" style="max-width: 550px">
-                <p>Form</p>
+                <h2>Change your password</h2>
+
+                <%= simple_form_for(current_user,  url: password_path(current_user), html: { method: :put }) do |f| %>
+                  <%= f.error_notification %>
+
+                  <%= f.input :reset_password_token, as: :hidden %>
+                  <%= f.full_error :reset_password_token %>
+
+                  <div class="form-inputs mx-auto" style="max-width: 350px">
+                    <%= f.input :password,
+                                label: false,
+                                placeholder: "New password",
+                                required: true,
+                                autofocus: true,
+                                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                                input_html: { autocomplete: "new-password" } %>
+                    <%= f.input :password_confirmation,
+                                label: false,
+                                placeholder: "Confirm new password",
+                                required: true,
+                                input_html: { autocomplete: "new-password" } %>
+                  </div>
+
+                  <div class="form-actions mx-auto" style="max-width: 350px">
+                    <%= f.button :submit, "Change", class: "formbtn mb-2" %>
+                  </div>
+                <% end %>
+
             </div>
           </div>
           <!-- edit password page form -->
