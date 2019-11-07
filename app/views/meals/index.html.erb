@@ -40,7 +40,15 @@
               <div id="gallery" style="display: none; width: 100%">
                 <% if @meals %>
                   <% @meals.each do |m| %>
-                  <% alt = "<div class=\"d-flex justify-content-between\"><div>#{m.name} <br> @#{m.restaurant.name}</div><div><a href=\"/\">hello</a>4.5</div></div>" %>
+
+                  <% alt = "<div class=\"d-flex justify-content-between\">
+                  <div class='index-font'>#{m.name} </div>
+                  <div><p class='index-rating'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+                  </div>
+                  <div class=\"d-flex justify-content-between\">
+                  <div class='index-font'> @#{m.restaurant.name}</div>
+                  <div><a data-toggle='modal' data-target='#heart-modal' class='index-heart'href=\"/\"><i class='far fa-heart'></i></a></div>
+                  </div>" %>
                   <% m.mealphotos.each do |mealphoto| %>
                     <%= link_to cl_image_tag(mealphoto.photo, alt: alt, class:""), meal_path(m) %>
                   <% end %>
@@ -51,7 +59,35 @@
     </div>
  <!--              </div> -->
 
+<!-- Modal for adding a pin -->
+<div class="modal" id="heart-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog-heart" role="document">
+    <div class="modal-content-heart">
+      <div class="modal-header">
+        <h4 class="modal-title">Add to your collections</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        <h6>Create a new collection</h6>
+      </div>
+      <div class='collection-modal-container d-flex justify-content-between m-3 '>
+      <p><% current_user.collections.each do |c| %>
+        <%= c.name %>
+        <% end %>
+      </p>
+      <p><a class='index-heart'><i class='index-heart far fa-heart'></i></a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- End of Pin Modal -->
 
 <!-- END CARDS INDEX -->
 

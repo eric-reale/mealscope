@@ -210,7 +210,6 @@
     display: none;
 }
 
-
 .style {
   opacity: .8;
 }
@@ -231,3 +230,23 @@
   display: flex;
   justify-content: space-between;
 }
+
+.index-rating {
+  font-size: 10px;
+}
+
+.index-font {
+  font-size: 12px;
+}
+
+.index-heart {
+  color: red;
+  font-size: 16px;
+  a:hover {
+    text-decoration: none;
+    color: red;
+    font-size: 16px;
+  }
+}
+
+// <i class='fas fa-heart'></i>
