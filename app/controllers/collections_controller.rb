@@ -12,8 +12,17 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(collection_params)
     @collection.user = current_user
-    @collection.save
-    # AJAX to stay on page
+    if @collection.save
+        respond_to do |format|
+        format.html { redirect_to meals_path }
+        format.js  # <-- will render `app/views/collections/create.js.erb`
+      end
+    else
+        respond_to do |format|
+        format.html { render 'meals/index' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def edit

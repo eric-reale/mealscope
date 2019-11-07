@@ -32,6 +32,8 @@ text-align: center;
 }
 
 .modal-content-heart {
+  border-radius: 4px;
+  padding: 20px;
   width: 600px;
   max-height: 500px;
   min-height: 400px;
@@ -49,5 +51,9 @@ text-align: center;
 }
 
 .add-collection {
-  border: none;
+  width: 100%;
+}
+
+#collection_name {
+  flex-grow: 1;
 }

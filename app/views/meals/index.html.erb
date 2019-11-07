@@ -63,6 +63,8 @@
  <!--              </div> -->
 
 <!-- Modal for adding a pin -->
+
+
 <div class="modal" id="heart-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog-heart" role="document">
     <div class="modal-content-heart">
@@ -79,19 +81,12 @@
   <div class="collapse add-collection" id="collapseExample" style="border: none">
   <div class="card card-body">
 
-  <%= simple_form_for(@collection, html: { class: 'd-flex form-inputs justify-content-between add-collection form-control' }) do |f| %>
-    <%= f.input :name,
-    label: false,
-    placeholder: "What's the name of your collection?",
-    input_html: {class: "form control form-inputs"} %>
-    <%= f.submit "Add",
-    input_html: {class: "form control form-inputs btn btn-primary"}  %>
-    <% end %>
+    <%= render 'collections/form', collection: @collection %>
 
   </div>
 </div>
-</div> <div class='collection-modal-container'>
-      <% current_user.collections.each do |c| %>
+</div> <div class='collection-modal-container' id="collections">
+      <% current_user.collections.reverse.each do |c| %>
       <div class="row d-flex justify-content-between m-3 ">
        <h5> <%= c.name %></h5>
       <p><a class='index-heart-toggle'><i class='index-heart-toggle far fa-heart'></i></a></p>
