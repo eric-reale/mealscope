@@ -6,6 +6,7 @@ class MealsController < ApplicationController
 
   def index
     @collection = Collection.new # Instantiating a new collection to be made from the model index page
+    @pin = Pin.new
 
     if params[:query] && params[:query] != "" && params[:query] != " "
       @meals = Meal.global_search(params[:query])

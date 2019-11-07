@@ -50,7 +50,10 @@
                   <div class='index-font'>#{m.name} </div>
                   <div class=\"d-flex justify-content-between\">
                   <div class='index-font'> @#{m.restaurant.name}</div>
-                  <div><a data-toggle='modal' data-target='#heart-modal' class='index-heart'href=\"/\"><i class='far fa-heart'></i></a></div>
+
+                  <div><a data-toggle='modal' data-target='#heart-modal'
+                   class='index-heart'href=\"/\"><i class='far fa-heart'></i></a></div>
+
                   </div>" %>
                   <% m.mealphotos.each do |mealphoto| %>
                     <%= link_to cl_image_tag(mealphoto.photo, alt: alt, class:""), meal_path(m) %>
@@ -89,7 +92,11 @@
       <% current_user.collections.reverse.each do |c| %>
       <div class="row d-flex justify-content-between m-3 ">
        <h5> <%= c.name %></h5>
-      <p><a class='index-heart-toggle'><i class='index-heart-toggle far fa-heart'></i></a></p>
+
+      <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
+     <p><a class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
+      <%# end %>
+
       </div>
         <% end %>
     </div>

@@ -1,0 +1,9 @@
+  <%= simple_form_for(@pin, html: { class: '' }) do |f| %>
+
+    <%= f.input :name,
+    label: false,
+    placeholder: "What's the name of your collection?",
+    input_html: {class: ""} %>
+    <%= f.submit "Add", class: "btn btn-primary"  %>
+
+  <% end %>
