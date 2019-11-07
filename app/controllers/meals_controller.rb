@@ -5,6 +5,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
+    @collection = Collection.new
 
 #     # params[:meals] = [2,3,4,6,88,9,12]
 #     if params[:query] && params[:query] != "" && params[:query] != " "

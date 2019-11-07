@@ -4,7 +4,7 @@ class PinsController < ApplicationController
 
 
   def create
-    # @pin = Pin.new(pin_params)
+    @pin = Pin.new(pin_params)
     # @meal = Meal.find(params[:meal_id])
     # @collection = Collection.find(params[:collection_id])
     # authorize ????

@@ -42,9 +42,12 @@
                   <% @meals.each do |m| %>
 
                   <% alt = "<div class=\"d-flex justify-content-between\">
-                  <div class='index-font'>#{m.name} </div>
+
                   <div><p class='index-rating'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+
                   </div>
+                  <br>
+                  <div class='index-font'>#{m.name} </div>
                   <div class=\"d-flex justify-content-between\">
                   <div class='index-font'> @#{m.restaurant.name}</div>
                   <div><a data-toggle='modal' data-target='#heart-modal' class='index-heart'href=\"/\"><i class='far fa-heart'></i></a></div>
@@ -70,19 +73,31 @@
         </button>
       </div>
       <div class="modal-body text-left">
-        <h6>Create a new collection</h6>
+        <h6>  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Create a new collection
+  </a></h6>
+  <div class="collapse add-collection" id="collapseExample" style="border: none">
+  <div class="card card-body">
+
+  <%= simple_form_for(@collection, html: { class: 'd-flex justify-content-between add-collection' }) do |f| %>
+   <!--  <form action="/collections" method="post">
+       <%#= hidden_field_tag :authenticity_token, form_authenticity_token %> -->
+  <!--   <input type="text" name="name" class="form-control" placeholder="What's your collection name?" >
+    <input type="submit" name="name" value="Add"> -->
+    <%= f.input :name %>
+    <%= f.submit "Add"  %>
+    <% end %>
+
+  </div>
+</div>
+</div> <div class='collection-modal-container'>
+      <% current_user.collections.each do |c| %>
+      <div class="row d-flex justify-content-between m-3 ">
+       <h5> <%= c.name %></h5>
+      <p><a class='index-heart-toggle'><i class='index-heart-toggle far fa-heart'></i></a></p>
       </div>
-      <div class='collection-modal-container d-flex justify-content-between m-3 '>
-      <p><% current_user.collections.each do |c| %>
-        <%= c.name %>
         <% end %>
-      </p>
-      <p><a class='index-heart'><i class='index-heart far fa-heart'></i></a></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+    </div>
     </div>
   </div>
 </div>

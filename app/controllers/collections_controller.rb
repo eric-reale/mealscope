@@ -10,12 +10,12 @@ class CollectionsController < ApplicationController
      # @meal = Meal.find(params[:meal_id])
     # @mealphoto = Mealphoto.find(params[:meal_id])
   end
-  # pop-up window:
+
   def create
     @collection = Collection.new(collection_params)
     @collection.user = current_user
     @collection.save
-    # stay on page(make user able to close pop-up window)
+    # AJAX to stay on page
   end
 
   def edit
