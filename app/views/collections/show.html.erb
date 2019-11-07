@@ -1,11 +1,14 @@
 <div class="hero" style="width: 100%">
-<h1 class="text-center my-auto"><%= @collection.name %></h1>
-
+  <div class="title">
+<h1 class="my-auto"><%= @collection.name %></h1>
+  </div>
 </div>
 <div class="container mt-0" >
 <div class="container-fluid" style="width: 100%">
   <!-- <hr style="width: 95%"> -->
+  <div class="back">
     <%= link_to '<< Back', profile_path, class: 'link-color ml-4' %>
+    </div>
     <div class="mx-auto my-3" id="gallery" style="display:none; width: 100%">
         <% @pins.each do |pin| %>
 
@@ -24,6 +27,8 @@
         $("#gallery").unitegallery({
           gallery_theme: "tiles",
           gallery_width:"100%",
+          tiles_col_width: 150,
+          gallery_min_width: 150,       //gallery minimal width when resizing
           tile_textpanel_appear_type: "fade",
           tile_enable_icons: false,
           tile_overlay_opacity:0.3,
@@ -35,7 +40,6 @@
           tile_image_effect_reverse:true,
           tile_enable_textpanel:true,
           lightbox_textpanel_title_color:"e5e5e5",
-          tiles_col_width:250,
           tiles_space_between_cols:20,
           tile_enable_textpanel: true,     //enable textpanel
           tile_textpanel_source: "title",
