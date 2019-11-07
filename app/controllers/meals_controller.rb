@@ -5,12 +5,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @collection = Collection.new
-
-#     # params[:meals] = [2,3,4,6,88,9,12]
-#     if params[:query] && params[:query] != "" && params[:query] != " "
-#         @meals = Meal.global_search(params[:query])
-#         @query = params[:query]
+    @collection = Collection.new # Instantiating a new collection to be made from the model index page
 
     if params[:query] && params[:query] != "" && params[:query] != " "
       @meals = Meal.global_search(params[:query])

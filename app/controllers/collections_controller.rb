@@ -4,8 +4,6 @@ class CollectionsController < ApplicationController
 
   def show
     # @collection = Collection.find(params[:id])
-
-
     @pins = @collection.pins
      # @meal = Meal.find(params[:meal_id])
     # @mealphoto = Mealphoto.find(params[:meal_id])
