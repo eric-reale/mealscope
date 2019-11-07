@@ -1,7 +1,6 @@
 
 .filter-container{
   width: 100%;
-  background-color: rgba(244, 240, 240, 0.500);
 
 }
 
@@ -128,14 +127,14 @@
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards-resto {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .cards-resto {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -186,20 +185,26 @@
   margin: 0px;
 }
 
-.rate-5 {
-  font-weight: bold;
-  color: #FFB40F
-}
+// .rate-5 {
+//   font-weight: bold;
+//   color: #FFB40F
+// }
 
-.rate-4{
-  color: green;
-}
+// .rate-4{
+//   color: green;
+// }
 
-.rate-3 {
-  color: #D45F00;
+// .rate-3 {
+//   color: #b8ed55;
+// }
 
-}
+// .rate-2 {
+//   color: #ffe100;
+// }
 
+// .rate-1 {
+// color: #e83200;
+// }
 
 
 .meal_diet_meal_tags>legend {
@@ -259,3 +264,75 @@
   }
 }
 // <i class='fas fa-heart'></i>
+// Padding changes depend on devices
+
+@media (min-width: 992px) {
+  .col-md-8 {
+    padding-right: 100px;
+  }
+}
+
+@media (max-width: 750px) {
+  .row {
+    margin: 12px;
+    padding: 12px;
+  }
+
+  .no-margin {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.cuisine-taggy {
+  font-weight: lighter;
+  color: black;
+    &:hover {
+
+    text-decoration: none;
+    }
+
+}
+
+// buttons
+
+.loopicon-review {
+  width: 165px;
+  color: white;
+  border:none;
+  background-color: #eb4a3d;
+  border-radius: 10px;
+  padding: 5px;
+  height: 40px;
+  &:hover{
+      background-color: #f84e41;
+  }
+}
+
+.btn {
+  background-color: #FFFFFF;
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  overflow: hidden;
+  text-align: center;
+  border-color: #d1d1d1;
+  text-transform: capitalize;
+  transition: border-color .1s ease-in-out;
+}
+
+.btn-hover {
+  color: rgba(0, 0, 0, .5);
+  transition: all .25s ease;
+}
+
+.btn-hover:hover {
+  color: black;
+  border-color: black;
+}
+
+.carousel-inner {
+
+  height: 100% !important;
+}
+

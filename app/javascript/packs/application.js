@@ -1,4 +1,7 @@
 import "bootstrap";
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();
 
 import { typedJS } from '../plugins/typed'
 import { starsOnIndex } from '../components/starsOnIndex'
@@ -6,6 +9,7 @@ import { heartToggle} from '../components/heartToggle'
 
 // typedJS();
 // starsOnIndex();
+
 
 // Bringing meal_id and collection_id into Pin params for creating
 document.addEventListener('DOMContentLoaded', () => {

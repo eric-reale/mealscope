@@ -8,7 +8,11 @@ class MealsController < ApplicationController
     @collection = Collection.new # Instantiating a new collection to be made from the model index page
     @pin = Pin.new
 
-    if params[:query] && params[:query] != "" && params[:query] != " "
+    ###################################
+    # CASE 1 if search query but filters are not present
+    if params[:query].present? && (!params[:diet_tags].present? &&
+      !params[:cuisine_tags].present? &&
+      !params[:meal_tags].present?)
       @meals = Meal.global_search(params[:query])
       @restaurants = []
       meals_ids = @meals.pluck(:restaurant_id)
@@ -17,6 +21,121 @@ class MealsController < ApplicationController
         @restaurants << resto
       end
 
+      unless @meals.count.zero?
+        @restaurants = []
+        meals_ids = @meals.pluck(:restaurant_id)
+        meals_ids.each do |id|
+          resto = Restaurant.find(id)
+          @restaurants << resto
+        end
+        restaurants_with_latlng = @restaurants.select { |r| r.latitude.present? && r.longitude.present? }
+        @markers = restaurants_with_latlng.map do |restaurant|
+          {
+            lat: restaurant.latitude,
+            lng: restaurant.longitude
+            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            # Uncomment the above line if you want each of your markers to display a info window when clicked
+            # (you will also need to create the partial "/flats/map_box")
+          }
+        end
+      end
+    ########################################
+    # CASE 2 if search query and filters are present
+    elsif params[:query].present? && (params[:diet_tags].present? ||
+      params[:cuisine_tags].present? ||
+      params[:meal_tags].present?)
+      @meals = []
+
+      if params[:diet_tags].present?
+        params[:diet_tags].each do
+          result = Meal.diet_search(params[:diet_tags]).global_search(params[:query])
+          @meals << result unless result.count.zero?
+        end
+      end
+
+      if params[:cuisine_tags].present?
+        params[:cuisine_tags].each do
+          result = Meal.cuisine_search(params[:cuisine_tags]).global_search(params[:query])
+          @meals << result unless result.count.zero?
+        end
+      end
+
+      if params[:meal_tags].present?
+        params[:meal_tags].each do
+          result = Meal.meal_type_search(params[:meal_tags]).global_search(params[:query])
+          @meals << result unless result.count.zero?
+        end
+      end
+
+      @meals = @meals.flatten.uniq
+
+      unless @meals.count.zero?
+        @restaurants = []
+        meals_ids = @meals.pluck(:restaurant_id)
+        meals_ids.each do |id|
+          resto = Restaurant.find(id)
+          @restaurants << resto
+        end
+        restaurants_with_latlng = @restaurants.select { |r| r.latitude.present? && r.longitude.present? }
+        @markers = restaurants_with_latlng.map do |restaurant|
+          {
+            lat: restaurant.latitude,
+            lng: restaurant.longitude
+            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            # Uncomment the above line if you want each of your markers to display a info window when clicked
+            # (you will also need to create the partial "/flats/map_box")
+          }
+        end
+      end
+    #######################################
+    # CASE 3 need to handle all cases where query not present but filters are
+    elsif !params[:query].present? && (params[:diet_tags].present? ||
+      params[:cuisine_tags].present? ||
+      params[:meal_tags].present?)
+      @meals = []
+      if params[:diet_tags].present?
+        params[:diet_tags].each do
+          result = Meal.diet_search(params[:diet_tags])
+          @meals << result unless result.count.zero?
+        end
+      end
+
+      if params[:cuisine_tags].present?
+        params[:cuisine_tags].each do
+          result = Meal.cuisine_search(params[:cuisine_tags])
+          @meals << result unless result.count.zero?
+        end
+      end
+
+      if params[:meal_tags].present?
+        params[:meal_tags].each do
+          result = Meal.meal_type_search(params[:meal_tags])
+          @meals << result unless result.count.zero?
+        end
+      end
+
+      @meals = @meals.flatten.uniq
+
+      unless @meals.count.zero?
+        @restaurants = []
+        meals_ids = @meals.pluck(:restaurant_id)
+        meals_ids.each do |id|
+          resto = Restaurant.find(id)
+          @restaurants << resto
+        end
+        restaurants_with_latlng = @restaurants.select { |r| r.latitude.present? && r.longitude.present? }
+        @markers = restaurants_with_latlng.map do |restaurant|
+          {
+            lat: restaurant.latitude,
+            lng: restaurant.longitude
+            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            # Uncomment the above line if you want each of your markers to display a info window when clicked
+            # (you will also need to create the partial "/flats/map_box")
+          }
+        end
+      end
+    # CASE 4 nothing
+    #######################################
     else
       @meals = Meal.all
       @restaurants = []
@@ -25,19 +144,18 @@ class MealsController < ApplicationController
         resto = Restaurant.find(id)
         @restaurants << resto
       end
-    end
-    @markers = @restaurants.map do |restaurant|
-      {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-        # Uncomment the above line if you want each of your markers to display a info window when clicked
-        # (you will also need to create the partial "/flats/map_box")
-      }
+      restaurants_with_latlng = @restaurants.select { |r| r.latitude.present? && r.longitude.present? }
+      @markers = restaurants_with_latlng.map do |restaurant|
+        {
+          lat: restaurant.latitude,
+          lng: restaurant.longitude
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+          # Uncomment the above line if you want each of your markers to display a info window when clicked
+          # (you will also need to create the partial "/flats/map_box")
+        }
+      end
     end
   end
-
-
 #       if params[:location].blank? # currently a drop down so no option of being blank
 #         redirect_to root_path
 #     else
@@ -96,6 +214,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     restaurant = @meal.restaurant
     url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
     user_serialized = open(url).read
