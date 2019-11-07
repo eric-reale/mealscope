@@ -1,5 +1,19 @@
-.searchcontainer{
+.search-and-filter{
+  width: 80px;
+    display: flex;
+    margin-left: 8%;
+    inline-size: auto;
+}
 
+.searchbox{
+  width: 100px;
+    display: flex;
+    margin-left: 8%;
+    inline-size: auto;
+}
+
+#filtre {
+  // color: #eb4a3d;
 }
 
 .sinput {

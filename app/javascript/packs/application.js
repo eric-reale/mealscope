@@ -5,6 +5,6 @@ initStarRating();
 
 import { typedJS } from '../plugins/typed'
 
-typedJS();
+//typedJS();
 
 

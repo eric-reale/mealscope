@@ -25,11 +25,38 @@ class Meal < ApplicationRecord
     associated_against: {
       restaurant: [:name],
       cuisine_tags:[:name],
-      diet_tags: [:name]
+      diet_tags: [:name],
+      meal_types: [:name],
     },
     using: {
       tsearch: { prefix: true }
     }
+
+  pg_search_scope :cuisine_search,
+    associated_against: {
+      cuisine_tags:[:name],
+    },
+    using: {
+      tsearch: { prefix: true, any_word: true }
+    }
+
+    pg_search_scope :diet_search,
+    associated_against: {
+      diet_tags:[:name],
+    },
+    using: {
+      tsearch: { prefix: true, any_word: true }
+    }
+
+    pg_search_scope :meal_type_search,
+    associated_against: {
+      meal_types: [:name],
+    },
+    using: {
+      tsearch: { prefix: true, any_word: true }
+    }
+
+
 
   def check_rating(rating)
     case rating
