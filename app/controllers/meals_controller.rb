@@ -98,6 +98,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     restaurant = @meal.restaurant
     url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
     user_serialized = open(url).read

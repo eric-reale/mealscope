@@ -128,14 +128,14 @@
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards-resto {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .cards-resto {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -186,20 +186,26 @@
   margin: 0px;
 }
 
-.rate-5 {
-  font-weight: bold;
-  color: #FFB40F
-}
+// .rate-5 {
+//   font-weight: bold;
+//   color: #FFB40F
+// }
 
-.rate-4{
-  color: green;
-}
+// .rate-4{
+//   color: green;
+// }
 
-.rate-3 {
-  color: #D45F00;
+// .rate-3 {
+//   color: #b8ed55;
+// }
 
-}
+// .rate-2 {
+//   color: #ffe100;
+// }
 
+// .rate-1 {
+// color: #e83200;
+// }
 
 
 .meal_diet_meal_tags>legend {
@@ -231,3 +237,44 @@
   display: flex;
   justify-content: space-between;
 }
+
+// Padding changes depend on devices
+
+// @media (min-width: 768px) {
+//   .col-md-8 {
+//     padding-right: 100px;
+//   }
+// }
+
+@media (max-width: 750px) {
+  .row {
+    margin: 12px;
+    padding: 12px;
+  }
+
+  .no-margin {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.cuisine-taggy {
+  font-weight: lighter;
+  color: black;
+    &:hover {
+
+    text-decoration: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
