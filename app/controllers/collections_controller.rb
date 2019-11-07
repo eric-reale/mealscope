@@ -4,18 +4,25 @@ class CollectionsController < ApplicationController
 
   def show
     # @collection = Collection.find(params[:id])
-
-
     @pins = @collection.pins
      # @meal = Meal.find(params[:meal_id])
     # @mealphoto = Mealphoto.find(params[:meal_id])
   end
-  # pop-up window:
+
   def create
     @collection = Collection.new(collection_params)
     @collection.user = current_user
-    @collection.save
-    # stay on page(make user able to close pop-up window)
+    if @collection.save
+        respond_to do |format|
+        format.html { redirect_to meals_path }
+        format.js  # <-- will render `app/views/collections/create.js.erb`
+      end
+    else
+        respond_to do |format|
+        format.html { render 'meals/index' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def edit

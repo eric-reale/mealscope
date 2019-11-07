@@ -24,7 +24,6 @@ text-align: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 75px;
-
 }
 
 .modal-body-filters {
@@ -32,3 +31,29 @@ text-align: center;
   opacity: 1;
 }
 
+.modal-content-heart {
+  border-radius: 4px;
+  padding: 20px;
+  width: 600px;
+  max-height: 500px;
+  min-height: 400px;
+  background-color: white;
+  opacity: 1;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+  overflow-y: scroll;
+}
+
+.collection-modal-container {
+  overflow-y: scroll;
+}
+
+.add-collection {
+  width: 100%;
+}
+
+#collection_name {
+  flex-grow: 1;
+}

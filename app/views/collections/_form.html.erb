@@ -1,0 +1,10 @@
+  <%= simple_form_for(@collection, html: { class: 'add-collection' }, remote: true) do |f| %>
+
+    <%= f.input :name,
+    label: false,
+    placeholder: "What's the name of your collection?",
+    input_html: {class: ""} %>
+    <%= f.submit "Add", class: "btn btn-primary"  %>
+
+  <% end %>
+
