@@ -94,7 +94,7 @@
        <h5> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <p><a class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
+     <p><a id = "#heart-toggle" class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
       <%# end %>
 
       </div>

@@ -6,11 +6,18 @@ class PinsController < ApplicationController
   def create
     @meal = Meal.find(params[:meal_id])
     @collection = Collection.find(params[:collection_id])
-    @pin = Pin.new(meal: @meals, collection: @collection)
-    @pin.save
-
-    # @pin.meal = @meal
-    # @pin.collection = @collection
+    @pin = Pin.new(meal: @meal, collection: @collection)
+    if @pin.save
+        respond_to do |format|
+        format.html { redirect_to meals_path }
+        format.js  # <-- will render `app/views/pins/create.js.erb`
+      end
+    else
+        respond_to do |format|
+        format.html { render 'meals/index' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def edit
@@ -36,6 +43,6 @@ class PinsController < ApplicationController
   end
   # Even TA wasn't sure about it, will see later:
   def pin_params
-    params.require(:pin).permit(:meal_id, :collection_id) # Do we need this or pass it up above?
+   # params.require(:pin).permit(:meal_id, :collection_id) # Do we need this or pass it up above?
   end
 end

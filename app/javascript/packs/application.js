@@ -6,7 +6,8 @@ import { heartToggle} from '../components/heartToggle'
 
 // typedJS();
 // starsOnIndex();
-heartToggle();
+
+// Bringing meal_id and collection_id into Pin params for creating
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelectorAll('.ug-tiles-wrapper a.ug-thumb-wrapper')
   wrapper.forEach(wrapper => {
@@ -24,3 +25,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 })
+
+heartToggle();

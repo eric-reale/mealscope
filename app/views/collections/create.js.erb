@@ -1,4 +1,4 @@
-function fillReview() {
+function fillForm() {
   const newCollectionInput = document.getElementById("collection_name")
   const container = document.querySelector(".collection-modal-container")
 
@@ -10,12 +10,9 @@ function fillReview() {
 }
 
 
-console.log("hello")
-
 <% if @collection.errors.any? %>
-<% raise %>
   refreshForm('<%= j render "collections/form", collection: @collection %>');
 <% else %>
-  fillReview();
+  fillForm();
 
 <% end %>
