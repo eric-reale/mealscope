@@ -1,6 +1,6 @@
 
 .container-profile {
-  width: 950px;
+  width: 80%;
   margin: 110px auto 0;
   background-color: #ffffff;
   box-shadow: 0 3px 15px rgba(0, 0, 0, .14);
@@ -27,7 +27,7 @@
 }
 
 .container-profile .profile-body {
-  padding: 0px 75px;
+  padding: auto;
   margin-bottom: 35px;
 }
 
@@ -44,8 +44,9 @@
 }
 
 .container-profile .about {
+  width: 65%;
   font-size: 15px;
-  margin: 25px 45px 0;
+  margin: 25px auto 0;
 }
 
 .container-profile .profile-footer{
@@ -54,6 +55,11 @@
   padding: 10px 0 30px;
 }
 
+.review-card {
+  width: 80%;
+  margin: 20px auto 20px;
+
+}
 
 .carousel-inner {
   height: 270px;
@@ -110,13 +116,44 @@
 }
 
 
-
-@media screen and (max-width) {
-  .container-profile {
-    width: 96%;
+// Smallest device
+@media (max-width: 399px) {
+  #myTab {
+    .nav-item:not(:last-child) {
+      margin-bottom: 16px;
+    }
   }
-  .profile-body {
-
-  }
-
 }
+@media (min-width: 400px) and (max-width: 780px) {
+  .container-profile {
+    width: 100%;
+  }
+
+  #myTab {
+    .nav-item {
+      margin-bottom: 16px;
+    }
+    // .nav-item:nth-child(2) {
+    //   margin-bottom: 16px;
+    // }
+    // .nav-item:nth-child(3) {
+    //   margin-bottom: 16px;
+    // }
+  }
+
+  .container-profile .about {
+    width: 87%;
+    margin: auto;
+    margin-top: 10px;
+    padding: auto;
+  }
+}
+
+@media (min-width: 600px) {
+  #myTab {
+    .nav-item {
+      margin-bottom: 16px;
+    }
+  }
+}
+
