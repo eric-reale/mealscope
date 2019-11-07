@@ -35,18 +35,21 @@
 
 <!-- END OF ERROR  -->
 
-        <% else %>
-    <div id="gallery" style="display:none; width: 100%">
-      <% if @meals %>
-        <% @meals.each do |m| %>
-          <% m.mealphotos.each do |mealphoto| %>
-          <%= link_to cl_image_tag(mealphoto.photo, alt:"#{m.name} <br> @#{m.restaurant.name}", class:""), meal_path(m)   %>
-          <% end %>
-        <% end %>
-        <% end %>
+<!--           <div class="meal-card">
+ -->        <% else %>
+              <div id="gallery" style="display: none; width: 100%">
+                <% if @meals %>
+                  <% @meals.each do |m| %>
+                  <% alt = "<div class=\"d-flex justify-content-between\"><div>#{m.name} <br> @#{m.restaurant.name}</div><div><a href=\"/\">hello</a>4.5</div></div>" %>
+                  <% m.mealphotos.each do |mealphoto| %>
+                    <%= link_to cl_image_tag(mealphoto.photo, alt: alt, class:""), meal_path(m) %>
+                  <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+       <% end %>
     </div>
-   <% end %>
-    </div>
+ <!--              </div> -->
 
 
 
