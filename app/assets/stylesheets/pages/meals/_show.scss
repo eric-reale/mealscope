@@ -1,7 +1,6 @@
 
 .filter-container{
   width: 100%;
-  background-color: rgba(244, 240, 240, 0.500);
 
 }
 
@@ -240,11 +239,11 @@
 
 // Padding changes depend on devices
 
-// @media (min-width: 768px) {
-//   .col-md-8 {
-//     padding-right: 100px;
-//   }
-// }
+@media (min-width: 992px) {
+  .col-md-8 {
+    padding-right: 100px;
+  }
+}
 
 @media (max-width: 750px) {
   .row {
@@ -268,9 +267,42 @@
 
 }
 
+// buttons
 
+.loopicon-review {
+  width: 165px;
+  color: white;
+  border:none;
+  background-color: #eb4a3d;
+  border-radius: 10px;
+  padding: 5px;
+  height: 40px;
+  &:hover{
+      background-color: #f84e41;
+  }
+}
 
+.btn {
+  background-color: #FFFFFF;
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  overflow: hidden;
+  text-align: center;
+  border-color: #d1d1d1;
+  text-transform: capitalize;
+  transition: border-color .1s ease-in-out;
+}
 
+.btn-hover {
+  color: rgba(0, 0, 0, .5);
+  transition: all .25s ease;
+}
+
+.btn-hover:hover {
+  color: black;
+  border-color: black;
+}
 
 
 
