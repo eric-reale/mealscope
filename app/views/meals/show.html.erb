@@ -63,7 +63,7 @@
         <div class="row-review">
           <div class="col-xs-4">
             <%= simple_form_for ([@meal, @review]) do |f| %>
-              <%= f.input :content %>
+              <%= f.input :content, label: "Say something", class: "review-content" %>
               <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
               <%= f.submit "Send your review", class: "loopicon-review" %>
             <% end %>
