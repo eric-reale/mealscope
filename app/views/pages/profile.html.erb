@@ -49,6 +49,13 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <%= link_to collection_path(collection) do %>
           <div class="carousel-inner">
+            <div class="card-delete mx-2 d-flex justify-content-end">
+              <%= link_to collection_path(collection), method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+                    <i class="fa fa-times"></i>
+              <% end %>
+
+                  </div>
             <% @photos.each_with_index do |photo, index|  %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
                 <%= cl_image_tag photo, class: "d-block w-100 " %>

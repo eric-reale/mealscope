@@ -35,7 +35,7 @@ class CollectionsController < ApplicationController
 
   def destroy
     @collection.destroy!
-    redirect_to profile_path(current_user)
+    redirect_to profile_path
   end
 
   private
