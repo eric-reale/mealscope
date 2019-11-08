@@ -6,13 +6,10 @@
     "bootstrap": "^4.3.1",
     "gmaps": "^0.4.24",
     "jquery": "^3.4.1",
-
-    "sweetalert": "^2.1.2",
-
     "jquery-bar-rating": "^1.2.2",
     "popper.js": "^1.16.0",
+    "sweetalert": "^2.1.2",
     "typed.js": "^2.0.11"
-
   },
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"

@@ -1,0 +1,18 @@
+function fillForm() {
+  const newCollectionInput = document.getElementById("collection_name")
+  const container = document.querySelector(".collection-modal-container")
+
+  const html = `<div class='row d-flex justify-content-between m-3'><h5>${newCollectionInput.value}</h5><p><a class='index-heart-toggle'><i class='index-heart-toggle far fa-heart'></i></a></p></div>`
+
+  container.insertAdjacentHTML('afterbegin', html)
+
+  newCollectionInput.value = "";
+}
+
+
+<% if @collection.errors.any? %>
+  refreshForm('<%= j render "collections/form", collection: @collection %>');
+<% else %>
+  fillForm();
+
+<% end %>
