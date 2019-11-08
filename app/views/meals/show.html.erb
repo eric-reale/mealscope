@@ -1,6 +1,6 @@
 
 <div class="container-pagemover mx-5 px-5 pt-2">
-  <%= link_to '<< Back', url_for(:back), class: "link" %>
+  <%= link_to '<< Back', url_for(:back), class: "link-color" %>
 
 </div>
 
@@ -12,7 +12,7 @@
           <h2> <%= @meal.name %> </h2> <p>$<%= @meal.price %></p>
         </div>
         <div class="stars-avg-rating d-flex justify-content-between" > <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
-          <div class="icon-font d-flex justify-content-end"><button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px"><%= link_to 'Edit', edit_meal_path %></button>
+          <div class="icon-font d-flex justify-content-end"><button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px"><%= link_to 'Edit', edit_meal_path, class: "link-color" %></button>
           <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
           <%= link_to "", meal_path(@meal)  , method: :delete, id:"delete-link", class: "hidden" %>
           </div>
@@ -55,7 +55,7 @@
           <% end %>
         </div>
       </div>
-      <div class="filter-container ml-0 px-3">
+      <div class="filter-container ml-0">
         <p><% @meal.cuisine_tags.each do |cuisine| %>
           <%= link_to cuisine.name, meals_path(query: cuisine.name), class: "btn btn-hover cuisine-taggy" %>
           <% end %>
@@ -120,8 +120,8 @@
       <h2>
         <%= @meal.restaurant.name %> </h2><p><%=@meal.restaurant.address %></p>
         <div class="d-flex justify-content-between">
-        <p><%= link_to nil, @meal.restaurant.website_url, :target => "_blank" %></p>
-        <p><%= link_to "@#{@meal.restaurant.instagram_handle}", "http://instagram.com/#{@meal.restaurant.instagram_handle}", :target => "_blank" %></p>
+        <p><%= link_to nil, @meal.restaurant.website_url, class: "link-color", :target => "_blank" %></p>
+        <p><%= link_to "@#{@meal.restaurant.instagram_handle}", "http://instagram.com/#{@meal.restaurant.instagram_handle}", class: "link-color", :target => "_blank" %></p>
         </div>
         </div>
     </div>
