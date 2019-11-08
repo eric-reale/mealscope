@@ -86,6 +86,7 @@
           </div>
           <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab">
              <div class="review-card">
+                <% if @reviews.blank? %> <!-- new line -->
                <% @reviews.each do |review| %>
 
                 <div class="revieww mt-3">
@@ -108,6 +109,7 @@
                 <hr>
                 <% end %>
              </div>
+             <% end %> <!-- new line -->
 
           </div>
           <div class="tab-pane fade" id="edit_profile" role="tabpanel" aria-labelledby="edit_profile-tab">
