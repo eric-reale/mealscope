@@ -69,12 +69,13 @@
           <%= simple_form_for ([@meal, @review]) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
             <%= f.input :content, label: "Say something", class: "form-review" %>
-            <%= f.submit "Submit", class: "btn btn-outline-danger" %>
+            <%= f.submit "Submit", class: "btn btn-outline-danger", style: "border-radius: 4px;" %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class="nav-tabs p-2 my-3">
+    <div class="nav-tabs-reviews p-2 my-3">
+      <% if @meal.reviews.count > 0 %>
       <h4>Comments</h4>
       <div class="tab-content">
         <div class="tab-pane fade show active">
@@ -96,21 +97,24 @@
               </div>
               <em> "<%= r.content %>"</em>
             </div>
-            <hr>
+
           <% end %>
           <!-- review 2 -->
           <!-- implement review -->
         </div>
       </div>
+       <% end %>
     </div>
   </div>
   <div class="col-md-5 justify-content-between py-4">
     <div class="row-title-resto">
+      <div>
       <h2>
         <%= @meal.restaurant.name %> </h2><p><%=@meal.restaurant.address %></p>
         <div class="d-flex justify-content-between">
         <p><%= link_to nil, @meal.restaurant.website_url, :target => "_blank" %></p>
         <p><%= link_to "@#{@meal.restaurant.instagram_handle}", "http://instagram.com/#{@meal.restaurant.instagram_handle}", :target => "_blank" %></p>
+        </div>
         </div>
     </div>
       <div class="cards-resto">
