@@ -28,60 +28,46 @@
           <%= f.input :price,
                     label: false,
                     placeholder: "Price" %>
-  <div class='mt-3'></div>
+  <!-- <div class='mt-3'></div> -->
 
-<div class="container d-flex">
-          <div class="container mx-auto text-left">
-          <div class="btn-group dropup">
-            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
-              Cuisines
-            </button>
-            <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
-                    <div class="form-checkboxes-4">
-                    <%= f.association :cuisine_meal_tags,
-                              collection: CuisineTag::CUISINE_TAG,
-                              as: :check_boxes,
-                              legend: false %>
-                    </div>
-            </div>
+<div class="container-taggy d-flex justify-content-center">
+  <div class="container-taggy mx-auto text-left">
+    <div class="btn-group dropup">
+      <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+        Cuisines
+      </button>
+      <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
+        <div class="form-checkboxes-4">
+        <%= f.association :cuisine_meal_tags,
+                  collection: CuisineTag::CUISINE_TAG,
+                  as: :check_boxes,
+                  legend: false %>
+        </div>
+      </div>
+      <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+        Dietary Restrictions
+      </button>
+        <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
+          <div class="form-checkboxes-4">
+              <%= f.association :diet_meal_tags,
+                        collection: DietTag::DIET_TAG,
+                        as: :check_boxes,
+                        label: false %>
           </div>
-          </div>
-
-
-        <div class='mt-3'></div>
-
-        <div class="container mx-auto text-left">
-          <div class="btn-group text-left dropup">
-            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
-              Dietary Restrictions
-            </button>
-            <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
-                        <div class="form-checkboxes-4">
-                    <%= f.association :diet_meal_tags,
-                              collection: DietTag::DIET_TAG,
-                              as: :check_boxes,
-                              label: false %>
-                    </div>
-            </div>
-          </div>
-          </div>
-
-            <div class='mt-3'></div>
-        <div class="container mx-auto text-left">
-         <div class="btn-group text-left dropup">
-            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
-              Type of Meal
-            </button>
-            <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
-                        <div class="form-checkboxes-4">
-                    <%= f.association :meal_type_tags,
-                              collection: MealType::MEAL_TYPE,
-                              as: :check_boxes,
-                              label: false %>
-                   </div>
-            </div>
-          </div>
-          </div>
+        </div>
+      <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+        Type of Meal
+      </button>
+      <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
+                  <div class="form-checkboxes-4">
+              <%= f.association :meal_type_tags,
+                        collection: MealType::MEAL_TYPE,
+                        as: :check_boxes,
+                        label: false %>
+             </div>
+      </div>
+    </div>
+  </div>
 </div>
 
           <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
