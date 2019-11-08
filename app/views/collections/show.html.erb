@@ -4,23 +4,24 @@
   </div>
 </div>
 <div class="container mt-0" >
-<div class="container-fluid" style="width: 100%">
-  <!-- <hr style="width: 95%"> -->
-  <div class="back">
-    <%= link_to '<< Back', profile_path, class: 'link-color ml-4' %>
-    </div>
-    <div class="mx-auto my-3" id="gallery" style="display:none; width: 100%">
+  <div class="container-fluid" style="width: 100%">
+    <!-- <hr style="width: 95%"> -->
+      <div class="card-delete">
+              </div>
+        <div class="back">
+        <%= link_to '<< Back', profile_path, class: 'link-color ml-4' %>
+        </div>
+
+        <div class="mx-auto my-3" id="gallery" style=" display: none; width: 100%">
         <% @pins.each do |pin| %>
-
-          <% pin.meal.mealphotos.each do |mealphoto| %>
-
-          <%= link_to cl_image_tag(mealphoto.photo, alt:"#{pin.meal.name} <br> @#{pin.meal.restaurant.name} ", class:""), meal_path(pin.meal)   %>
-
-          <% end %>
-      <% end %>
-    </div>
- </div>
- </div>
+            <% pin.meal.mealphotos.each do |mealphoto| %>
+              <%= link_to cl_image_tag(mealphoto.photo, alt:"#{pin.meal.name} <br> @#{pin.meal.restaurant.name} <br> <a href=\"#{request.base_url}/meals/#{pin.meal.id}/pins/#{pin.id}\" data-method=\"delete\"><i class=\"fa fa-times\"></i></a>", class:""), meal_path(pin.meal) %>
+            <% end %>
+        <% end %>
+        </div>
+      </div>
+  </div>
+</div>
 <!-- END CARDS INDEX -->
     <script type="text/javascript">
       $(document).ready(function(){

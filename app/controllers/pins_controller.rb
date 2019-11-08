@@ -31,9 +31,9 @@ class PinsController < ApplicationController
   end
 
   def destroy
-    @pin.destroy
-    # ???:
-    redirect_to profile_path(current_user)
+    @collection = @pin.collection
+    @pin.destroy!
+    redirect_to collection_path(@collection)
   end
 
   private
