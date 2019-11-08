@@ -1,7 +1,7 @@
 .search-and-filter{
   width: 80px;
     display: flex;
-    margin-left: 8%;
+    margin-left: -100px;
     inline-size: auto;
 }
 
@@ -19,8 +19,8 @@
 .sinput {
   text-align: left;
   padding: 5px;
-  margin-left: 5px;
-  width: 200px;
+    margin-right: 10px;
+    width: 450px;
   border-radius: 10px;
   border: solid 1px #eaeaea;
   height: 40px;
@@ -63,5 +63,19 @@
       background-color: #f84e41;
       text-decoration: none;
       color: white;
+    }
+}
+
+.nav-text-buttons {
+  width: 250px;
+  margin-left: 100px;
+  margin-right: -100px;
+  color: black;
+    a {
+      color: black;
+    }
+    a:hover {
+      text-decoration: none;
+      color: black;
     }
 }

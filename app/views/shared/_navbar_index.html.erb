@@ -12,7 +12,7 @@
  <!--  SEARCH  -->
       <input type="text" name="query" class="sinput" id="input-query">
       <button id="navbar-form-btn" type="submit" class="loopicon"><i class="fa fa-search"></i></button>
-      <a id="filtre" data-toggle="modal" data-target="#filter-modal" class="fas fa-sort">
+      <a id="filtre" data-toggle="modal" data-target="#filter-modal" class="fas fa-sort" style="margin-left: 10px;">
       Filter
       </a>
 
@@ -33,10 +33,19 @@
 
 <!-- NAV BAR -->
 
+  <div class="nav-text-buttons d-flex justify-content-between">
+    <a href="/meals/new">
+      Add a meal
+    </a>
+    <a href="/">
+      Home
+    </a>
+    <a href="/">
+      About Us
+    </a>
+  </div>
+
   <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
-     <div >
-          <%= link_to "Add a Meal", new_meal_path, class: "addamealbtn" %>
-      </div>
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item dropdown">
