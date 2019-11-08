@@ -221,7 +221,7 @@ class MealsController < ApplicationController
     data = JSON.parse(user_serialized)
     counter = 0
     @photos = []
-    10.times do
+    9.times do
       photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
       @photos << photo
       counter += 1
