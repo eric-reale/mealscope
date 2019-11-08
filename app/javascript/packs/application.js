@@ -23,7 +23,7 @@ initSweetalert('#sweet-alert-demo', {
 }
 );
 
-typedJS();
+// typedJS();
 
 // Bringing meal_id and collection_id into Pin params for creating
 document.addEventListener('DOMContentLoaded', () => {

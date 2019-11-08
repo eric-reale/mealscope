@@ -109,7 +109,6 @@
 
 <!-- END CARDS INDEX -->
 
-
     <div class="col-4">
       <div
         id="map"
@@ -122,7 +121,9 @@
 
  </div>
 <!-- END CARDS INDEX -->
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_SERVER_KEY']}" %>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+
     <script type="text/javascript">
      const gallery = document.querySelector("#gallery")
       $(document).ready(function(){
