@@ -11,10 +11,11 @@
         <div class="row-title d-flex justify-content-between">
           <h2> <%= @meal.name %> </h2> <p>$<%= @meal.price %></p>
         </div>
-        <div class="stars-avg-rating d-flex justify-content-between"> <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
-          <!-- <div class="icon-font d-flex justify-content-end"><button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px"><%= link_to 'Edit', edit_meal_path %></button>
-          <%= link_to meal_path(@meal)  , method: :delete, data: { confirm: 'Are you sure?' }  do %><i class="fas fa-trash"></i><% end %>
-          </div> -->
+        <div class="stars-avg-rating d-flex justify-content-between" > <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
+          <div class="icon-font d-flex justify-content-end"><button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px"><%= link_to 'Edit', edit_meal_path %></button>
+          <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+          <%= link_to "", meal_path(@meal)  , method: :delete, id:"delete-link", class: "hidden" %>
+          </div>
         </div>
 <!--         <div class="rating-block">
           <h4 class="bold padding-bottom-7">
