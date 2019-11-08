@@ -39,6 +39,7 @@
   <!-- collections -->
   <div class="cards">
     <% @collections.each do |collection| %>
+      <% unless collection.pins.empty? %>
       <% @photos = [] %>
       <% @meals_ids = collection.pins.pluck(:meal_id) %>
       <% @meals_ids.each { |id| @photos << Meal.find(id).mealphotos.first.photo } %>
@@ -65,6 +66,7 @@
       </div>
 
 
+    <% end %>
     <% end %>
   </div>
     <%# raise %>
