@@ -32,7 +32,9 @@ class MealsController < ApplicationController
         @markers = restaurants_with_latlng.map do |restaurant|
           {
             lat: restaurant.latitude,
-            lng: restaurant.longitude
+            lng: restaurant.longitude,
+            title: restaurant.name,
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg'
             # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
             # Uncomment the above line if you want each of your markers to display a info window when clicked
             # (you will also need to create the partial "/flats/map_box")
@@ -80,7 +82,9 @@ class MealsController < ApplicationController
         @markers = restaurants_with_latlng.map do |restaurant|
           {
             lat: restaurant.latitude,
-            lng: restaurant.longitude
+            lng: restaurant.longitude,
+            title: restaurant.name,
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg'
             # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
             # Uncomment the above line if you want each of your markers to display a info window when clicked
             # (you will also need to create the partial "/flats/map_box")
@@ -127,7 +131,9 @@ class MealsController < ApplicationController
         @markers = restaurants_with_latlng.map do |restaurant|
           {
             lat: restaurant.latitude,
-            lng: restaurant.longitude
+            lng: restaurant.longitude,
+            title: restaurant.name,
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg'
             # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
             # Uncomment the above line if you want each of your markers to display a info window when clicked
             # (you will also need to create the partial "/flats/map_box")
@@ -148,7 +154,9 @@ class MealsController < ApplicationController
       @markers = restaurants_with_latlng.map do |restaurant|
         {
           lat: restaurant.latitude,
-          lng: restaurant.longitude
+          lng: restaurant.longitude,
+          title: restaurant.name,
+          icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg'
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
           # Uncomment the above line if you want each of your markers to display a info window when clicked
           # (you will also need to create the partial "/flats/map_box")
