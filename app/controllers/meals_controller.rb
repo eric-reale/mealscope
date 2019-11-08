@@ -5,6 +5,9 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
+    @collection = Collection.new # Instantiating a new collection to be made from the model index page
+    @pin = Pin.new
+
     ###################################
     # CASE 1 if search query but filters are not present
     if params[:query].present? && (!params[:diet_tags].present? &&

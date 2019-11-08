@@ -222,7 +222,6 @@
     display: none;
 }
 
-
 .style {
   opacity: .8;
 }
@@ -244,6 +243,34 @@
   justify-content: space-between;
 }
 
+.index-rating {
+  font-size: 10px;
+}
+
+.index-font {
+  font-size: 12px;
+}
+
+.index-heart {
+  color: red;
+  font-size: 16px;
+  a:hover {
+    text-decoration: none;
+    color: red;
+    font-size: 16px;
+  }
+}
+
+.index-heart-toggle {
+  color: red;
+  font-size: 16px;
+  a:hover {
+    text-decoration: none;
+    color: red;
+    font-size: 16px;
+  }
+}
+// <i class='fas fa-heart'></i>
 // Padding changes depend on devices
 
 @media (min-width: 992px) {
@@ -351,9 +378,8 @@
 // }
 
 
-
-
-
-
+.ug-thumb-wrapper{
+  border-radius: 8px;
+}
 
 
