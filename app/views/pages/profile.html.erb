@@ -51,10 +51,6 @@
             <%= link_to collection_path(collection) do %>
           <div class="carousel-inner">
             <div class="card-delete mx-2 d-flex justify-content-end">
-              <%= link_to collection_path(collection), method: :delete,
-                    data: { confirm: "Are you sure?" } do %>
-                    <i class="fa fa-times"></i>
-              <% end %>
 
                   </div>
             <% @photos.each_with_index do |photo, index|  %>
@@ -66,9 +62,17 @@
             <% end %>
         </div>
         <!-- carousel? -->
-      <div class="card-info mx-2">
+      <div class="card-info d-flex justify-content-between mx-3">
+        <div class="card-text" style="width: 50%">
         <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
         <p><%= collection.pins.length %> meals</p>
+        </div>
+              <div class="d-flex justify-content-end mt-2" style="width: 50%">
+              <%= link_to collection_path(collection), method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+                    <i class="fa fa-times"></i>
+              <% end %>
+          </div>
       </div>
       </div>
 
