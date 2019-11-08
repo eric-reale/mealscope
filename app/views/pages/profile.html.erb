@@ -51,7 +51,7 @@
           <div class="carousel-inner">
             <% @photos.each_with_index do |photo, index|  %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
-                <%= cl_image_tag photo, class: "d-block w-100 " %>
+                <%= cl_image_tag photo, class: "" %>
               </div>
               <% end %>
           </div>
