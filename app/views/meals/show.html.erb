@@ -59,22 +59,21 @@
 
 <!-- Review form -->
 
-      <div class="container-review">
-        <div class="row-review">
-          <div class="col-xs-4">
-            <%= simple_form_for ([@meal, @review]) do |f| %>
-              <%= f.input :content, label: "Say something", class: "review-content" %>
-              <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-              <%= f.submit "Send your review", class: "loopicon-review" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+
 
 <!-- Review form end -->
-
-
-    <div class="nav-tabs p-2">
+    <div class="container-review mt-3">
+      <div class="row-review">
+        <div class="col-xs-4">
+          <%= simple_form_for ([@meal, @review]) do |f| %>
+            <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+            <%= f.input :content, label: "Say something", class: "form-review" %>
+            <%= f.submit "Send your review", class: "loopicon-review" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="nav-tabs p-2 my-3">
       <h4>Comments</h4>
       <div class="tab-content">
         <div class="tab-pane fade show active">
@@ -107,7 +106,7 @@
   <div class="col-md-4 justify-content-between py-4">
     <div class="row-title-resto d-flex justify-content-between">
       <h2>
-        <%= @meal.restaurant.name %><br><p>Address: <%=@meal.restaurant.address %></p><p>Website: <%= @meal.restaurant.website_url %></p>
+        <%= @meal.restaurant.name %><br><p>Address: <%=@meal.restaurant.address %></p><p>Website: <%= link_to nil, @meal.restaurant.website_url, :target => "_blank" %></p>
       </h2>
     </div>
       <div class="cards-resto">
