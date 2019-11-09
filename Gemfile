@@ -22,6 +22,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'searchkick', '~> 3.0'
 gem 'faker'
 gem 'pundit'
+gem 'simple_token_authentication'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

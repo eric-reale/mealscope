@@ -1,4 +1,5 @@
 class Meal < ApplicationRecord
+
   LOCATIONS = ['Canggu']
   belongs_to :user
   belongs_to :restaurant
