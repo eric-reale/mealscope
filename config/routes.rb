@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   get 'test', to: 'pages#test', as: :test
 
   resources :meals do
-    resources :reviews, only: [ :new, :create, :destroy ]
+    resources :reviews, only: [ :new, :create, :destroy ] # Why is there a :new? Review is created on meal show page.
     resources :pins, only: [ :create, :edit, :update, :destroy ]
   end
 
+  resources :restaurants #only: [ :index, :create, :show, :update, :destroy ] - do this later
   resources :collections, only: [ :show, :create, :edit, :update, :destroy ]
-  resources :reviews, only: [:new, :create]
+  resources :reviews, only: [:new, :create] ## Why is this here?
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
