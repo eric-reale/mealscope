@@ -8,7 +8,7 @@
     <div class="col-md-6">
       <div class="justify-content-between py-4">
         <div class="row-title d-flex justify-content-between">
-            <h1> <%= @restaurant.name %> </h1>
+            <h2> <%= @restaurant.name %> </h2>
             <div class="icon-font d-flex justify-content-end">
               <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
               <%= link_to 'Edit', edit_restaurant_path, class: "link-color" %></button>
@@ -18,7 +18,7 @@
         </div>
 
             <% @restaurant.meals.each do |m|%>
-            <h4> <%= m.name %> <%= m.check_rating(m.average_rating) %> </h4>
+            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> </h5>
                <% m.reviews.each do |r| %>
                  <div class="review mt-0">
                     <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
@@ -34,7 +34,7 @@
 
   <div class="col-md-6">
     <div class="text-center py-4">
-      <h1>User Data Analytics</h1>
+      <h2>User Data Analytics</h2>
     </div>
 
     <div class="row user-data-container-top">
