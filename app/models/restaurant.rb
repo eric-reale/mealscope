@@ -1,5 +1,7 @@
 class Restaurant < ApplicationRecord
   has_many :meals, dependent: :destroy
+  has_many :reviews, through: :meals
+  belongs_to :user
   validates :name, presence: true
 
   geocoded_by :address

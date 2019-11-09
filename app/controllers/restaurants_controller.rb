@@ -3,33 +3,36 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = policy_scope(Restaurant)
   end
 
   def new
     @restaurant = Restaurant.new
+    authorize @restaurant
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    authorize @restaurant
     @restaurant.user = current_user
     @restaurant.save
   end
 
   def show
-    if @restaurant.user = current_user
+    # if @restaurant.user = current_user
   end
 
   def edit
-    # TBD
   end
 
   def update
-    # TBD
+    @restaurant.update(restaurant_params)
+    redirect_to profile_path
   end
 
   def destroy
-    # TBD
+    @restaurant.destroy
+    redirect_to profile_path
   end
 
 
@@ -41,6 +44,7 @@ class RestaurantsController < ApplicationController
 
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
+    authorize @restaurant
   end
 
 end

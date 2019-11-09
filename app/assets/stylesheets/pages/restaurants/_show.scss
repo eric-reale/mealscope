@@ -1,0 +1,38 @@
+.user-data-container {
+  color: black;
+    background-color:  white;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.user-data-container-top {
+  color: black;
+    background-color:  white;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.user-data-title {
+    background-color: rgba(244, 240, 240, 0.5);
+    width: 70%;
+    padding: 10px;
+    margin-left: 25px;
+    p {
+      font-size: 12px;
+    }
+}
+
+.user-data-data {
+    background-color: rgba(244, 240, 240, 0.5);
+    width: 15%;
+    padding: 10px;
+    margin-left: 25px;
+    p {
+      font-size: 12px;
+    }
+}

@@ -1,0 +1,91 @@
+<div class="container-pagemover mx-5 px-5 pt-2">
+  <%= link_to '<< Back', url_for(:back), class: "link-color" %>
+
+</div>
+
+<div class="container-fluid">
+  <div class="row p-5 no-margin container-show-card mx-auto">
+    <div class="col-md-6">
+      <div class="justify-content-between py-4">
+        <div class="row-title d-flex justify-content-between">
+            <h2> <%= @restaurant.name %> </h2>
+            <div class="icon-font d-flex justify-content-end">
+              <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
+              <%= link_to 'Edit', edit_restaurant_path, class: "link-color" %></button>
+              <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+              <%= link_to "", restaurant_path(@restaurant)  , method: :delete, id:"delete-link", class: "hidden" %>
+            </div>
+        </div>
+
+            <% @restaurant.meals.each do |m|%>
+            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> </h5>
+               <% m.reviews.each do |r| %>
+                 <div class="review mt-0">
+                    <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
+                      <p> <%= r.content %> </p>
+                      <p> <%= r.display_ratings %>  </p>
+                    </div>
+                 </div>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+
+
+  <div class="col-md-6">
+    <div class="text-center py-4">
+      <h2>User Data Analytics</h2>
+    </div>
+
+    <div class="row user-data-container-top">
+      <div class='user-data-title'>
+        <p>Number of Unique User Visits (total)</p>
+     </div>
+        <div class='user-data-data text-center'>
+        <p>3,509</p>
+     </div>
+   </div>
+
+
+    <div class="row user-data-container">
+      <div class='user-data-title'>
+        <p>Number of Unique User Visits (this week)</p>
+     </div>
+        <div class='user-data-data text-center'>
+        <p>217</p>
+     </div>
+   </div>
+
+    <div class="row user-data-container">
+      <div class='user-data-title'>
+        <p>Average Amount of Time Spent by User on Meal Page</p>
+     </div>
+        <div class='user-data-data text-center'>
+        <p>1 min 17 seconds</p>
+     </div>
+   </div>
+
+    <div class="row user-data-container">
+      <div class='user-data-title'>
+        <p>Weekly Increase of User Time Spent on Meal Page</p>
+     </div>
+        <div class='user-data-data text-center'>
+        <p style='color: green'>+47%</p>
+     </div>
+   </div>
+
+    <div class="row user-data-container">
+      <div class='user-data-title'>
+        <p>Most Searched for Term in Location (this week)</p>
+     </div>
+        <div class='user-data-data text-center'>
+        <p>'avocado'</p>
+     </div>
+   </div>
+
+  </div>
+
+  </div>
+</div>
+
+
