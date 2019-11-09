@@ -1,0 +1,9 @@
+<h1> <%= @restaurant.name %> </h1>
+<% @restaurant.meals.each do |m|%>
+<h3>     <%= m.name %> <%= m.check_rating(m.average_rating) %> </h3>
+<br>
+    <% m.reviews.each do |r| %>
+ <p>   <%= r.content %> </p>
+ <p>   <%= r.display_ratings %>  </p>
+    <% end %>
+<% end %>
