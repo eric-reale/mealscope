@@ -6,6 +6,8 @@ class PinsController < ApplicationController
   def create
     @meal = Meal.find(params[:meal_id])
     @collection = Collection.find(params[:collection_id])
+    authorize @meal
+    authorize @collection
     @pin = Pin.new(meal: @meal, collection: @collection)
     authorize @pin
     if @pin.save

@@ -1,9 +1,49 @@
-<h1> <%= @restaurant.name %> </h1>
-<% @restaurant.meals.each do |m|%>
-<h3>     <%= m.name %> <%= m.check_rating(m.average_rating) %> </h3>
-<br>
-    <% m.reviews.each do |r| %>
- <p>   <%= r.content %> </p>
- <p>   <%= r.display_ratings %>  </p>
-    <% end %>
-<% end %>
+<div class="container-pagemover mx-5 px-5 pt-2">
+  <%= link_to '<< Back', url_for(:back), class: "link-color" %>
+
+</div>
+
+<div class="container-fluid">
+  <div class="row p-5 no-margin container-show-card mx-auto">
+    <div class="col-md-7">
+      <div class="justify-content-between py-4">
+        <div class="row-title d-flex justify-content-between">
+            <h1> <%= @restaurant.name %> </h1>
+            <div class="icon-font d-flex justify-content-end">
+              <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
+              <%= link_to 'Edit', edit_restaurant_path, class: "link-color" %></button>
+              <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+              <%= link_to "", restaurant_path(@restaurant)  , method: :delete, id:"delete-link", class: "hidden" %>
+            </div>
+        </div>
+
+            <% @restaurant.meals.each do |m|%>
+            <h4> <%= m.name %> <%= m.check_rating(m.average_rating) %> </h4>
+               <% m.reviews.each do |r| %>
+                 <div class="review mt-0">
+                    <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
+                      <p> <%= r.content %> </p>
+                      <p> <%= r.display_ratings %>  </p>
+                    </div>
+                 </div>
+              <% end %>
+            <% end %>
+        </div>
+      </div>
+
+
+  <div class="col-md-5">
+    <div class="text-center py-4">
+      <h1>User Data Analytics</h1>
+    </div>
+
+    <div class='user-data-container'>
+      <p>test</p>
+
+   </div>
+ </div>
+
+    </div>
+</div>
+
+
