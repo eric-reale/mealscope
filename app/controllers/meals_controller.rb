@@ -159,29 +159,17 @@ class MealsController < ApplicationController
         }
       end
     end
+    @meals = policy_scope(Meal) ## NEED TO FIX. MESSING WITH THE FILTERS
   end
-#       if params[:location].blank? # currently a drop down so no option of being blank
-#         redirect_to root_path
-#     else
-#       if Meal::LOCATIONS.include? params[:location]
-#         if params[:meal_query].present?
-#           sql_query = 'name ILIKE :query OR description ILIKE :query'
-#           @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
-#          else
-#            @meals = Meal.all
-#          end
-#        else
-#         redirect_to root_path
-#        end
-#      end
-#    end
 
   def new
     @meal = Meal.new
+    authorize @meal
   end
 
   def create
     @meal = Meal.new(meal_params)
+    authorize @meal
     @restaurant = params[:meal][:restaurant]
     @restaurant = Restaurant.find(@restaurant)
     @meal.restaurant = @restaurant
@@ -249,6 +237,7 @@ class MealsController < ApplicationController
 
   def set_meal
     @meal = Meal.find(params[:id])
+    authorize @meal
   end
 
   def meal_params

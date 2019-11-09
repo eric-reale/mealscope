@@ -3,11 +3,12 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    authorize @review
   end
 
   def create
     @review = Review.new(review_params)
-    # authorize @review
+    authorize @review
     @review.user = current_user
     @review.meal = @meal
     if @review.save
@@ -18,10 +19,23 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    # TBD
+  end
+
+  def update
+    # TBD
+  end
+
+  def destroy
+    # TBD
+  end
+
 private
 
   def set_meal
     @meal = Meal.find(params[:meal_id])
+    authorize @meal
   end
 
   def review_params

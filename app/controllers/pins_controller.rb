@@ -7,6 +7,7 @@ class PinsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @collection = Collection.find(params[:collection_id])
     @pin = Pin.new(meal: @meal, collection: @collection)
+    authorize @pin
     if @pin.save
         respond_to do |format|
         format.html { redirect_to meals_path }
@@ -40,9 +41,6 @@ class PinsController < ApplicationController
 
   def set_pin
     @pin = Pin.find(params[:id])
-  end
-  # Even TA wasn't sure about it, will see later:
-  def pin_params
-   # params.require(:pin).permit(:meal_id, :collection_id) # Do we need this or pass it up above?
+    authorize @pin
   end
 end
