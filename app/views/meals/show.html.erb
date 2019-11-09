@@ -12,10 +12,17 @@
           <h2> <%= @meal.name %> </h2> <p>$<%= @meal.price %></p>
         </div>
         <div class="stars-avg-rating d-flex justify-content-between" > <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
-          <div class="icon-font d-flex justify-content-end"><button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px"><%= link_to 'Edit', edit_meal_path, class: "link-color" %></button>
-          <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-          <%= link_to "", meal_path(@meal)  , method: :delete, id:"delete-link", class: "hidden" %>
+
+        <!-- # Authorization for editing and deleting meal -->
+        <% if current_user == @meal.user  %>
+          <div class="icon-font d-flex justify-content-end">
+            <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
+            <%= link_to 'Edit', edit_meal_path, class: "link-color" %></button>
+            <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+            <%= link_to "", meal_path(@meal)  , method: :delete, id:"delete-link", class: "hidden" %>
           </div>
+        <% end %>
+
         </div>
 <!--         <div class="rating-block">
           <h4 class="bold padding-bottom-7">
@@ -107,6 +114,9 @@
             </div>
 
           <% end %>
+
+          <!-- # Need to add review edit/delete buttons  -->
+ <!--  -->
           <!-- review 2 -->
           <!-- implement review -->
         </div>

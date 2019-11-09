@@ -17,6 +17,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    # if @restaurant.user = current_user
   end
 
   def edit

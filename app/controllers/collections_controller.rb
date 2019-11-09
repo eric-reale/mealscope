@@ -11,6 +11,7 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.new(collection_params)
+    authorize @collection
     @collection.user = current_user
     if @collection.save
         respond_to do |format|
@@ -46,5 +47,6 @@ class CollectionsController < ApplicationController
 
   def set_collection
     @collection = Collection.find(params[:id])
+    authorize @collection
   end
 end
