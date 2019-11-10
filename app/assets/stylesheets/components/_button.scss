@@ -1,0 +1,28 @@
+.button-flat {
+  color: white;
+  background: transparent;
+  background-color: #008B00;
+  padding: 10px;
+  border-radius: 6px;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+}
+
+.button-flat:hover {
+  text-decoration: none;
+  background-color: #31d843;
+      a {
+      text-decoration: none;
+      color: white;
+    }
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+}

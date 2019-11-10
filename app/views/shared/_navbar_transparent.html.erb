@@ -4,13 +4,19 @@
 <!-- TRANSPARENT NAVBAR -->
 
 <nav class="navbar navbar-light navbar-expand-lg fixed-top navbar-mealscope-transparent">
+  <div>
 
         <%= link_to image_tag("logo-white.png"), meals_path, class: "navbar-brand"%>
+        </div>
 
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <div class='d-flex', style="color: white">
+    <div class='align-middle d-flex'>
+       <%= link_to 'Restaurant Owners',  restaurant_owners_path, class: "button-flat mx-3" %>
+    </div>
   <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
@@ -41,6 +47,8 @@
       <% end %>
     </ul>
   </div>
+  </div>
+
 </nav>
 
   <div class="modal fade" id="loginNavbarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

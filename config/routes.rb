@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/error', to: 'pages#error'
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   get 'profile', to: 'pages#profile', as: :profile
-  get 'test', to: 'pages#test', as: :test
+  get 'restaurant-owners', to: 'pages#restaurant_owners', as: :restaurant_owners
 
   resources :meals do
     resources :reviews, only: [ :new, :create, :destroy ] # Why is there a :new? Review is created on meal show page.

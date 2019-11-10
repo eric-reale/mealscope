@@ -11,4 +11,7 @@ class PagesController < ApplicationController
 
   def error
   end
+
+  def restaurant_owners
+  end
 end
