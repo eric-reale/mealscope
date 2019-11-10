@@ -1,6 +1,7 @@
 class Meal < ApplicationRecord
+  monetize :sponsored_posts_price_cents
 
-  LOCATIONS = ['Canggu']
+  LOCATIONS = ['Canggu, Bali']
   belongs_to :user
   belongs_to :restaurant
 
@@ -15,6 +16,8 @@ class Meal < ApplicationRecord
   has_many :mealphotos, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :pins, dependent: :destroy
+
+  has_many :orders
 
   validates :name, presence: true
   # validate the restaurant selection
