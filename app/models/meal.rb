@@ -17,6 +17,8 @@ class Meal < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :pins, dependent: :destroy
 
+  has_many :orders
+
   validates :name, presence: true
   # validate the restaurant selection
   validates_numericality_of :price

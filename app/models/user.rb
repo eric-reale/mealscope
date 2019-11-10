@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :reviews
   has_many :collections
+  has_many :orders
 
   mount_uploader :avatar, PhotoUploader
 end

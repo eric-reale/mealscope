@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_10_033132) do
+ActiveRecord::Schema.define(version: 2019_11_10_040803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,6 +92,19 @@ ActiveRecord::Schema.define(version: 2019_11_10_033132) do
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "meal_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.bigint "meal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_orders_on_meal_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
@@ -164,6 +177,8 @@ ActiveRecord::Schema.define(version: 2019_11_10_033132) do
   add_foreign_key "mealphotos", "meals"
   add_foreign_key "meals", "restaurants"
   add_foreign_key "meals", "users"
+  add_foreign_key "orders", "meals"
+  add_foreign_key "orders", "users"
   add_foreign_key "pins", "collections"
   add_foreign_key "pins", "meals"
   add_foreign_key "restaurants", "users"
