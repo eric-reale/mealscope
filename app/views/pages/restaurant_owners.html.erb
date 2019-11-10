@@ -1,0 +1,49 @@
+<div class="banner-restaurant d-flex align-items-end justify-content-center flex-column" id="banner-restaurant">
+
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-lg-8 form-container-restaurant">
+      <div class='form-container-header-restaurant'>
+        <h3 style="padding-top: 25px;px"><strong>Manage your restaurant's profile on </strong></h3>
+
+        <div class="navbar-brand">
+        <%= image_tag("logo-black.png") %>
+        </div>
+      </div>
+      <div class='form-container-discover-restaurant'>
+
+        <div class='restaurant-intro-analytics'>
+          <div class="side-containers">
+            <div class="side-container-header"><h4><strong>Curate your content</strong></h4></div>
+              <div class="side-container-text">
+                <ul class='justify-content-start'>
+                  <li>Add your meals & photos</li>
+                  <li>List your prices</li>
+                  <li>Display your Instagram</li>
+                </ul>
+              </div>
+              </div>
+
+          <div class="side-containers">
+            <div class="side-container-header"><h4><strong>User insights</strong></h4></div>
+              <div class="side-container-text">
+                <ul>
+                  <li>Track your reviews</li>
+                  <li>Data analytics</li>
+                  <li>Trending data</li>
+                </ul>
+              </div>
+              </div>
+
+        </div>
+         <%= link_to 'Add your restaurant',  new_restaurant_path, class: "btn btn-warning home-button btn-lg btn-block" %>
+      </div>
+    </div>
+        <div class="col-sm-2">
+    </div>
+  </div>
+</div>
+
+</div>

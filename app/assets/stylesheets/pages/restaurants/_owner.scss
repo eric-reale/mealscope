@@ -1,0 +1,60 @@
+#banner-restaurant {
+  background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('restaurant.jpeg');
+}
+
+.banner-restaurant {
+  background-size: cover;
+  background-position: center;
+   height: 100vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 0;
+  p {
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 3px;
+    opacity: 0.9;
+  }
+}
+
+.form-container-restaurant {
+ background-color: white;
+ height: 450px;
+ width: 500px;
+ color: black;
+ opacity: .9;
+}
+
+.form-container-header-restaurant {
+  height: 150px;
+  display: contents;
+  justify-content: center;
+  align-items: center;
+  padding: 50px
+}
+
+.form-container-discover-restaurant {
+  height: 300px;
+  padding: 15px;
+}
+
+.restaurant-intro-analytics {
+  height: 225px;
+  display: flex;
+}
+
+.side-containers {
+  width: 45%;
+  height: 175px;
+  margin: 15px;
+}
+
+.side-container-header {
+  padding: 20px;
+}
+
+ul {
+list-style-type: none;
+}
