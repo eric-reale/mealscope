@@ -18,7 +18,9 @@
         </div>
 
             <% @restaurant.meals.each do |m|%>
-            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> </h5>
+            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %>
+              <%= humanized_money_with_symbol(m.sponsored_posts_price) %></h5>
+
                <% m.reviews.each do |r| %>
                  <div class="review mt-0">
                     <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>

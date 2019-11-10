@@ -1,6 +1,7 @@
 class Meal < ApplicationRecord
+  monetize :sponsored_posts_price_cents
 
-  LOCATIONS = ['Canggu']
+  LOCATIONS = ['Canggu, Bali']
   belongs_to :user
   belongs_to :restaurant
 
