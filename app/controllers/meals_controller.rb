@@ -2,6 +2,7 @@ require 'json'
 require 'open-uri'
 
 class MealsController < ApplicationController
+#  before_action :authenticate_user!, except: [:index, :show] - need to fix for collections
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
