@@ -95,11 +95,14 @@
        <h5> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <p><a id = "#heart-toggle" class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
+     <p><a id = "#heart-toggle" class='index-heart-toggle heart-toggle-<%= c.id %>' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a></p>
       <%# end %>
 
       </div>
         <% end %>
+         <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+      </div>
     </div>
     </div>
   </div>
