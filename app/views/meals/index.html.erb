@@ -40,11 +40,12 @@
               <div id="gallery" style="display: none; width: 100%;">
                 <% if @meals %>
                   <% @meals.each do |m| %>
-
-                  <% if m == @filtered_meal[0] %>
+                <% if !@filtered_meal[0].nil? %>
+                    <% if m == @filtered_meal[0] %>
                     <% sponsored = "Sponsored" %>
                     <% else %>
                     <% sponsored = "" %>
+                    <% end %>
                     <% end %>
                   <% alt = "<div class=\"d-flex justify-content-between\">
 

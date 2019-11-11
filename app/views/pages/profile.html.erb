@@ -219,14 +219,15 @@
                                     <%= link_to restaurant_path(b), :class => "text-cards" do %>
                                     <%#= cl_image_tag b.cameraphotos[0].photo, height: 300, width: 400, crop: :fill %>
                                       <div class="dashboard-info mt-0 pt-2">
-                                        <div class="card-top-line">
+                                        <div class="card-top-line" id="resto_dashboard" >
                                             <h2 ><%=  b.name %> </h2>
                                               <p ><%=  b.address %></p>
-                                            </div>
+
                                             <div class="cards-my-restos">
                                               <% instance_variable_get("@photos_#{b.id}").each do |photo| %>
                                                 <%= image_tag photo %>
                                               <% end %>
+                                            </div>
                                             </div>
                                           <% end %>
                                           <% end %>

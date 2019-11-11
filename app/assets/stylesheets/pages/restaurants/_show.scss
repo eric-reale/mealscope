@@ -1,7 +1,7 @@
 .user-data-container {
   color: black;
     background-color:  white;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
     width: 100%;
@@ -10,7 +10,7 @@
 .user-data-container-top {
   color: black;
     background-color:  white;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 10px;
     margin-top: 8px;
     margin-left: 10px;
@@ -23,7 +23,7 @@
     padding: 10px;
     margin-left: 25px;
     p {
-      font-size: 12px;
+      font-size: 14px;
     }
 }
 
@@ -33,6 +33,38 @@
     padding: 10px;
     margin-left: 25px;
     p {
-      font-size: 12px;
+      font-size: 14px;
     }
+}
+
+#resto_dashboard{
+  margin-top: 10px;
+  padding: 20px;
+  &:hover{
+    text-decoration: none;
+    color:black;
+    background-color: rgba(244, 240, 240, 0.650);
+  }
+}
+
+.show_restos_icons{
+  margin-left: 17%;
+}
+
+.resto_meal_reviews_card{
+  padding: 1%;
+  display:flex;
+  justify-content: space-between;
+  background-color: rgba(252, 252, 252, 1.000);
+  margin-top: 10px;
+}
+
+.sponsor_btn{
+  display: flex;
+  justify-content: end;
+}
+
+.resto_meal_reviews{
+  width: 100%;
+  overflow-y: scroll;
 }
