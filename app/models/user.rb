@@ -10,4 +10,9 @@ class User < ApplicationRecord
   has_many :orders
 
   mount_uploader :avatar, PhotoUploader
+
+  def trusted_reviewer
+
+
+  end
 end

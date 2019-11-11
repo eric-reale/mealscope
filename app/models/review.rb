@@ -23,10 +23,8 @@ class Review < ApplicationRecord
   def check_trusted_reviewer
     # reviews = self.meal.reviews
     review = Review.last
-       if user == r.user
-         user.user_reviews += 1
-       end
-      user.user_reviews.save
+    user.user_reviews += 1
+    user.user_reviews.save
     #   reviews.each do |r|
     #    if user == r.user
     #      user.user_reviews += 1

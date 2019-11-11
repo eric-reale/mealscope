@@ -1,5 +1,5 @@
 class AddUserReviewsToUsers < ActiveRecord::Migration[5.2]
   def change
-    add_column :users, :user_reviews, :integer
+    add_column :users, :user_reviews, :integer, default: 0
   end
 end
