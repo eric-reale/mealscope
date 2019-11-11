@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   def profile
     @collections = Collection.where(user: current_user)
     @reviews = Review.where(user: current_user)
+    @my_restaurants = Restaurant.where(restaurants: {user: current_user})
   end
 
   def error
