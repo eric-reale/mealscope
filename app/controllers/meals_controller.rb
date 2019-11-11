@@ -207,6 +207,8 @@ class MealsController < ApplicationController
   end
 
   def show
+    @collection = Collection.new # Instantiating a new collection to be made from the model index page
+    @pin = Pin.new
     @review = Review.new
     restaurant = @meal.restaurant
     @meals = restaurant.meals
