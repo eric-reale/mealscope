@@ -58,6 +58,9 @@
 .review-card {
   width: 80%;
   margin: 20px auto 20px;
+  height: 800px;
+overflow-y: scroll;
+
 
 }
 
@@ -163,4 +166,5 @@
     }
   }
 }
+
 

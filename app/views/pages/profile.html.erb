@@ -89,16 +89,19 @@
           </div>
           <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab">
              <div class="review-card">
-                <% if @reviews.blank? %> <!-- new line -->
+              <%# raise %>
+                <% if @reviews.present? %> <!-- new line -->
                <% @reviews.each do |review| %>
-
-                <div class="revieww mt-3">
+                <div class="review mt-3">
                  <!-- box avatar/name + rating overall -->
                  <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
                    <!-- box avatar and name -->
-                   <div class="avatar-name d-flex justify-content-start ">
+                   <div class="avatar-name ">
+                    <% if review.meal.mealphotos.present? %>
                      <%= link_to cl_image_tag(review.meal.mealphotos[0].photo, class: "avatar-review"), meal_path(review.meal_id) %>
-                    <%= link_to review.meal.name, meal_path(review.meal_id), class: "link-color my-auto ml-3" %>
+                     <% end %>
+                    <strong><%= link_to review.meal.name, meal_path(review.meal_id), class: "link-color my-auto ml-3" %></strong>
+                     @<%= review.meal.restaurant.name %>
 
                    </div>
                    <div class="my-auto" style="color: yellow">
