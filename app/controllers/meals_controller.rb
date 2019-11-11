@@ -143,6 +143,8 @@ class MealsController < ApplicationController
     #######################################
     else
       @meals = Meal.all
+      @filtered_meal = @meals.filter { |meal| !meal.orders.empty? ? meal : nil }
+      @meals = [@filtered_meal, Meal.all].flatten
       @restaurants = []
       meals_ids = @meals.pluck(:restaurant_id)
       meals_ids.each do |id|

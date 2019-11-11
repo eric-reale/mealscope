@@ -41,9 +41,15 @@
                 <% if @meals %>
                   <% @meals.each do |m| %>
 
+                  <% if m == @filtered_meal[0] %>
+                    <% sponsored = "Sponsored" %>
+                    <% else %>
+                    <% sponsored = "" %>
+                    <% end %>
                   <% alt = "<div class=\"d-flex justify-content-between\">
 
                   <div><p class='index-rating'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+                  <div><strong>#{sponsored}</strong></div>
 
                   </div>
 
