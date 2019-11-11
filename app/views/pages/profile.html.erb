@@ -221,6 +221,11 @@
 
                 <div class="row">
                                 <div class="col-lg-8  mx-auto">
+                                  <div class="add-resto my-3 d-flex justify-content-between">
+                                    <a class="btn btn-hover cuisine-taggy" href="/restaurants/new"> + Add your restaurant</a></div>
+                                  <div>
+                                    <p>"Manage your restaurant! Simply add your restaurant and enable reviews, post photos, and create ads on mealscope to grow your business."</p>
+                                  </div>
                                   <% @my_restaurants.each do |b| %>
                                     <div class="dashboard-card">
                                     <%= link_to restaurant_path(b), :class => "text-cards" do %>
