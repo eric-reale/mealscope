@@ -1,10 +1,11 @@
 <div class="container">
   <div class="row py-4">
     <div class="col-md-3"></div>
-    <div class="col">
+    <div class="col-6 text-center">
       <h1>Checkout summary</h1>
-      <p>Purchase of sponsored post for <strong><%= @order.meal.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
+      <p>Purchase of sponsored post for <strong>"<%= @order.meal.name %>"</strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong>.</p>
+      <p>"<strong><%= @order.meal.name %></strong>" will be the top meal display for 24 hours.</p>
+      <button id="pay" class="btn btn-primary btn-block">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');
@@ -16,5 +17,6 @@
         });
       </script>
     </div>
+    <div class="col-md-3"></div>
   </div>
 </div>
