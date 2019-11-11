@@ -1,4 +1,5 @@
 import GMaps from 'gmaps/gmaps.js';
+import { autocomplete } from '../components/autocomplete';
 
 document.addEventListener('DOMContentLoaded', () => {
   const mapElement = document.getElementById('map');
@@ -17,3 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 })
+
+
+autocomplete();
