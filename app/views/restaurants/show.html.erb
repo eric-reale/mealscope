@@ -28,12 +28,6 @@
             <% end %>
         </div>
         </div>
-
-              <div class="nav-text-buttons d-flex justify-content-between">
-                <a class="btn btn-hover cuisine-taggy" href="/meals/new"> + Add a meal</a>
-              </div>
-
-      </div>
     </div>
 
 
@@ -94,7 +88,9 @@
     <div class="resto_meal_reviews">
       <hr>
       <br>
-      <h2> Meal Reviews </h2>
+      <h2> Meal Reviews   <div class="nav-text-buttons d-flex justify-content-between">
+                <a class="btn btn-hover cuisine-taggy" href="/meals/new"> + Add a meal</a>
+              </div></h2>
       <br>
           <% @restaurant.meals.each do |m|%>
 
@@ -128,6 +124,11 @@
   </div>
 
 </div>
+
+
+
+
+
 
 
 
