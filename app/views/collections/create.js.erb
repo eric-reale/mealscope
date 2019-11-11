@@ -1,10 +1,19 @@
 function fillForm() {
   const newCollectionInput = document.getElementById("collection_name")
   const container = document.querySelector(".collection-modal-container")
+  const nextHeart = document.querySelector(".row.d-flex.justify-content-between.m-3 p a");
+  const linkOfNextHeart = nextHeart.getAttribute('href').split('/')[2];
+  console.log(linkOfNextHeart);
 
-  const html = `<div class='row d-flex justify-content-between m-3'><h5>${newCollectionInput.value}</h5><p><a class='index-heart-toggle'><i class='index-heart-toggle far fa-heart'></i></a></p></div>`
+  const html = `<div class='row d-flex justify-content-between m-3'>
+  <h5>${newCollectionInput.value}</h5>
+  <p><a class='index-heart-toggle' href='/meals/${linkOfNextHeart}/pins?collection_id=<%= @collection.id %>' data-controller="pins" data-method="post" data-remote="true">
+  <i class='index-heart-toggle far fa-heart'></i>
+  </a></p>
+  </div>`
 
   container.insertAdjacentHTML('afterbegin', html)
+  console.log(html)
 
   newCollectionInput.value = "";
 }
