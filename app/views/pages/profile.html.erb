@@ -42,7 +42,7 @@
       <% unless collection.pins.empty? %>
       <% @photos = [] %>
       <% @meals_ids = collection.pins.pluck(:meal_id) %>
-      <% @meals_ids.each { |id| @photos << Meal.find(id).mealphotos.first.photo } %>
+      <% @meals_ids.each { |id| @photos << Meal.find(id).mealphotos.first.photo unless Meal.find(id).mealphotos.empty? } %>
 
 
       <div class="card mt-2">
