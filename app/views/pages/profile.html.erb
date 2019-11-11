@@ -53,9 +53,7 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <%= link_to collection_path(collection) do %>
           <div class="carousel-inner">
-            <div class="card-delete mx-2 d-flex justify-content-end">
-
-                  </div>
+            <div class="card-delete mx-2 d-flex justify-content-end"></div>
             <% @photos.each_with_index do |photo, index|  %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
                 <%= cl_image_tag photo, class: "" %>
@@ -65,25 +63,24 @@
             <% end %>
         </div>
         <!-- carousel? -->
-      <div class="card-info d-flex justify-content-between mx-3">
-        <div class="card-text" style="width: 50%">
-        <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
-        <p><%= collection.pins.length %> meals</p>
-        </div>
-              <div class="d-flex justify-content-end mt-2" style="width: 50%">
+        <div class="card-info d-flex justify-content-between mx-3">
+          <div class="card-text" style="width: 50%">
+          <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
+          <p><%= collection.pins.length %> meals</p>
+          </div>
+            <div class="d-flex justify-content-end mt-2" style="width: 50%">
               <%= link_to collection_path(collection), method: :delete,
                     data: { confirm: "Are you sure?" } do %>
                     <i class="fa fa-times"></i>
               <% end %>
-          </div>
-      </div>
+            </div>
+        </div>
       </div>
 
 
     <% end %>
     <% end %>
   </div>
-    <%# raise %>
 
   <!-- collections -->
           </div>
@@ -206,38 +203,29 @@
       <!-- MY RESTAURANT CODE -->
 
         <div class="tab-pane fade" id="my_restaurants" role="tabpanel" aria-labelledby="my_restaurants">
-                <div class="row">
-                                <div class="col-lg-8  mx-auto">
-                                  <% @my_restaurants.each do |b| %>
-                                    <div class="dashboard-card">
-                                    <%= link_to restaurant_path(b), :class => "text-cards" do %>
-                                    <%#= cl_image_tag b.cameraphotos[0].photo, height: 300, width: 400, crop: :fill %>
-                                      <div class="dashboard-info mt-0 pt-2">
-                                        <div class="card-top-line">
-                                            <h2><%=  b.name %> </h2>
-                                            </div>
-                                            <div class="dashboard-date">
-                                              <p><strong><%=  b.address %></strong></p>
-                                            </div>
-                                        <% end %>
-                                      </div>
-                                    </div>
-                                  <hr>
-                                </div>
-             </div>
-             <% end %>
-
+          <div class="row">
+            <div class="col-lg-8  mx-auto">
+              <% @my_restaurants.each do |b| %>
+                <div class="dashboard-card">
+                <%= link_to restaurant_path(b), :class => "text-cards" do %>
+                <%#= cl_image_tag b.cameraphotos[0].photo, height: 300, width: 400, crop: :fill %>
+                  <div class="dashboard-info mt-0 pt-2">
+                    <div class="card-top-line">
+                        <h2><%=  b.name %> </h2>
+                        </div>
+                        <div class="dashboard-date">
+                          <p><strong><%=  b.address %></strong></p>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+              <hr>
+            </div>
+         </div>
+         <% end %>
         </div>
       </div>
-
-
-
 </div>
-
-
-
-
-
 </div>
 
 
