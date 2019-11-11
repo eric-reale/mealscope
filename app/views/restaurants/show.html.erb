@@ -13,19 +13,17 @@
               <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
               <%= link_to 'Edit', edit_restaurant_path, class: "link-color" %></button>
               <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-              <%= link_to "", restaurant_path(@restaurant)  , method: :delete, id:"delete-link", class: "hidden" %>
+              <%= link_to "", restaurant_path(@restaurant), method: :delete, id:"delete-link", class: "hidden" %>
             </div>
         </div>
 
             <% @restaurant.meals.each do |m|%>
-            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> <%= humanized_money_with_symbol(m.sponsored_posts_price) %>
+            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> <%= humanized_money_with_symbol(m.sponsored_posts_price) %> </h5>
 
               <%= form_tag orders_path do %>
                 <%= hidden_field_tag 'meal_id', m.id %>
                 <%= submit_tag 'Sponsor', class: 'btn btn-primary' %>
                 <% end %>
-
-              </h5>
 
                <% m.reviews.each do |r| %>
                  <div class="review mt-0">
@@ -36,8 +34,11 @@
                  </div>
               <% end %>
             <% end %>
-        </div>
+              <div class="nav-text-buttons d-flex justify-content-between">
+                <a class: btn btn-success href="/meals/new">Add a meal</a>
+              </div>
       </div>
+    </div>
 
 
   <div class="col-md-6">
@@ -53,7 +54,6 @@
         <p>3,509</p>
      </div>
    </div>
-
 
     <div class="row user-data-container">
       <div class='user-data-title'>

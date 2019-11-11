@@ -1,1 +1,7 @@
 @import "show";
+
+@media (min-width: 100px) and (max-width: 768px) {
+  #map {
+    margin: -10px;
+  }
+}
