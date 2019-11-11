@@ -3,17 +3,29 @@ function fillForm() {
   const container = document.querySelector(".collection-modal-container")
   const nextHeart = document.querySelector(".row.d-flex.justify-content-between.m-3 p a");
   const linkOfNextHeart = nextHeart.getAttribute('href').split('/')[2];
-  console.log(linkOfNextHeart);
-
-  const html = `<div class='row d-flex justify-content-between m-3'>
-  <h5>${newCollectionInput.value}</h5>
-  <p><a class='index-heart-toggle' href='/meals/${linkOfNextHeart}/pins?collection_id=<%= @collection.id %>' data-controller="pins" data-method="post" data-remote="true">
-  <i class='index-heart-toggle far fa-heart'></i>
-  </a></p>
-  </div>`
+  let html;
+  console.log(newCollectionInput)
+  console.log(container)
+  console.log(nextHeart)
+  console.log(linkOfNextHeart)
+  if (window.location.href.endsWith('meals')) {
+    html = `<div class='row d-flex justify-content-between m-3'>
+    <h5>${newCollectionInput.value}</h5>
+    <p><a class='index-heart-toggle heart-toggle-<%= @collection.id %>' href='/meals/${linkOfNextHeart}/pins?collection_id=<%= @collection.id %>' data-controller="pins" data-method="post" data-remote="true">
+    <i class='index-heart-toggle far fa-heart'></i>
+    </a></p>
+    </div>`
+  } else {
+    html = `<div class='row d-flex justify-content-between m-3'>
+      <h5>${newCollectionInput.value}</h5>
+      <p><a class='index-heart-toggle heart-toggle-<%= @collection.id  %>' href='/meals/${window.location.href.split('/')[4]}/pins?collection_id=<%= @collection.id %>' data-controller="pins" data-method="post" data-remote="true">
+      <i class='index-heart-toggle far fa-heart'></i>
+      </a></p>
+      </div>
+    `
+  }
 
   container.insertAdjacentHTML('afterbegin', html)
-  console.log(html)
 
   newCollectionInput.value = "";
 }
@@ -25,3 +37,5 @@ function fillForm() {
   fillForm();
 
 <% end %>
+
+// heart-toggle-<%= @collection.id'

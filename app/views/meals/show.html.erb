@@ -49,6 +49,7 @@
     <%= render 'collections/form', collection: @collection %>
 
   </div>
+
 </div>
 </div> <div class='collection-modal-container' id="collections">
       <% current_user.collections.reverse.each do |c| %>
@@ -56,7 +57,7 @@
        <h5> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <p><a id = "#heart-toggle" class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
+     <p><a id = "#heart-toggle" class='index-heart-toggle heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a></p>
       <%# end %>
 
       </div>
@@ -189,18 +190,29 @@
         <% end %>
       </div>
     </div>
+    <div>
        <div class="other-meals-container ml-4">
         <div class="restaurant-name-container">
         <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
         </div>
 
-      <!-- Loop Logic for 3 Sample Meal -->
-        <% m1 = @meals.sample %>
-        <% m2 = @meals.sample %>
-        <% m3 = @meals.sample %>
+      <!-- Loop Logic for 3 Sample Meal -- Make sure that 3 other meals from restaurant are not the primary meal displayed
+        and are 3 unique meals -->
+        <% primary_meal = [] %>
+        <% primary_meal << @meal %>
+        <% selected = [] %>
+        <% m1 = (@restaurant_meals - primary_meal).sample %>
+        <% selected << m1 %>
+        <% m2 = (@restaurant_meals - selected - primary_meal).sample%>
+        <% selected << m2 %>
+        <% m3 = (@restaurant_meals - selected - primary_meal).sample%>
+        <% selected << m3 %>
 
+        <!-- Displaying 3 other meals from this restaurant -->
+      <% if m1 %>
         <div class="card-trip">
-            <% m1 = @meals.sample %>
+            <%# m1 = @restaurant_meals.sample %>
+            <% m1 = selected[0] %>
             <% m1.mealphotos.each do |photo| %>
             <%= cl_image_tag photo.photo, height: 300, width: 400 %>
             <% end %>
@@ -212,8 +224,9 @@
           <h2 class="card-trip-pricing"><% m1.price %></h2>
         </div>
       </div>
+      <% elsif m2 %>
          <div class="card-trip">
-            <% m2 = @meals.sample %>
+            <% m2 = selected[1] %>
             <% m2.mealphotos.each do |photo| %>
             <%= cl_image_tag photo.photo.url %>
             <% end %>
@@ -225,8 +238,9 @@
           <h2 class="card-trip-pricing"><% m2.price %></h2>
         </div>
       </div>
+      <% elsif m3 %>
        <div class="card-trip">
-            <% m3 = @meals.sample %>
+            <% m3 = selected[2] %>
             <% m3.mealphotos.each do |photo| %>
             <%= cl_image_tag photo.photo.url %>
             <% end %>
@@ -237,6 +251,8 @@
           </div>
           <h2 class="card-trip-pricing"><% m3.price %></h2>
         </div>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: meal.name,
-        # images: [teddy.photo_url],
+        # images: meal.mealphotos[0].photo.url
         amount: meal.sponsored_posts_price_cents,
         currency: 'usd',
         quantity: 1

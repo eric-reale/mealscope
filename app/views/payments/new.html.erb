@@ -3,9 +3,13 @@
     <div class="col-md-3"></div>
     <div class="col-6 text-center">
       <h1>Checkout summary</h1>
-      <p>Purchase of sponsored post for <strong>"<%= @order.meal.name %>"</strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong>.</p>
-      <p>"<strong><%= @order.meal.name %></strong>" will be the top meal display for 24 hours.</p>
-      <button id="pay" class="btn btn-primary btn-block">Pay</button>
+      <p style="font-size: 20px">Purchase of sponsored post for <strong>"<%= @order.meal.name %>"</strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong>.</p>
+      <p style="font-size: 20px">"<strong><%= @order.meal.name %></strong>" will be the top meal displayed for 24 hours.</p>
+      <% if @order.meal.mealphotos[0].photo.present? %>
+      <%= cl_image_tag @order.meal.mealphotos[0].photo, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <br>
+      <button id="pay" class="btn btn-primary btn-lg" style="margin-top: 20px; width: 130px">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');

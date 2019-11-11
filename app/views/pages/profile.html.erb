@@ -9,7 +9,14 @@
   </div>
 
 <div class="profile-body">
+  <div class='d-flex justify-content-center'>
   <h1 class="profile-name"><%= current_user.first_name %></h1>
+  <% if current_user.trusted_reviewer == true %>
+  <div class='ml-2'>
+    <h2 style='color: blue'><i class="fas fa-medal"></i></h2>
+  </div>
+  <% end %>
+</div>
   <tr><td><p class="location my-1"><i class="fas fa-map-marker-alt" style="color: #e26757;"></i> <%= current_user.location %></p></td></tr>
 
   <hr class="my-0" style="width: 30%;">
@@ -55,9 +62,7 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <%= link_to collection_path(collection) do %>
           <div class="carousel-inner">
-            <div class="card-delete mx-2 d-flex justify-content-end">
-
-                  </div>
+            <div class="card-delete mx-2 d-flex justify-content-end"></div>
             <% @photos.each_with_index do |photo, index|  %>
               <div class="carousel-item <%= 'active' if index == 0 %>">
                 <%= cl_image_tag photo, class: "" %>
@@ -67,26 +72,27 @@
             <% end %>
         </div>
         <!-- carousel? -->
-      <div class="card-info d-flex justify-content-between mx-3">
-        <div class="card-text" style="width: 50%">
-        <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
-        <p><%= collection.pins.length %> meals</p>
-        </div>
-              <div class="d-flex justify-content-end mt-2" style="width: 50%">
+        <div class="card-info d-flex justify-content-between mx-3">
+          <div class="card-text" style="width: 50%">
+          <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
+          <p><%= collection.pins.length %> meals</p>
+          </div>
+            <div class="d-flex justify-content-end mt-2" style="width: 50%">
               <%= link_to collection_path(collection), method: :delete,
                     data: { confirm: "Are you sure?" } do %>
                     <i class="fa fa-times"></i>
               <% end %>
-          </div>
-      </div>
+            </div>
+        </div>
       </div>
 
 
     <% end %>
     <% end %>
   </div>
+
 </div>
-    <%# raise %>
+
 
   <!-- collections -->
 
@@ -212,8 +218,14 @@
       <!-- MY RESTAURANT CODE -->
 
         <div class="tab-pane fade" id="my_restaurants" role="tabpanel" aria-labelledby="my_restaurants">
+
                 <div class="row">
                                 <div class="col-lg-8  mx-auto">
+                                  <div class="add-resto my-3 d-flex justify-content-between">
+                                    <a class="btn btn-hover cuisine-taggy" href="/restaurants/new"> + Add your restaurant</a></div>
+                                  <div>
+                                    <p>"Manage your restaurant! Simply add your restaurant and enable reviews, post photos, and create ads on mealscope to grow your business."</p>
+                                  </div>
                                   <% @my_restaurants.each do |b| %>
                                     <div class="dashboard-card">
                                     <%= link_to restaurant_path(b), :class => "text-cards" do %>
