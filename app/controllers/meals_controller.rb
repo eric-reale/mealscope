@@ -216,14 +216,18 @@ class MealsController < ApplicationController
     restaurant = @meal.restaurant
     @restaurant_meals = restaurant.meals
     url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
-    user_serialized = open(url).read
-    data = JSON.parse(user_serialized)
-    counter = 0
-    @photos = []
-    9.times do
-      photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
-      @photos << photo
-      counter += 1
+    begin
+      user_serialized = open(url).read
+      data = JSON.parse(user_serialized)
+      counter = 0
+      @photos = []
+      9.times do
+        photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
+        @photos << photo
+        counter += 1
+      end
+    rescue
+      @photos = []
     end
   end
 
