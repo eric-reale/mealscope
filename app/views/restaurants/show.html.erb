@@ -8,35 +8,31 @@
     <div class="col-md-6">
       <div class="justify-content-between py-4">
         <div class="row-title d-flex justify-content-between">
-            <h2> <%= @restaurant.name %> </h2>
             <div class="icon-font d-flex justify-content-end">
-              <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
-              <%= link_to 'Edit', edit_restaurant_path, class: "link-color" %></button>
-              <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-              <%= link_to "", restaurant_path(@restaurant), method: :delete, id:"delete-link", class: "hidden" %>
+
+
             </div>
         </div>
-
-            <% @restaurant.meals.each do |m|%>
-            <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> <%= humanized_money_with_symbol(m.sponsored_posts_price) %> </h5>
-
-              <%= form_tag orders_path do %>
-                <%= hidden_field_tag 'meal_id', m.id %>
-                <%= submit_tag 'Sponsor', class: 'btn btn-primary' %>
-                <% end %>
-
-               <% m.reviews.each do |r| %>
-                 <div class="review mt-0">
-                    <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
-                      <p> <%= r.content %> </p>
-                      <p> <%= r.display_ratings %>  </p>
-                    </div>
-                 </div>
-              <% end %>
+            <div>
+            <h2> <%= @restaurant.name  %> Informations <span class="show_restos_icons">
+              <button  class="btn "><i class="far fa-edit"></i></i></button>
+              <button id="sweet-alert-demo" class="btn "><i class="fas fa-trash"></i></button>
+              <%= link_to "", restaurant_path(@restaurant)  , method: :delete, id:"delete-link", class: "hidden" %> </span> </h2>
+            <p> Name: <%= @restaurant.name %> </p>
+            <p> Address: <%= @restaurant.address %> </p>
+            <p> Instagram Name: <%= @restaurant.instagram_handle %> </p>
+          </div>
+          <div class="cards-resto">
+            <% @photos.each do |photo| %>
+              <%= image_tag photo %>
             <% end %>
+        </div>
+        </div>
+
               <div class="nav-text-buttons d-flex justify-content-between">
                 <a class="btn btn-hover cuisine-taggy" href="/meals/new"> + Add a meal</a>
               </div>
+
       </div>
     </div>
 
@@ -45,6 +41,7 @@
     <div class="text-center py-4">
       <h2>User Data Analytics</h2>
     </div>
+
 
     <div class="row user-data-container-top">
       <div class='user-data-title'>
@@ -93,7 +90,46 @@
 
   </div>
 
+
+    <div class="resto_meal_reviews">
+      <hr>
+      <br>
+      <h2> Meal Reviews </h2>
+      <br>
+          <% @restaurant.meals.each do |m|%>
+
+            <div class ="resto_meal_reviews_card">
+              <%= cl_image_tag m.mealphotos[0].photo if !m.mealphotos.empty? %>
+              <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> <%= humanized_money_with_symbol(m.price) %> </h5>
+
+                 <% m.reviews.each do |r| %>
+                   <div class="review mt-0">
+                      <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
+                        <p> <%= r.content %> </p>
+                        <p> <%= r.display_ratings %>  </p>
+                      </div>
+                    </div>
+                    <% end %>
+
+
+                    <div class="sponsor_btn">
+                <%= form_tag orders_path do %>
+                  <%= hidden_field_tag 'meal_id', m.id %>
+                  <%= submit_tag 'Sponsor', class: 'btn btn-outline-dark btn-lg' %>
+                  </div>
+                  <% end %>
+
+
+                   </div>
+
+
+              <% end %>
+      </div>
   </div>
+
 </div>
+
+
+
 
 
