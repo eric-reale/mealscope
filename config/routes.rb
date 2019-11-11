@@ -11,8 +11,10 @@ Rails.application.routes.draw do
 
   resources :meals do
     resources :reviews, only: [ :new, :create, :destroy ] # Why is there a :new? Review is created on meal show page.
-    resources :pins, only: [ :create, :edit, :update, :destroy ]
+    resources :pins, only: [ :create, :edit, :update ]
   end
+
+  resources :pins, only: [ :destroy ]
 
   resources :restaurants #only: [ :index, :create, :show, :update, :destroy ] - do this later
   resources :collections, only: [ :show, :create, :edit, :update, :destroy ]

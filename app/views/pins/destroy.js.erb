@@ -1,0 +1,4 @@
+var heartDestroy = document.querySelector(".heart-toggle-<%= @pin.collection.id %>")
+heartDestroy.innerHTML = '<i class="far fa-heart"></i>';
+heartDestroy.dataset.method = 'post'
+heartDestroy.setAttribute('href', '/meals/<%= @pin.meal_id %>/pins?collection_id=<%= @pin.collection_id %>')

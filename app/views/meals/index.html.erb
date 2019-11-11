@@ -41,9 +41,15 @@
                 <% if @meals %>
                   <% @meals.each do |m| %>
 
+                  <% if m == @filtered_meal[0] %>
+                    <% sponsored = "Sponsored" %>
+                    <% else %>
+                    <% sponsored = "" %>
+                    <% end %>
                   <% alt = "<div class=\"d-flex justify-content-between\">
 
                   <div><p class='index-rating'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+                  <div><strong>#{sponsored}</strong></div>
 
                   </div>
 
@@ -57,7 +63,7 @@
                   </div>" %>
                     <% unless m.mealphotos.empty? %>
                      <% photo = m.mealphotos[0].photo %>
-                    <%= link_to cl_image_tag(photo, alt: alt, class:""), meal_path(m) %>
+                    <%= link_to cl_image_tag(photo, alt: alt, class:""), meal_path(m), data: {longitude: m.restaurant.longitude, latitude: m.restaurant.latitude} %>
                     <% end %>
                   <% end %>
                 <% end %>
@@ -95,11 +101,14 @@
        <h5> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <p><a id = "#heart-toggle" class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
+     <p><a id = "#heart-toggle" class='index-heart-toggle heart-toggle-<%= c.id %>' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a></p>
       <%# end %>
 
       </div>
         <% end %>
+         <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+      </div>
     </div>
     </div>
   </div>

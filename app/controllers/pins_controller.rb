@@ -35,8 +35,17 @@ class PinsController < ApplicationController
 
   def destroy
     @collection = @pin.collection
-    @pin.destroy!
-    redirect_to collection_path(@collection)
+      if @pin.destroy
+        respond_to do |format|
+        format.html { redirect_to meals_path }
+        format.js  # <-- will render `app/views/pins/create.js.erb`
+      end
+    else
+        respond_to do |format|
+        format.html { render 'meals/index' }
+        format.js  # <-- idem
+      end
+    end
   end
 
   private
