@@ -168,44 +168,51 @@
         <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
         <div class="form-check form-checkboxes-6 cuisine-list">
         <% CuisineTag::CUISINE_TAG.each do |tag| %>
-        <div class="form-groups">
-          <input class="form-check-input" name="cuisine_tags[]" type="checkbox" value="<%= tag %>">
-          <label class="form-check-label" for="<%= tag %>">
-            <%= tag %>
-            </label>
+        <!-- <div class="form-groups"> -->
+          <div class="control-group">
+              <div class="controls">
+                <select data-select="multiple" multiple="multiple" name="cuisine_tags[]">
+                   <option value="<%= tag %>"><%=tag%></option>
+                  </select>
+                </div>
+            <!-- </label> -->
         </div>
           <% end %>
         </div>
-
+      <br>
         <h4>Dietary Restrictions</h4>
           <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
       <div class="form-check form-checkboxes-4 diet-list">
         <% DietTag::DIET_TAG.each do |tag| %>
-        <div class="form-groups">
-          <input class="form-check-input" name="diet_tags[]" type="checkbox" value="<%= tag %>">
-          <label class="form-check-label" for="defaultCheck1">
-            <%= tag %>
-            </label>
+        <div class="control-group">
+              <div class="controls">
+                <select data-select="multiple" multiple="multiple" name="diet_tags[]">
+                   <option value="<%= tag %>"><%= tag %></option>
+                  </select>
+                </div>
+            <!-- </label> -->
         </div>
           <% end %>
         </div>
-
+        <br>
         <h4>Types of Meals</h4>
           <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
         <div class="form-check form-checkboxes-4 meal-list">
         <% MealType::MEAL_TYPE.each do |tag| %>
-        <div class="form-groups">
-          <input class="form-check-input" name="meal_tags[]" type="checkbox" value="<%= tag %>">
-          <label class="form-check-label" for="defaultCheck1">
-            <%= tag %>
-            </label>
+        <div class="control-group">
+              <div class="controls">
+                <select data-select="multiple" multiple="multiple" name="meal_tags[]">
+                   <option value="<%= tag %>"><%=tag%></option>
+                  </select>
+                </div>
           </div>
           <% end %>
         </div>
+        <br>
         <input type="hidden" id="modal-query-field" name="query" value="<%= @query %>">
            <button id="navbar-form-btn" type="submit" class="loopicon"><i class="fa fa-search"></i></button>
-
          </form>
+         <br>
       </div>
 
     </div>
@@ -229,8 +236,37 @@
 
 </script>
 
+<script>
+$('[data-select="multiple"]').each(function () {
+  var $select = $(this)
+      $mselect = $('<div class="mselect"></div>');
+
+  $select.hide();
+
+  var $opts = $select.find('option');
 
 
+ $select.after($mselect);
+  $opts.each(function (i, opt) {
+    $mselect.append('<a href="#" class="mselect-opt" data-idx="' + i + '"><i class="icon-ok  icon-white pull-right"></i>' + $(opt).text() + '</a>');
+  });
 
+
+});
+
+$(document).on('click', '.mselect-opt', function (event) {
+  event.preventDefault();
+  var $parent = $(this).parents('.mselect'),
+      $opts = $parent.find('.mselect-opt'),
+      $ogselect = $parent.prev('select'),
+      idx = $(this).data('idx'),
+      $ogopt = $ogselect.find('option').eq(idx);
+
+  $(this).toggleClass('selected');
+  var val = !$ogopt.is(':selected') ? 'selected' : '';
+
+  $ogopt.prop('selected', val);
+});
+</script>
 
 

@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_11_10_040803) do
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sponsored_posts_price"
+    t.integer "sponsored_posts_price", default: 500
     t.integer "sponsored_posts_price_cents", default: 0, null: false
     t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
     t.index ["user_id"], name: "index_meals_on_user_id"

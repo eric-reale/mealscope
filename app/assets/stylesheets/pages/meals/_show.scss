@@ -22,6 +22,10 @@
 
 }
 
+.modal-content-filters{
+  overflow-y: scroll;
+}
+
 
 .form-checkboxes {
   column-count: 3;
@@ -241,15 +245,15 @@
 }
 
 .cuisine-list {
-  height: 210px;
+
 }
 
 .diet-list {
-  height: 100px;
+
 }
 
 .meal-list {
-  height: 60px;
+
 }
 
 .filter-checkboxes {

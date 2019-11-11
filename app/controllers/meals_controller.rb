@@ -6,6 +6,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
+    skip_authorization
     @collection = Collection.new # Instantiating a new collection to be made from the model index page
     @pin = Pin.new
 
@@ -160,7 +161,7 @@ class MealsController < ApplicationController
         }
       end
     end
-    @meals = policy_scope(Meal) ## NEED TO FIX. MESSING WITH THE FILTERS
+    # @meals = policy_scope(Meal) ## NEED TO FIX. MESSING WITH THE FILTERS
   end
 
   def new
