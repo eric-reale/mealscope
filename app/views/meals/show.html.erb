@@ -124,7 +124,9 @@
        <% end %>
     </div>
   </div>
+
   <div class="col-md-5 justify-content-between py-4">
+    <div class="instagram-container">
     <div class="row-title-resto">
       <div>
       <h2>
@@ -140,7 +142,53 @@
           <%= image_tag photo %>
         <% end %>
       </div>
+    </div>
+       <div class="other-meals-container ml-4">
+        <div class="restaurant-name-container">
+        <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
+        </div>
+        <div class="card-trip">
+            <% m1 = @meals.sample %>
+            <% m1.mealphotos.each do |photo| %>
+            <%= image_tag photo.photo.url %>
+            <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= m1.name %></h2>
+            <p><%= m1.restaurant.name %></p>
+          </div>
+          <h2 class="card-trip-pricing"><% m1.price %></h2>
+        </div>
+      </div>
+        <div class="card-trip">
+            <% m2 = @meals.sample %>
+            <% m2.mealphotos.each do |photo| %>
+            <%= image_tag photo.photo.url %>
+            <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= m2.name %></h2>
+            <p><%= m2.restaurant.name %></p>
+          </div>
+          <h2 class="card-trip-pricing"><% m2.price %></h2>
+        </div>
+      </div>
+        <div class="card-trip">
+            <% m3 = @meals.sample %>
+            <% m3.mealphotos.each do |photo| %>
+            <%= image_tag photo.photo.url %>
+            <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= m3.name %></h2>
+            <p><%= m3.restaurant.name %></p>
+          </div>
+          <h2 class="card-trip-pricing"><% m3.price %></h2>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
 
 

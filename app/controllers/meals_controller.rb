@@ -209,6 +209,7 @@ class MealsController < ApplicationController
   def show
     @review = Review.new
     restaurant = @meal.restaurant
+    @meals = restaurant.meals
     url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
     user_serialized = open(url).read
     data = JSON.parse(user_serialized)
