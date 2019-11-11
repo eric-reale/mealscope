@@ -49,6 +49,7 @@
     <%= render 'collections/form', collection: @collection %>
 
   </div>
+
 </div>
 </div> <div class='collection-modal-container' id="collections">
       <% current_user.collections.reverse.each do |c| %>
@@ -56,7 +57,7 @@
        <h5> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <p><a id = "#heart-toggle" class='index-heart-toggle' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post"><i class='far fa-heart'></i></a></p>
+     <p><a id = "#heart-toggle" class='index-heart-toggle heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a></p>
       <%# end %>
 
       </div>
@@ -207,6 +208,8 @@
         <% m3 = (@restaurant_meals - selected - primary_meal).sample%>
         <% selected << m3 %>
 
+        <!-- Displaying 3 other meals from this restaurant -->
+      <% if m1 %>
         <div class="card-trip">
             <%# m1 = @restaurant_meals.sample %>
             <% m1 = selected[0] %>
@@ -221,6 +224,7 @@
           <h2 class="card-trip-pricing"><% m1.price %></h2>
         </div>
       </div>
+      <% elsif m2 %>
          <div class="card-trip">
             <% m2 = selected[1] %>
             <% m2.mealphotos.each do |photo| %>
@@ -234,6 +238,7 @@
           <h2 class="card-trip-pricing"><% m2.price %></h2>
         </div>
       </div>
+      <% elsif m3 %>
        <div class="card-trip">
             <% m3 = selected[2] %>
             <% m3.mealphotos.each do |photo| %>
@@ -247,6 +252,7 @@
           <h2 class="card-trip-pricing"><% m3.price %></h2>
         </div>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
