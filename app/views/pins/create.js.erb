@@ -1,4 +1,5 @@
 var heartToggle = document.querySelector(".heart-toggle-<%= @pin.collection.id %>")
+console.log(heartToggle)
 heartToggle.innerHTML = '<i class="fas fa-heart"></i>';
 heartToggle.dataset.method = 'delete'
 heartToggle.setAttribute('href', '/pins/<%= @pin.id %>')
