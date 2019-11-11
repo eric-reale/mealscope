@@ -4,12 +4,19 @@
     <div class="col">
       <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
       <ul class="list-unstyled">
-        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
-        <li><strong>TEDDY</strong> <%= @order.meal.name %> [<%= @order.meal.name %>]</li>
-        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
+        <li><strong>Issued on:</strong> <%= @order.created_at.to_date %></li>
+        <li><strong>Sponsored Meal Post:</strong> <%= @order.meal.name %></li>
+        <li><strong>Total:</strong> <%= humanized_money_with_symbol @order.amount %></li>
+        <% if @order.meal.mealphotos[0].photo.present? %>
+      <%= cl_image_tag @order.meal.mealphotos[0].photo, height: 300, width: 400, crop: :fill %>
+      <% end %>
         </li>
       </ul>
-      <p>Estimated delivery in <strong>2 business days</strong></p>
+      <p></p>
+      <div>
+        <button class="btn btn-outline-primary" type="submit" style="margin-left: 165px; color: white; text-decoration: none;">
+       <%= link_to 'Profile', profile_path %></button>
+       </div>
     </div>
   </div>
 </div>
