@@ -189,18 +189,27 @@
         <% end %>
       </div>
     </div>
+    <div>
        <div class="other-meals-container ml-4">
         <div class="restaurant-name-container">
         <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
         </div>
 
-      <!-- Loop Logic for 3 Sample Meal -->
-        <% m1 = @meals.sample %>
-        <% m2 = @meals.sample %>
-        <% m3 = @meals.sample %>
+      <!-- Loop Logic for 3 Sample Meal -- Make sure that 3 other meals from restaurant are not the primary meal displayed
+        and are 3 unique meals -->
+        <% primary_meal = [] %>
+        <% primary_meal << @meal %>
+        <% selected = [] %>
+        <% m1 = (@restaurant_meals - primary_meal).sample %>
+        <% selected << m1 %>
+        <% m2 = (@restaurant_meals - selected - primary_meal).sample%>
+        <% selected << m2 %>
+        <% m3 = (@restaurant_meals - selected - primary_meal).sample%>
+        <% selected << m3 %>
 
         <div class="card-trip">
-            <% m1 = @meals.sample %>
+            <%# m1 = @restaurant_meals.sample %>
+            <% m1 = selected[0] %>
             <% m1.mealphotos.each do |photo| %>
             <%= cl_image_tag photo.photo, height: 300, width: 400 %>
             <% end %>
@@ -213,7 +222,7 @@
         </div>
       </div>
          <div class="card-trip">
-            <% m2 = @meals.sample %>
+            <% m2 = selected[1] %>
             <% m2.mealphotos.each do |photo| %>
             <%= cl_image_tag photo.photo.url %>
             <% end %>
@@ -226,7 +235,7 @@
         </div>
       </div>
        <div class="card-trip">
-            <% m3 = @meals.sample %>
+            <% m3 = selected[2] %>
             <% m3.mealphotos.each do |photo| %>
             <%= cl_image_tag photo.photo.url %>
             <% end %>
@@ -236,6 +245,7 @@
             <p><%= m3.restaurant.name %></p>
           </div>
           <h2 class="card-trip-pricing"><% m3.price %></h2>
+        </div>
         </div>
       </div>
     </div>

@@ -214,7 +214,7 @@ class MealsController < ApplicationController
     @pin = Pin.new
     @review = Review.new
     restaurant = @meal.restaurant
-    @meals = restaurant.meals
+    @restaurant_meals = restaurant.meals
     url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
     user_serialized = open(url).read
     data = JSON.parse(user_serialized)

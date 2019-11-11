@@ -437,17 +437,19 @@
 }
 
 .instagram-container {
-  height: 600px;
+  height: 630px;
+  overflow: auto
 }
 
 .other-meals-container {
-  height: 600px;
-  width: 200px;
+  height: 775px;
+  width: 385px;
   padding: 20px;
+  overflow-y: scroll;
 }
 
 .restaurant-name-container {
-  width: 420px;
+  width: 350px;
   height: 50px;
   margin-bottom: 20px;
 }
