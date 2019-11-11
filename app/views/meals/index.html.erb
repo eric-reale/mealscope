@@ -57,7 +57,7 @@
                   </div>" %>
                     <% unless m.mealphotos.empty? %>
                      <% photo = m.mealphotos[0].photo %>
-                    <%= link_to cl_image_tag(photo, alt: alt, class:""), meal_path(m) %>
+                    <%= link_to cl_image_tag(photo, alt: alt, class:""), meal_path(m), data: {longitude: m.restaurant.longitude, latitude: m.restaurant.latitude} %>
                     <% end %>
                   <% end %>
                 <% end %>

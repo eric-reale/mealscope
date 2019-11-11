@@ -136,6 +136,96 @@
 
 }
 
+
+
+
+
+
+
+.card-top-line {
+text-decoration: none;
+color:black;
+  &:hover{
+    text-decoration: none;
+    color:black;
+
+  }
+}
+
+
+
+
+
+////////////////////////
+
+.cards-my-restos {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-my-restos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-my-restos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-my-restos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-my-restos {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-my-restos {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.cards-my-restos img {
+  width: 100%;
+
+}
+
+
+
+
+
+
+
+////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .cards-resto {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
