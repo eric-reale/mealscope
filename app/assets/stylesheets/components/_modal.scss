@@ -59,3 +59,66 @@ text-align: center;
 #collection_name {
   flex-grow: 1;
 }
+
+
+// MULTISELECTOR
+
+.mselect {
+  text-decoration: none;
+  text-align: center;
+  color:black;
+  display: inline-block;
+  padding: 4px;
+  margin-top: 4px;
+  font-size: 14px;
+  height: auto;
+  width: 120px;
+  background-color: white;
+  border-radius: 10px;
+  max-height:80px;
+  overflow-y:scroll;
+}
+
+.mselect-opt {
+  border: 1px solid #BBB;
+  border-radius: 10px;
+  color:black;
+  padding: 10px;
+  display:block;
+  cursor:pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  &:hover{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(235, 74, 61, 1.000);
+  }
+}
+
+
+.mselect-opt.selected {
+  color:white;
+  background-color:rgba(235, 74, 61, 1.000);
+}
+
+.mselect-opt a{
+  text-decoration: none;
+  color:black;
+}
+
+.mselect-opt i {
+  text-decoration:none;
+  color:black;
+  display:none;
+  margin-top:2px;
+}
+
+.mselect-opt.selected i {
+  text-decoration:none;
+  color:black;
+  display:block;
+}
