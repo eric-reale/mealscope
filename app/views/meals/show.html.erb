@@ -12,7 +12,7 @@
           <div class='d-flex' style='width: 200px'>
           <h2> <%= @meal.name %> </h2>
           <div><a data-toggle='modal' data-target='#heart-modal'
-            class='index-heart'><i class='far fa-heart' href="/" style='font-size: 20px; color: red; margin-left: 20px'></i></a></div></div>
+            class='index-heart'><i class='far fa-heart' href="/" style='font-size: 20px; color: red; margin-left: 20px; margin-top: 10px'></i></a></div></div>
           <p>$<%= @meal.price %></p>
         </div>
         <div class="stars-avg-rating d-flex justify-content-between" > <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
@@ -193,6 +193,12 @@
         <div class="restaurant-name-container">
         <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
         </div>
+
+      <!-- Loop Logic for 3 Sample Meal -->
+        <% m1 = @meals.sample %>
+        <% m2 = @meals.sample %>
+        <% m3 = @meals.sample %>
+
         <div class="card-trip">
             <% m1 = @meals.sample %>
             <% m1.mealphotos.each do |photo| %>
