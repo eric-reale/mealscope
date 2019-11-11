@@ -9,8 +9,8 @@ class Review < ApplicationRecord
   after_create :calculate_average_rating
   after_destroy :calculate_average_rating
 
-  after_create :check_trusted_reviewer
-  after_destroy :check_trusted_reviewer
+  after_create :add_review_to_user
+
 
   def calculate_average_rating
     ratings = self.meal.reviews.pluck(:rating)
@@ -19,20 +19,12 @@ class Review < ApplicationRecord
     self.meal.save
   end
 
-
-  def check_trusted_reviewer
-    # reviews = self.meal.reviews
-    review = Review.last
-    user.user_reviews += 1
-    user.user_reviews.save
-    #   reviews.each do |r|
-    #    if user == r.user
-    #      user.user_reviews += 1
-    #    end
-    #   end
-    # user.user_reviews.save
-    # need to link to method in user model
+  def add_review_to_user
+    self.user.user_reviews += 1
+    self.user.trusted_reviewer_check
+    self.user.save
   end
+
 
   def display_ratings
     case self.rating

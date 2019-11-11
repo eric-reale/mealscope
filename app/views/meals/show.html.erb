@@ -150,8 +150,12 @@
                 <div class="avatar-name d-flex justify-content-start ">
                   <%= cl_image_tag(r.user.avatar.url, class: "avatar-review" ) %>
 
-                  <p class="my-auto ml-3"> <%= r.user.first_name %> </p>
+                  <p class="my-auto ml-3"> <%= r.user.first_name %>
+                    <i style="color: blue" class="fas fa-medal"></i>
+                  </p>
+
                 </div>
+
                 <div class="my-auto" style="color: yellow">
                   <p> <%= r.display_ratings %></p>
                 </div>
