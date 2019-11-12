@@ -1,0 +1,11 @@
+.page-links-container {
+  text-decoration: none;
+  p a {
+    text-decoration: none;
+    color: black;
+  }
+    &:hover {
+    text-decoration: none !important;
+  }
+}
+

@@ -82,7 +82,7 @@
  background-color: white;
  height: 380px;
  border-radius: 6px;
- max-width: 360px;
+ min-width: 360px;
  opacity: .8;
 }
 
@@ -122,6 +122,11 @@
 
 .home-button {
 opacity: 1;
+}
+
+.fixed-top {
+  position: absolute !important;
+
 }
 
 
