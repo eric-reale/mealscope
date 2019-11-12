@@ -1384,7 +1384,6 @@ meal_attributes.each do |f|
   MealTypeTag.create!(meal: meal, meal_type: meal_type)
 end
 
-  Meal.create!(meal_attributes)
   puts "Meals created!"
 
  puts "Generating reviews"
