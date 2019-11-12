@@ -1,3 +1,4 @@
+
 class Meal < ApplicationRecord
   monetize :sponsored_posts_price_cents
 

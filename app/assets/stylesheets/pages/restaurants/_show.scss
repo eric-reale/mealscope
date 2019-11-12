@@ -52,11 +52,18 @@
 }
 
 .resto_meal_reviews_card{
-  padding: 1%;
   display:flex;
   justify-content: space-between;
-  background-color: rgba(252, 252, 252, 1.000);
   margin-top: 10px;
+  flex-direction:column;
+
+  img{
+    height: 500px;
+    margin-bottom: 1%;
+  }
+  .avatar-review {
+    height:50px;
+  }
 }
 
 .sponsor_btn{
@@ -64,7 +71,44 @@
   justify-content: end;
 }
 
+#reviews-resto{
+   overflow-y: scroll;
+
+}
+
 .resto_meal_reviews{
-  width: 100%;
   overflow-y: scroll;
+  width: 100%;
+
+}
+
+.title_resto_meal{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+}
+
+.title-sponsor {
+  display: flex;
+  text-decoration: none;
+  color: #696969;
+    &:hover{
+      text-decoration: none;
+      color: black;
+    }
+  .form{
+    margin-top: 4px;
+  }
+}
+
+.img_m_review{
+  height:200px;
+}
+
+.noreview{
+  display:flex;
+  height:100%;
+  align-items: center;
+  justify-content: center;
 }
