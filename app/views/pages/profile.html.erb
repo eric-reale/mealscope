@@ -236,8 +236,10 @@
                                               <p ><%=  b.address %></p>
 
                                             <div class="cards-my-restos">
+                                              <% if @photos.present? %>
                                               <% instance_variable_get("@photos_#{b.id}").each do |photo| %>
                                                 <%= image_tag photo %>
+                                              <% end %>
                                               <% end %>
                                             </div>
                                             </div>
