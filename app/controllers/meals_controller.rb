@@ -235,8 +235,17 @@ class MealsController < ApplicationController
   end
 
   def update
-    @meal.update(meal_params)
-    redirect_to meal_path(@meal)
+      if @meal.update(meal_params)
+        params[:meal][:meal_photos].each do |photo|
+          po = Cloudinary::Uploader.upload(photo)
+          meal_photo = Mealphoto.new(meal: @meal)
+          meal_photo.remote_photo_url = po["url"]
+          meal_photo.save
+        end
+        redirect_to meal_path(@meal)
+      else
+        render :new
+      end
   end
 
   def destroy
