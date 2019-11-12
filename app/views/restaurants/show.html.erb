@@ -35,18 +35,26 @@
 
   <div class="col-md-6" id="dashboard">
     <h2> Dashboard </h2>
-      <div class="mealscreated">
+    <div class="meals-created-container">
+      <div class="mealscreatedmealscreated">
         <h5> Meals added/day </h5>
-      <%= column_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at, format: "%a").count %>
+        <%= column_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at, format: "%a").count %>
      </div>
      <div class="mealscreated">
         <h5> Reviews added/day </h5>
-      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
+        <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
       </div>
-    <div class="mealscreated">
-        <h5> Meals added/day </h5>
-      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
-      </div>
+    </div>
+    <div class="meals-created-container">
+      <div class="mealscreated">
+          <h5> Meals added/day </h5>
+          <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
+        </div>
+        <div class="mealscreated">
+          <h5> Meals added/day </h5>
+          <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
+        </div>
+    </div>
   </div>
 
 

@@ -11,18 +11,18 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, PhotoUploader
 
-  after_create :get_reviews
-  after_create :trusted_reviewer_boolean
+  # after_create :get_reviews
+  # after_create :trusted_reviewer_boolean
 
-  def get_reviews
-    self.user_reviews = 0
-    self.user_reviews.save
-  end
+  # def get_reviews
+  #   self.user_reviews = 0
+  #   self.save
+  # end
 
-  def trusted_reviewer_boolean
-    self.trusted_reviewer = false
-    self.trusted_reviewer.save
-  end
+  # def trusted_reviewer_boolean
+  #   self.trusted_reviewer = false
+  #   self.save
+  # end
 
   def user_reviews_count
     self.user_reviews = self.user_reviews.count

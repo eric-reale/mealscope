@@ -61,14 +61,14 @@ class Meal < ApplicationRecord
       tsearch: { prefix: true, any_word: true }
     }
 
-  after_create :set_price
+  # after_create :set_price
 
-  def set_price
-    self.sponsored_posts_price_cents = 50000
-    self.sponsored_posts_price_cents.save
-    self.sponsored_posts_price = (sponsored_posts_price_cents / 100)
-    self.sponsored_posts_price.save
-  end
+  # def set_price
+    # self.sponsored_posts_price_cents = 50000
+    # self.sponsored_posts_price_cents.save
+    # self.sponsored_posts_price = (sponsored_posts_price_cents / 100)
+    # self.sponsored_posts_price.save
+  # end
 
 
   def check_rating(rating)
