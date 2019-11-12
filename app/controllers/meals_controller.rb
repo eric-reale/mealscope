@@ -229,7 +229,7 @@ class MealsController < ApplicationController
     rescue
       @photos = []
     end
-    puts @photos
+    p @photos
   end
 
   def edit
