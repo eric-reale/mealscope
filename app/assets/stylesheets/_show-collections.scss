@@ -19,8 +19,24 @@ object-fit: cover;
 
 }
 
+#link-color {
+  color: gray;
+    &:hover {
+      text-decoration: none;
+      color: #e26757;
+    }
+}
+
+.fa .fa-times {
+  color: gray !important;
+  &:hover {
+    text-decoration: none;
+    color: #e26757;
+  }
+}
+
 .hero .title {
-  width: 65%;
+  width: 73%;
   margin: 0 auto 0;
 }
 
