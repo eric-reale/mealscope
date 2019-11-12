@@ -42,7 +42,7 @@
         <p>Number of Unique User Visits (total)</p>
      </div>
         <div class='user-data-data text-center'>
-        <p>3,509</p>
+        <p><%= Ahoy::Event.where(name: "Viewed meals#show").where_properties(id: "246").count %></p>
      </div>
    </div>
 
