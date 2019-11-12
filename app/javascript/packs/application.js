@@ -9,6 +9,10 @@ import { typedJS } from '../plugins/typed'
 import { starsOnIndex } from '../components/starsOnIndex'
 import { heartToggle} from '../components/heartToggle'
 
+// import ahoy from "ahoy.js";
+
+// ahoy.trackAll();
+
 
 // typedJS();
 // starsOnIndex();

@@ -26,6 +26,7 @@ gem 'simple_token_authentication'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
+gem 'ahoy_matey'
 gem "chartkick"
 gem 'groupdate'
 
