@@ -1,11 +1,19 @@
 #dashboard{
 
-  overflow-y: scroll;
   height:600px;
+
 
 }
 
+.charts{
+  display:flex;
+}
+
+
+.mealscreated{
+   height: 210px;
+}
+
 .chartjs-render-monitor{
-  width:40% !important;
-  height: 40% !important;
+  height: 60% !important;
 }
