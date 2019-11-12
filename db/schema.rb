@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_11_12_070959) do
     t.string "description"
     t.float "price"
     t.string "meal_type"
-    t.float "average_rating"
+    t.float "average_rating", default: 0.0
     t.bigint "user_id"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false

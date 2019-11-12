@@ -4,9 +4,10 @@
  MealTypeTag.destroy_all
  Collection.destroy_all
  Pin.destroy_all
+ Order.destroy_all
  Meal.destroy_all
- User.destroy_all
  Restaurant.destroy_all
+ User.destroy_all
  DietTag.destroy_all
  CuisineTag.destroy_all
  MealType.destroy_all
