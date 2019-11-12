@@ -144,7 +144,7 @@ class MealsController < ApplicationController
     else
       @meals = Meal.all
       @filtered_meal = @meals.filter { |meal| !meal.orders.empty? ? meal : nil }
-      @meals = [@filtered_meal, Meal.all].flatten.uniq
+      @meals = [@filtered_meal, Meal.all.order(average_rating: :desc)].flatten.uniq
       @restaurants = []
       meals_ids = @meals.pluck(:restaurant_id)
       meals_ids.each do |id|
@@ -229,6 +229,7 @@ class MealsController < ApplicationController
     rescue
       @photos = []
     end
+    p @photos
   end
 
   def edit
