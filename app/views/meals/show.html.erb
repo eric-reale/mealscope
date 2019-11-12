@@ -11,6 +11,9 @@
         <div class="row-title d-flex justify-content-between">
           <div class='d-flex' style='width: 550px'>
           <h2> <%= @meal.name %> </h2>
+          <% raise %>
+        <%= Ahoy::Event.find(10) %>
+
           <div><a data-toggle='modal' data-target='#heart-modal'
             class='index-heart'><i class='far fa-heart' href="/" style='font-size: 20px; color: red; margin-left: 20px; margin-top: 10px'></i></a></div></div>
           <p>$<%= @meal.price %></p>
@@ -116,6 +119,9 @@
           <% @meal.diet_tags.each do |diet| %>
           <%= link_to diet.name, meals_path(query: diet.name), class: "btn btn-hover cuisine-taggy" %>
           <% end %>
+           <% @meal.meal_types.each do |type| %>
+          <%= link_to type.name, meals_path(query: type.name), class: "btn btn-hover cuisine-taggy" %>
+          <% end %>
         </p>
       </div>
 
@@ -131,6 +137,7 @@
           <%= simple_form_for ([@meal, @review]) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
             <%= f.input :content, label: "Say something", class: "form-review" %>
+            <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
             <%= f.submit "Submit", class: "btn btn-outline-danger", style: "border-radius: 4px;" %>
           <% end %>
         </div>

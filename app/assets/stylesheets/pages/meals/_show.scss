@@ -20,7 +20,7 @@
   background-color: white;
   margin-top: 20px;
   overflow-y: scroll;
-  height: 500px;
+  max-height: 500px;
 
 }
 
@@ -50,10 +50,10 @@
 }
 
 .meal-form-body-new {
-    background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
-    background-repeat: no-repeat;
-    background-size: 100%;
-    height: 90vh;
+    // background-image: linear-gradient(rgba(0,0,0,0.01),rgba(0,0,0,0.01)), asset_url('tomato-bread.jpeg');
+    // background-repeat: no-repeat;
+    // background-size: 100%;
+    // height: 90vh;
 }
 
 .meal-form-body-edit {

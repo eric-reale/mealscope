@@ -35,7 +35,7 @@ class MealsController < ApplicationController
           {
             lat: restaurant.latitude,
             lng: restaurant.longitude,
-            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg',
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573520165/icon-small_sliebt.svg',
             infoWindow: { content: render_to_string(partial: "/meals/map_box", locals: { restaurant: restaurant }) }
             # Uncomment the above line if you want each of your markers to display a info window when clicked
             # (you will also need to create the partial "/flats/map_box")
@@ -84,7 +84,7 @@ class MealsController < ApplicationController
           {
             lat: restaurant.latitude,
             lng: restaurant.longitude,
-            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg',
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573520165/icon-small_sliebt.svg',
             infoWindow: { content: render_to_string(partial: "/meals/map_box", locals: { restaurant: restaurant }) }
             # Uncomment the above line if you want each of your markers to display a info window when clicked
             # (you will also need to create the partial "/flats/map_box")
@@ -132,7 +132,7 @@ class MealsController < ApplicationController
           {
             lat: restaurant.latitude,
             lng: restaurant.longitude,
-            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg',
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573520165/icon-small_sliebt.svg',
             infoWindow: { content: render_to_string(partial: "/meals/map_box", locals: { restaurant: restaurant }) }
             # Uncomment the above line if you want each of your markers to display a info window when clicked
             # (you will also need to create the partial "/flats/map_box")
@@ -144,7 +144,7 @@ class MealsController < ApplicationController
     else
       @meals = Meal.all
       @filtered_meal = @meals.filter { |meal| !meal.orders.empty? ? meal : nil }
-      @meals = [@filtered_meal, Meal.all].flatten
+      @meals = [@filtered_meal, Meal.all].flatten.uniq
       @restaurants = []
       meals_ids = @meals.pluck(:restaurant_id)
       meals_ids.each do |id|
@@ -156,7 +156,7 @@ class MealsController < ApplicationController
         {
           lat: restaurant.latitude,
           lng: restaurant.longitude,
-            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573193430/mapicon_uy13m4.svg',
+            icon: 'https://res.cloudinary.com/ddnvsxspt/image/upload/v1573520165/icon-small_sliebt.svg',
             infoWindow: { content: render_to_string(partial: "/meals/map_box", locals: { restaurant: restaurant }) }
           # Uncomment the above line if you want each of your markers to display a info window when clicked
           # (you will also need to create the partial "/flats/map_box")
@@ -235,8 +235,17 @@ class MealsController < ApplicationController
   end
 
   def update
-    @meal.update(meal_params)
-    redirect_to meal_path(@meal)
+      if @meal.update(meal_params)
+        params[:meal][:meal_photos].each do |photo|
+          po = Cloudinary::Uploader.upload(photo)
+          meal_photo = Mealphoto.new(meal: @meal)
+          meal_photo.remote_photo_url = po["url"]
+          meal_photo.save
+        end
+        redirect_to meal_path(@meal)
+      else
+        render :new
+      end
   end
 
   def destroy

@@ -1,3 +1,4 @@
+
 import "bootstrap";
 import { initStarRating } from '../plugins/init_star_rating';
 import { initSweetalert } from '../plugins/init_sweetalert';
@@ -7,6 +8,10 @@ initStarRating();
 import { typedJS } from '../plugins/typed'
 import { starsOnIndex } from '../components/starsOnIndex'
 import { heartToggle} from '../components/heartToggle'
+
+// import ahoy from "ahoy.js";
+
+// ahoy.trackAll();
 
 
 // typedJS();
@@ -73,3 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // heartToggle();
+
+
+
