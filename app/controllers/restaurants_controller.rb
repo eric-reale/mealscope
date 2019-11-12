@@ -17,22 +17,29 @@ class RestaurantsController < ApplicationController
     @restaurant.instagram_handle = @restaurant.instagram_handle.match?(pattern) ? @restaurant.instagram_handle.gsub(pattern, "") : @restaurant.instagram_handle
     authorize @restaurant
     @restaurant.user = current_user
-    redirect_to restaurant_path(@restaurant) if @restaurant.save
-
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def show
     restaurant = @restaurant
     @meals = restaurant.meals
     url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
-    user_serialized = open(url).read
-    data = JSON.parse(user_serialized)
-    counter = 0
-    @photos = []
-    6 .times do
-      photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
-      @photos << photo
-      counter += 1
+    begin
+      user_serialized = open(url).read
+      data = JSON.parse(user_serialized)
+      counter = 0
+      @photos = []
+      6.times do
+        photo = data["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"][counter]["node"]["thumbnail_src"]
+        @photos << photo
+        counter += 1
+      end
+    rescue
+      @photos = []
     end
     # if @restaurant.user = current_user
   end
