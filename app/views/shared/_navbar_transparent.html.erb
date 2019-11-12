@@ -30,7 +30,7 @@
           </div>
         </li>
       <% else %>
-        <li class="nav-item mx-3">
+        <!-- <li class="nav-item mx-3">
           <a class="nav-link" data-toggle="modal" data-target="#loginNavbarModal">
               Log In |
           </a>
@@ -39,6 +39,12 @@
               Sign Up
           </a>
 
+        </li> -->
+        <li class="nav-item mx-3">
+          <%= link_to "Log In", new_user_session_path, class: "" %>
+        </li>
+        <li class="nav-item mx-3">
+          <%= link_to "Sign Up", new_user_registration_path, class: "" %>
         </li>
       <% end %>
     </ul>
