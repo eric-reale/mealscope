@@ -36,6 +36,13 @@
 
   <div class="col-md-6" id="dashboard">
     <h2> Dashboard </h2>
+
+    <% @restaurant.meals.each do |m|%>
+    <p><%= Ahoy::Event.where(name: "Viewed meals#show").where_properties(id: "#{m.id}").count %></p>
+    <% end %>
+
+
+
       <div class="mealscreated">
         <h5> Meals added/day </h5>
       <%= column_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at, format: "%a").count %>
