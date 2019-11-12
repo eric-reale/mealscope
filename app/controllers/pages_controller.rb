@@ -33,4 +33,7 @@ class PagesController < ApplicationController
 
   def restaurant_owners
   end
+
+  def restaurant_contact
+  end
 end

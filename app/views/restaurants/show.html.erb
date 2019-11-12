@@ -16,7 +16,7 @@
             </div>
         </div>
           <div>
-            <h2> <%= @restaurant.name  %> Informations <span class="show_restos_icons">
+            <h2> <%= @restaurant.name  %> Information <span class="show_restos_icons">
               <button  class="btn "><i class="far fa-edit"></i></i></button>
               <button id="sweet-alert-demo" class="btn "><i class="fas fa-trash"></i></button>
               <%= link_to "", restaurant_path(@restaurant)  , method: :delete, id:"delete-link", class: "hidden" %> </span> </h2>
@@ -36,6 +36,44 @@
 
   <div class="col-md-6" id="dashboard">
     <h2> Dashboard </h2>
+    <div class="infos">
+         <table style="width:100%">
+          <tr>
+            <td>The Most searched word this week was </td>
+            <td><strong> x </strong></td>
+          </tr>
+          <tr>
+            <td>Your meals were seen</td>
+            <td><strong> x </strong></td>
+          </tr>
+          <tr>
+            <td>Your meals average rating is </td>
+            <td><strong> x </strong></td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+    </div>
+
+
+
+    <div class="charts">
+      <div class="meal-container">
+    <%# @restaurant.meals.each do |m|%>
+    <div class="mealscreated">
+        <h5> Users click on meal </h5>
+      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
+      <%#= column_chart Ahoy::Event.where(name: "Viewed meals#show").where_properties(id: "#{m.id}").count %>
+      </div>
+    <%# end %>
+      <div class="mealscreated">
+        <h5> Average Meals Rating/day </h5>
+      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
+
+      </div>
+    </div>
+      <div class="meal-container">
       <div class="mealscreated">
         <h5> Meals added/day </h5>
       <%= column_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at, format: "%a").count %>
@@ -44,11 +82,11 @@
         <h5> Reviews added/day </h5>
       <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
       </div>
-    <div class="mealscreated">
-        <h5> Meals added/day </h5>
-      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
       </div>
-  </div>
+
+    </div>
+</div>
+
 
 
 

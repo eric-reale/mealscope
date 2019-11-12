@@ -16,6 +16,7 @@
         <div class="stars-avg-rating d-flex justify-content-between" >
           <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
         </div>
+
         </div>
           <p style="font-size: 20px;">$<%= @meal.price %></p>
 
@@ -89,6 +90,7 @@
             <% end %>
         </ol>
           <div class="carousel-inner">
+
             <div class="carousel-item active">
               <%= cl_image_tag @meal.mealphotos[0].photo, class: "d-block w-100", style: "width:100%; height: 60vh" , crop: :fill %>
             </div>
@@ -220,9 +222,7 @@
         <div class="card-trip">
             <%# m1 = @restaurant_meals.sample %>
             <% m1 = selected[0] %>
-            <% m1.mealphotos.each do |photo| %>
-            <%= cl_image_tag photo.photo, height: 300, width: 400 %>
-            <% end %>
+            <%= cl_image_tag m1.mealphotos[0].photo, height: 300, width: 400 %>
         <div class="card-trip-infos">
           <div>
             <h2><%= m1.name %></h2>
@@ -234,9 +234,7 @@
       <% elsif m2 %>
          <div class="card-trip">
             <% m2 = selected[1] %>
-            <% m2.mealphotos.each do |photo| %>
-            <%= cl_image_tag photo.photo.url %>
-            <% end %>
+            <%= cl_image_tag m2.mealphotos[0].photo, height: 300, width: 400 %>
         <div class="card-trip-infos">
           <div>
             <h2><%= m2.name %></h2>
@@ -248,9 +246,7 @@
       <% elsif m3 %>
        <div class="card-trip">
             <% m3 = selected[2] %>
-            <% m3.mealphotos.each do |photo| %>
-            <%= cl_image_tag photo.photo.url %>
-            <% end %>
+        <%= cl_image_tag m3.mealphotos[0].photo, height: 300, width: 400 %>
         <div class="card-trip-infos">
           <div>
             <h2><%= m3.name %></h2>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: :dashboard
   get 'profile', to: 'pages#profile', as: :profile
   get 'restaurant-owners', to: 'pages#restaurant_owners', as: :restaurant_owners
+  get 'restaurant-contact', to: 'pages#restaurant_contact', as: :restaurant_contact
 
   resources :meals do
     resources :reviews, only: [ :new, :create, :destroy ] # Why is there a :new? Review is created on meal show page.

@@ -28,6 +28,7 @@
      remote_avatar_url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80',
      about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
    },
+   {
      email:      'polina@gmail.com',
      password:    '1234567',
      first_name: 'Polina',
@@ -788,271 +789,315 @@
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
   },
-    {
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
@@ -1065,127 +1110,148 @@
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
     user:   User.all.sample,
     restaurant: Restaurant.all.sample
-  },  {
+  },
+  {
     name:  Faker::Food.dish,
     description:  Faker::Food.description,
     price:   (rand(1..20)),
@@ -1318,7 +1384,6 @@ meal_attributes.each do |f|
   MealTypeTag.create!(meal: meal, meal_type: meal_type)
 end
 
-  Meal.create!(meal_attributes)
   puts "Meals created!"
 
  puts "Generating reviews"
