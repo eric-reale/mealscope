@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 2019_11_11_095305) do
     t.string "description"
     t.float "price"
     t.string "meal_type"
-    t.float "average_rating"
+    t.float "average_rating", default: 0.0
     t.bigint "user_id"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sponsored_posts_price"
+    t.integer "sponsored_posts_price", default: 500
     t.integer "sponsored_posts_price_cents", default: 0, null: false
     t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
     t.index ["user_id"], name: "index_meals_on_user_id"
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_095305) do
     t.text "about_me"
     t.boolean "trusted_reviewer"
     t.string "authentication_token", limit: 30
-    t.integer "user_reviews"
+    t.integer "user_reviews", default: 0
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

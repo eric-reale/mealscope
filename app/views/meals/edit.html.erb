@@ -1,15 +1,17 @@
-<div class="row">
-    <div class="col-md-6 meal-form-body-edit">
-    </div>
+<div class="container-profile mb-5" style="width: 60%" >
 
+  <div class="profile-header">
 
-<div class="form-right col-md-6">
- <div class="d-flex justify-content form-right ">
-  <div class="card justify-content-center text-center align-items-column py-4" style="width: 675px">
+    <i class="fas fa-plus-circle"></i>
+    <%= image_tag 'chicken.svg' , class: "img" %>
+  </div>
+
+<div class="profile-body mx-auto">
+  <div class='d-flex justify-content-center'>
 
 
     <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
-          <div><h2>Add a meal</h2></div>
+          <div><h2>Edit a meal</h2></div>
 
         <div class="form-inputs align-items-center m-auto pt-3" style="width: 75%;">
           <%= f.input :name,
@@ -76,14 +78,18 @@
           <div class="mx-auto my-3" style="width: 50%;">
           </div>
           <div class="form-actions">
-          <%= f.button :submit, 'Add your meal!' , class: "btn btn-primary mb-2", style: "width: 100%;" %>
+          <%= f.button :submit, 'Save changes' , class: "addamealbtn mb-2", style: "width: 100%;" %>
 
       <% end %>
 
+ </div>
+</div>
+</div>
+</div>
+<div id="credits">Icons made by <a id="credits" href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a id="credits" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</div>
   </div>
-</div>
-</div>
-</div>
+  </div>
 </div>
   </div>
 
