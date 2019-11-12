@@ -16,6 +16,7 @@ class MealsController < ApplicationController
       !params[:cuisine_tags].present? &&
       !params[:meal_tags].present?)
       @meals = Meal.global_search(params[:query])
+      @meals = @meals.order(average_rating: :desc)
       @restaurants = []
       meals_ids = @meals.pluck(:restaurant_id)
       meals_ids.each do |id|
@@ -70,7 +71,7 @@ class MealsController < ApplicationController
         end
       end
 
-      @meals = @meals.flatten.uniq
+      @meals = @meals.order(average_rating: :desc).flatten.uniq
 
       unless @meals.count.zero?
         @restaurants = []
@@ -118,7 +119,7 @@ class MealsController < ApplicationController
         end
       end
 
-      @meals = @meals.flatten.uniq
+      @meals = @meals.order(average_rating: :desc).flatten.uniq
 
       unless @meals.count.zero?
         @restaurants = []
