@@ -20,21 +20,20 @@
  user_attributes = [
 
    {
+    email:      'eric@gmail.com',
+     password:    '1234567',
+     first_name: 'Eric',
+     last_name:  'R',
+     location: "Canggu, Bali",
+     remote_avatar_url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80',
+     about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+   },
      email:      'polina@gmail.com',
      password:    '1234567',
      first_name: 'Polina',
      last_name: 'D',
      location: "Canggu, Bali",
      remote_avatar_url: 'https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1145&q=80',
-     about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
-   },
-   {
-     email:      'eric@gmail.com',
-     password:    '1234567',
-     first_name: 'Eric',
-     last_name:  'R',
-     location: "Canggu, Bali",
-     remote_avatar_url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80',
      about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
    },
    {
@@ -59,121 +58,155 @@
 
  User.create!(user_attributes)
 
+
+  35.times do
+   users = User.new(
+     email: Faker::Internet.email,
+     password: Faker::Alphanumeric.alphanumeric(number: 10, min_alpha: 3, min_numeric: 3),
+     first_name: Faker::Name.name,
+     location: "Canggu, Bali",
+     remote_avatar_url: 'https://images.unsplash.com/photo-1529429617124-95b109e86bb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80',
+     about_me: 'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+   )
+   users.save!
+ end
+#
+ puts "Pins created!"
+
  puts "Generating Canggu restuarants..."
  restaurant_attributes = [
    {
     name:              'Sensorium Bali',
     address:           'Pantai Batu Bolong St No.31A, Canggu, North Kuta, Badung Regency, Bali 80361',
     website_url:       'https://sensoriumbali.co.id/',
-    instagram_handle:  'sensorium_bali'
+    instagram_handle:  'sensorium_bali',
+    user:   User.all.sample
    },
    {
     name:              'La Brisa Bali',
     address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
     website_url:       'http://www.labrisabali.com/',
-    instagram_handle:  'labrisabali'
+    instagram_handle:  'labrisabali',
+    user:   User.all.sample
    },
    {
     name:              'The Lawn',
     address:           'Jl. Pura Dalem, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
     website_url:       'https://thelawncanggu.com/',
-    instagram_handle:  'thelawncanggu'
+    instagram_handle:  'thelawncanggu',
+    user:   User.all.sample
    },
    {
     name:              'Poke Poke Canggu',
     address:           'Jl. Munduk Catu No.36, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali',
     website_url:       'https://www.instagram.com/pokepokecanggu/',
-    instagram_handle:  'pokepokecanggu'
+    instagram_handle:  'pokepokecanggu',
+    user:   User.all.sample
    },
    {
     name:              'Bottega Italiana Canggu',
     address:           'Pantai Batu Bolong St No.77, Canggu, North Kuta, Badung Regency, Bali 80361',
     website_url:       'https://www.bottegaitalianabali.com/',
-    instagram_handle:  'bottegaitalianabali'
+    instagram_handle:  'bottegaitalianabali',
+    user:   User.all.sample
    } ,
   {
    name:              'Cabina Bali',
    address:           'Jl. Batu Belig Gg. Daksina No.1, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
    website_url:       'https://www.cabinabali.com/',
-   instagram_handle:  'cabinabali'
+   instagram_handle:  'cabinabali',
+    user:   User.all.sample
   },
   {
    name:              'Loop Pool Bar and Restaurant',
    address:           'Pantai Batu Bolong St No.25 C, Canggu, North Kuta, Badung Regency, Bali 80361',
    website_url:       'https://www.theannavilla.com/looppool/',
-   instagram_handle:  'looppoolbar'
+   instagram_handle:  'looppoolbar',
+    user:   User.all.sample
   },
   {
    name:              'COMO Beach Club Bali',
    address:           'Jalan Pantai, Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
    website_url:       'https://www.comohotels.com/en/umacanggu/dining/como-beach-club',
-   instagram_handle:  'comobeachclub.canggu'
+   instagram_handle:  'comobeachclub.canggu',
+    user:   User.all.sample
   },
   {
    name:              'Echo Beach Bar and Grill',
    address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80351',
    website_url:       'http://www.echobeachclub.com/',
-   instagram_handle:  'echobeachcanggu'
+   instagram_handle:  'echobeachcanggu',
+    user:   User.all.sample
   },
   {
    name:              'Lv8 Resort Hotel',
    address:           'Canggu, Jl. Pantai Berawa No.100xx, Tibubeneng, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
    website_url:       'https://www.lv8bali.com/',
-   instagram_handle:  'lveight'
+   instagram_handle:  'lveight',
+    user:   User.all.sample
   },
   {
    name:              'Dian cafe',
    address:           'Badung, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
    website_url:       'https://dian-cafe-restaurant.business.site/',
-   instagram_handle:  ''
+   instagram_handle:  '',
+    user:   User.all.sample
   },
     {
    name:              'Cabe Cafe',
    address:           'Canggu, Kuta Utara, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
    website_url:       'https://www.instagram.com/cabebali_seaside_cafe/?utm_source=ig_profile_share&igshid=1pqfbov4q4r4i',
-   instagram_handle:  'cabebali_seaside_cafe'
+   instagram_handle:  'cabebali_seaside_cafe',
+    user:   User.all.sample
   },
     {
    name:              'The Açai Shop',
    address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
    website_url:       'https://www.indoamazonacai.com/',
-   instagram_handle:  'theacaishopbali'
+   instagram_handle:  'theacaishopbali',
+    user:   User.all.sample
   },
     {
    name:              'Terra Bali',
    address:           'Jl. Pantai Batu Mejan No.4, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80351',
    website_url:       'https://www.instagram.com/terra_bali/',
-   instagram_handle:  'terra_bali'
+   instagram_handle:  'terra_bali',
+    user:   User.all.sample
   },
     {
    name:              'Surf Side Cafe',
    address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80351',
    website_url:       'https://www.surfsidecafe.id/',
-   instagram_handle:  'surfsidecafe17'
+   instagram_handle:  'surfsidecafe17',
+    user:   User.all.sample
   },
     {
    name:              'Santorini Greek Restaurant Echo Beach, Canggu',
    address:           'Jl. Pantai Batu Mejan, Canggu, Bali',
    website_url:       'https://www.facebook.com/santorinibalirestaurant/',
-   instagram_handle:  'santorinigreekrestaurantbali'
+   instagram_handle:  'santorinigreekrestaurantbali',
+    user:   User.all.sample
   },
     {
    name:              'Green Spot Cafe',
    address:           ' Echo, Beach, Jl. Batu Mejan, Canggu, North Kuta, Badung Regency, Bali 80361',
    website_url:       'https://ecosferahotel.com/greenspot/',
-   instagram_handle:  'greenspotcafebali'
+   instagram_handle:  'greenspotcafebali',
+    user:   User.all.sample
   },
     {
    name:              'Nalu Bowls',
    address:           'Jl. Batu Mejan No.88, Canggu, Kec. Kuta Utara, Bandung, Bali 80316',
    website_url:       'https://www.nalubowls.com/nalu-bowls-dojo-bali/',
-   instagram_handle:  'nalubowls'
+   instagram_handle:  'nalubowls',
+    user:   User.all.sample
   },
     {
    name:              'Alter Ego',
    address:           'Jl. Pantai Batu Mejan, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali',
    website_url:       'https://www.facebook.com/alteregocanggu/',
-   instagram_handle:  'alteregofoods'
+   instagram_handle:  'alteregofoods',
+    user:   User.all.sample
   } #,
 #    {
 #   name:              'Teh Manis Bali',
@@ -1572,19 +1605,19 @@ puts "Reviews created!"
  collection_attributes = [
  {
    name: "Favorites",
-   user:   User.last
+   user:   User.first
  },
  {
    name: "Brunch",
-   user:   User.last
+   user:   User.first
  },
  {
    name: "Canguu",
-   user:   User.last
+   user:   User.first
  },
  {
    name: "Bali",
-   user:   User.last
+   user:   User.first
  },
  ]
 

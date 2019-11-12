@@ -9,6 +9,7 @@ class PagesController < ApplicationController
     @reviews = Review.where(user: current_user)
     @my_restaurants = Restaurant.where(restaurants: {user: current_user})
     @my_restaurants.each do |restaurant|
+      begin
         url = "https://www.instagram.com/#{restaurant.instagram_handle}?__a=1"
         user_serialized = open(url).read
         data = JSON.parse(user_serialized)
@@ -20,8 +21,11 @@ class PagesController < ApplicationController
           photos << photo
           instance_variable_set("@photos_#{restaurant.id}", photos)
           counter += 1
-      end
+        end
+      rescue
+      @photos = []
     end
+  end
   end
 
   def error

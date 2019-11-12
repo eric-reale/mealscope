@@ -40,23 +40,25 @@
               <div id="gallery" style="display: none; width: 100%;">
                 <% if @meals %>
                   <% @meals.each do |m| %>
-                <% if !@filtered_meal[0].nil? %>
-                    <% if m == @filtered_meal[0] %>
-                    <% sponsored = "Sponsored" %>
+                    <% if !m.orders.empty? %>
+                      <% sponsored = "Sponsored" %>
                     <% else %>
-                    <% sponsored = "" %>
+                      <% sponsored = "" %>
                     <% end %>
-                    <% end %>
+                <%# #if !@filtered_meal.blank? %>
+
+                    <%# if m == @filtered_meal[0] %>
+                    <%# end %>
                   <% alt = "<div class=\"d-flex justify-content-between\">
 
-                  <div><p class='index-rating'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+                  <div><p class='index-rating' style='font-weight: lighter;'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
                   <div><strong>#{sponsored}</strong></div>
 
                   </div>
 
-                  <div class='index-font'>#{m.name} </div>
+                  <div class='index-font my-auto' style='font-weight: lighter;'>#{m.name} </div>
                   <div class=\"d-flex justify-content-between\">
-                  <div class='index-font'> @#{m.restaurant.name}</div>
+                  <div class='index-font my-auto' style='font-weight: lighter;'> @#{m.restaurant.name}</div>
 
                   <div><a data-toggle='modal' data-target='#heart-modal'
                    class='index-heart'href=\"/\"><i class='far fa-heart'></i></a></div>

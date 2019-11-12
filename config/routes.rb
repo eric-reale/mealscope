@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :restaurants #only: [ :index, :create, :show, :update, :destroy ] - do this later
   resources :collections, only: [ :show, :create, :edit, :update, :destroy ]
-  resources :reviews, only: [:new, :create] ## Why is this here?
+  resources :reviews, only: [:new, :create ] ## Why is this here?
 
   mount StripeEvent::Engine, at: '/stripe-webhooks'
 

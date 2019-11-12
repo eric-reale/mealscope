@@ -1,3 +1,4 @@
+
 import "bootstrap";
 import { initStarRating } from '../plugins/init_star_rating';
 import { initSweetalert } from '../plugins/init_sweetalert';
@@ -77,3 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // heartToggle();
+
+
+

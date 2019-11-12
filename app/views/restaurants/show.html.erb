@@ -1,3 +1,5 @@
+<%= javascript_pack_tag "chartkick" %>
+
 <div class="container-pagemover mx-5 px-5 pt-2">
   <%= link_to '<< Back', url_for(:back), class: "link-color" %>
 
@@ -13,7 +15,7 @@
 
             </div>
         </div>
-            <div>
+          <div>
             <h2> <%= @restaurant.name  %> Informations <span class="show_restos_icons">
               <button  class="btn "><i class="far fa-edit"></i></i></button>
               <button id="sweet-alert-demo" class="btn "><i class="fas fa-trash"></i></button>
@@ -22,114 +24,102 @@
             <p> Address: <%= @restaurant.address %> </p>
             <p> Instagram Name: <%= @restaurant.instagram_handle %> </p>
           </div>
-          <div class="cards-resto">
-            <% @photos.each do |photo| %>
-              <%= image_tag photo %>
-            <% end %>
-        </div>
-        </div>
-    </div>
-
-
-  <div class="col-md-6">
-    <div class="text-center py-4">
-      <h2>User Data Analytics</h2>
-    </div>
-
-
-    <div class="row user-data-container-top">
-      <div class='user-data-title'>
-        <p>Number of Unique User Visits (total)</p>
-     </div>
-        <div class='user-data-data text-center'>
-        <p><%= Ahoy::Event.where(name: "Viewed meals#show").where_properties(id: "246").count %></p>
-     </div>
-   </div>
-
-    <div class="row user-data-container">
-      <div class='user-data-title'>
-        <p>Number of Unique User Visits (this week)</p>
-     </div>
-        <div class='user-data-data text-center'>
-        <p>217</p>
-     </div>
-   </div>
-
-    <div class="row user-data-container">
-      <div class='user-data-title'>
-        <p>Average Amount of Time Spent by User on Meal Page</p>
-     </div>
-        <div class='user-data-data text-center'>
-        <p>1 min 17 seconds</p>
-     </div>
-   </div>
-
-    <div class="row user-data-container">
-      <div class='user-data-title'>
-        <p>Weekly Increase of User Time Spent on Meal Page</p>
-     </div>
-        <div class='user-data-data text-center'>
-        <p style='color: green'>+47%</p>
-     </div>
-   </div>
-
-    <div class="row user-data-container">
-      <div class='user-data-title'>
-        <p>Most Searched for Term in Location (this week)</p>
-     </div>
-        <div class='user-data-data text-center'>
-        <p>'avocado'</p>
-     </div>
-   </div>
-
-  </div>
-
-
-    <div class="resto_meal_reviews">
-      <hr>
-      <br>
-      <h2> Meal Reviews   <div class="nav-text-buttons d-flex justify-content-between">
-                <a class="btn btn-hover cuisine-taggy" href="/meals/new"> + Add a meal</a>
-              </div></h2>
-      <br>
-          <% @restaurant.meals.each do |m|%>
-
-            <div class ="resto_meal_reviews_card">
-              <%= cl_image_tag m.mealphotos[0].photo if !m.mealphotos.empty? %>
-              <h5> <%= m.name %> <%= m.check_rating(m.average_rating) %> <%= humanized_money_with_symbol(m.price) %> </h5>
-
-                 <% m.reviews.each do |r| %>
-                   <div class="review mt-0">
-                      <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
-                        <p> <%= r.content %> </p>
-                        <p> <%= r.display_ratings %>  </p>
-                      </div>
-                    </div>
-                    <% end %>
-
-
-                    <div class="sponsor_btn">
-                <%= form_tag orders_path do %>
-                  <%= hidden_field_tag 'meal_id', m.id %>
-                  <%= submit_tag 'Sponsor', class: 'btn btn-outline-dark btn-lg' %>
-                  </div>
-                  <% end %>
-
-
-                   </div>
-
-
+            <div class="cards-resto">
+              <% @photos.each do |photo| %>
+                <%= image_tag photo %>
               <% end %>
+          </div>
+        </div>
+    </div>
+
+
+
+  <div class="col-md-6" id="dashboard">
+    <h2> Dashboard </h2>
+      <div class="mealscreated">
+        <h5> Meals added/day </h5>
+      <%= column_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at, format: "%a").count %>
+     </div>
+     <div class="mealscreated">
+        <h5> Reviews added/day </h5>
+      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
+      </div>
+    <div class="mealscreated">
+        <h5> Meals added/day </h5>
+      <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
       </div>
   </div>
 
+
+
+
+  <div class="resto_meal_reviews">
+    <hr>
+    <br>
+    <h2> Meal Reviews </h2>
+      <div class="nav-text-buttons d-flex justify-content-between">
+        <a class="btn btn-hover cuisine-taggy" href="/meals/new"> + Add a meal</a>
+      </div>
+    <br>
+    <% @restaurant.meals.each do |m|%>
+      <div class ="resto_meal_reviews_card">
+        <div class="title_resto_meal">
+           <%= link_to meal_path(m), :class => "title-sponsor" do %>
+<!--           <div class="title-sponsor">
+ -->            <h3 class="mr-3 ">
+              <%= m.name %> <%= humanized_money_with_symbol(m.price) %>
+            </h3>
+            <span class="sponsor_btn">
+              <%= form_tag orders_path do %>
+                <%= hidden_field_tag 'meal_id', m.id %>
+                <%= submit_tag 'Sponsor', class: 'btn btn-outline-dark btn-sm' %>
+              <% end %>
+            </span>
+            <% end %>
+          <!-- </div> -->
+          <h5>
+            <%= m.check_rating(m.average_rating) %>
+          </h5>
+        </div>
+        <div class="d-flex">
+        <%= cl_image_tag m.mealphotos[0].photo if !m.mealphotos.empty? %>
+      <div class="nav-tabs-reviews p-2 my-3">
+        <% if m.reviews.count > 0 %>
+          <div class="tab-content">
+              <div class="tab-pane fade show active">
+               <!-- review 1 -->
+                <% m.reviews.each do |r| %>
+                    <div class="review mt-0">
+                    <!-- box avatar/name + rating overall -->
+                      <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
+                      <!-- box avatar and name -->
+                        <div class="avatar-name d-flex justify-content-start ">
+                          <%= cl_image_tag(r.user.avatar.url, class: "avatar-review" ) %>
+                          <p class="my-auto ml-3"> <%= r.user.first_name %>
+                          <i style="color: blue" class="fas fa-medal"></i>
+                          </p>
+                        </div>
+                        <div class="my-auto" style="color: yellow">
+                          <p> <%= r.display_ratings %></p>
+                        </div>
+                      </div>
+                      <em> "<%= r.content %>"</em>
+                    </div>
+                 <% end %>
+                </div>
+             </div>
+             <% else %>
+                <div class="noreview">
+                  <h4 class="justify-content-center"> They aren't any reviews for this meal yeat </h4>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-
 
 
 
