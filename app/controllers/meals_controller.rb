@@ -144,7 +144,7 @@ class MealsController < ApplicationController
     else
       @meals = Meal.all
       @filtered_meal = @meals.filter { |meal| !meal.orders.empty? ? meal : nil }
-      @meals = [@filtered_meal, Meal.all].flatten
+      @meals = [@filtered_meal, Meal.all].flatten.uniq
       @restaurants = []
       meals_ids = @meals.pluck(:restaurant_id)
       meals_ids.each do |id|
@@ -235,8 +235,17 @@ class MealsController < ApplicationController
   end
 
   def update
-    @meal.update(meal_params)
-    redirect_to meal_path(@meal)
+      if @meal.update(meal_params)
+        params[:meal][:meal_photos].each do |photo|
+          po = Cloudinary::Uploader.upload(photo)
+          meal_photo = Mealphoto.new(meal: @meal)
+          meal_photo.remote_photo_url = po["url"]
+          meal_photo.save
+        end
+        redirect_to meal_path(@meal)
+      else
+        render :new
+      end
   end
 
   def destroy
