@@ -40,13 +40,15 @@
               <div id="gallery" style="display: none; width: 100%;">
                 <% if @meals %>
                   <% @meals.each do |m| %>
-                <% if !@filtered_meal[0].nil? %>
-                    <% if m == @filtered_meal[0] %>
-                    <% sponsored = "Sponsored" %>
+                    <% if !m.orders.empty? %>
+                      <% sponsored = "Sponsored" %>
                     <% else %>
-                    <% sponsored = "" %>
+                      <% sponsored = "" %>
                     <% end %>
-                    <% end %>
+                <%# #if !@filtered_meal.blank? %>
+
+                    <%# if m == @filtered_meal[0] %>
+                    <%# end %>
                   <% alt = "<div class=\"d-flex justify-content-between\">
 
                   <div><p class='index-rating'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
