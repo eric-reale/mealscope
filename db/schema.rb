@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_045002) do
+ActiveRecord::Schema.define(version: 2019_11_12_070959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,12 +123,12 @@ ActiveRecord::Schema.define(version: 2019_11_12_045002) do
     t.string "description"
     t.float "price"
     t.string "meal_type"
-    t.float "average_rating", default: 0.0
+    t.float "average_rating"
     t.bigint "user_id"
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sponsored_posts_price", default: 500
+    t.integer "sponsored_posts_price", default: 50
     t.integer "sponsored_posts_price_cents", default: 0, null: false
     t.index ["restaurant_id"], name: "index_meals_on_restaurant_id"
     t.index ["user_id"], name: "index_meals_on_user_id"
