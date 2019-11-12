@@ -21,10 +21,15 @@
 }
 
 .nav-text-buttons .link-color-darker {
-  color: #3D3D38;
+  opacity: .7;
+  border: transparent;
+  cursor: pointer;
+  text-decoration: none;
     &:hover {
       text-decoration: none;
       color: #e26757;
+      color: red !important;
+      opacity: 1;
     }
 }
 
