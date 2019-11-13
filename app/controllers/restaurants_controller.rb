@@ -68,5 +68,4 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     authorize @restaurant
   end
-
 end
