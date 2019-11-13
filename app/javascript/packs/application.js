@@ -9,12 +9,16 @@ import { typedJS } from '../plugins/typed'
 import { starsOnIndex } from '../components/starsOnIndex'
 import { heartToggle} from '../components/heartToggle'
 import { selectdropdown } from '../plugins/init_select2';
-
+import { cuisinetype } from '../plugins/init_select2';
+import { dietrestrict } from '../plugins/init_select2';
+import { mealtype } from '../plugins/init_select2';
 // import ahoy from "ahoy.js";
 
 // ahoy.trackAll();
 selectdropdown()
-
+cuisinetype()
+dietrestrict()
+mealtype()
 // typedJS();
 // starsOnIndex();
 
