@@ -59,10 +59,10 @@ $color-primary: #ABA194;
 
 .page-footer {
     background-size: 200% 200% !important;
-    animation: move 10s ease infinite;
-    transform: translate3d(0, 0, 0);
-    background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
-    height: 45vh
+    // animation: move 10s ease infinite;
+    // transform: translate3d(0, 0, 0);
+    background: linear-gradient(180deg, #efefef, 100%);
+    height: 45vh;
 }
 
 
