@@ -176,21 +176,23 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.photo_list = params[:meal][:meal_photos]
-    @meal.restaurant_id = params[:meal][:restaurant]
+    @meal.restaurant_id = params[:meal][:restaurant_id]
     authorize @meal
     @meal.user = current_user
 
-    @restaurant = Restaurant.find(params[:meal][:restaurant])
-    @restaurant_meal_names = []
-    @restaurant.meals.each do |meal_name|
-      @restaurant_meal_names << meal_name.name
-    end
-
-    if @restaurant_meal_names.include? @meal.name
+    @restaurant = @meal.restaurant  if @meal.restaurant
+    @other_meal = @restaurant.meals.where(name: @meal.name).first if( @meal.name && @restaurant )
+    # if @restaurant = Restaurant.find(params[:meal][:restaurant])
+    # @restaurant_meal_names = []
+    #  @restaurant.meals.each do |meal_name|
+    #   @restaurant_meal_names << meal_name.name
+    # end
+    if @other_meal
         @previous_meal = @restaurant.meals.find_by_name(@meal.name)
         flash[:alert] = "The meal you entered already exists. See it here!"
-        redirect_to meal_path(@previous_meal)
+        redirect_to meal_path(@other_meal)
     elsif params[:meal][:meal_photos].nil?
+      @meal.valid?
       render :new
     elsif @meal.save
       params[:meal][:diet_meal_tag_ids].each do |tag|
@@ -271,7 +273,7 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :price, :meal_type, :diet_meal_tag_ids, :cuisine_meal_tag_ids, :meal_photos)
+    params.require(:meal).permit(:name, :description, :price, :meal_type, :restaurant_id, :diet_meal_tag_ids, :cuisine_meal_tag_ids, :meal_photos)
   end
 end
 
