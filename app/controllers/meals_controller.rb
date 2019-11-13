@@ -71,7 +71,7 @@ class MealsController < ApplicationController
         end
       end
 
-      @meals = @meals.order(average_rating: :desc).flatten.uniq
+      # @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
 
       unless @meals.count.zero?
         @restaurants = []
@@ -95,7 +95,7 @@ class MealsController < ApplicationController
     #######################################
     # CASE 3 need to handle all cases where query not present but filters are
     elsif !params[:query].present? && (params[:diet_tags].present? ||
-      params[:cuisine_tags].present? ||
+      params[:cuisine_tags] != [''] ||
       params[:meal_tags].present?)
       @meals = []
       if params[:diet_tags].present?
@@ -119,7 +119,7 @@ class MealsController < ApplicationController
         end
       end
 
-      @meals = @meals.order(average_rating: :desc).flatten.uniq
+      # @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
 
       unless @meals.count.zero?
         @restaurants = []
@@ -164,6 +164,7 @@ class MealsController < ApplicationController
         }
       end
     end
+    @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
     # @meals = policy_scope(Meal) ## NEED TO FIX. MESSING WITH THE FILTERS
   end
 
