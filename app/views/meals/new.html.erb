@@ -14,14 +14,14 @@
           <div><h2>Add a meal</h2></div>
 
         <div class="form-inputs align-items-center m-auto pt-3" style="width: 100%;">
-          <%= f.input :name,
-                    label: false,
-                    placeholder: 'Name' %>
           <%= f.input :restaurant,
                     label: false,
                     input_html: {class: "opacity-style"},
                     collection: Restaurant.all,
                     include_blank: 'Restaurant'%>
+          <%= f.input :name,
+                    label: false,
+                    placeholder: 'Name' %>
           <%= f.input :description,
                     label: false,
                     placeholder: 'Description',

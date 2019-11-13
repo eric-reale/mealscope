@@ -163,21 +163,15 @@
 
                   <!--  </div>
             </div> -->
+
+
       <form id="navbar-form" action="/meals" method="get">
       <h4>Cuisines</h4>
         <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
         <div class="form-check form-checkboxes-6 cuisine-list">
-        <% CuisineTag::CUISINE_TAG.each do |tag| %>
-        <!-- <div class="form-groups"> -->
-          <div class="control-group">
-              <div class="controls">
-                <select data-select="multiple" multiple="multiple" name="cuisine_tags[]">
-                   <option value="<%= tag %>"><%=tag%></option>
-                  </select>
-                </div>
-            <!-- </label> -->
-        </div>
-          <% end %>
+        <select name="cuisine_tags[]" id="cuisine_tags" data-options="<%= CuisineTag::CUISINE_TAG %>">
+          <option value=""><option>
+        </select>
         </div>
       <br>
         <h4>Dietary Restrictions</h4>
@@ -258,6 +252,21 @@ $(document).on('click', '.mselect-opt', function (event) {
   event.preventDefault();
   var $parent = $(this).parents('.mselect'),
       $opts = $parent.find('.mselect-opt'),
+      $ogselect = $parent.prev('select'),
+      idx = $(this).data('idx'),
+      $ogopt = $ogselect.find('option').eq(idx);
+
+  $(this).toggleClass('selected');
+  var val = !$ogopt.is(':selected') ? 'selected' : '';
+
+  $ogopt.prop('selected', val);
+});
+
+$(document).on('click', '.mselect-opt-cuisine', function (event) {
+  console.log("blabla")
+  event.preventDefault();
+  var $parent = $(this).parents('.mselect'),
+      $opts = $parent.find('.mselect-opt-cuisine'),
       $ogselect = $parent.prev('select'),
       idx = $(this).data('idx'),
       $ogopt = $ogselect.find('option').eq(idx);
