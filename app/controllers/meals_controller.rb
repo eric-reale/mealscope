@@ -179,6 +179,7 @@ class MealsController < ApplicationController
     authorize @meal
     @meal.user = current_user
     if params[:meal][:meal_photos].nil?
+      raise
       render :new
     elsif @meal.save
       params[:meal][:diet_meal_tag_ids].each do |tag|

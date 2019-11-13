@@ -13,6 +13,7 @@
     <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
           <div><h2>Add a meal</h2></div>
             <% if @meal.errors.any? %>
+                <% raise %>
             <div id="error_explanation">
               <ul>
               <% @meal.errors.full_messages.each do |msg| %>
