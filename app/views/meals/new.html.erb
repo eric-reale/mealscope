@@ -12,16 +12,26 @@
 
     <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
           <div><h2>Add a meal</h2></div>
+            <% if @meal.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+              <% @meal.errors.full_messages.each do |msg| %>
+                <li style="color: red"><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-        <div class="form-inputs align-items-center m-auto pt-3" style="width: 100%;">
-          <%= f.input :name,
-                    label: false,
-                    placeholder: 'Name' %>
-          <%= f.input :restaurant,
+
+      <div class="form-inputs align-items-center m-auto pt-3" style="width: 100%;">
+         <%= f.input :restaurant,
                     label: false,
                     input_html: {class: "opacity-style"},
                     collection: Restaurant.all,
-                    include_blank: 'Restaurant'%>
+                    include_blank: 'Select a restaurant' %>
+          <%= f.input :name,
+                    label: false,
+                    placeholder: 'Name' %>
           <%= f.input :description,
                     label: false,
                     placeholder: 'Description',
@@ -88,8 +98,8 @@
 </div>
 
           <hr class="mx-auto mt-2 mb-2" style="width: 75%;">
-          <div><p>Add some photos 📷 </p></div>
-          <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
+          <div class="photo-input-button"><p>Add some photos 📷 </p></div>
+          <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png", input_html: { name: 'Photos', label: 'Photos' }    %>
           <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
           <div class="mx-auto my-3" style="width: 50%;">
           </div>

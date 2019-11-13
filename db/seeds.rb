@@ -1,17 +1,18 @@
-puts 'Cleaning database...'
-CuisineMealTag.destroy_all
-DietMealTag.destroy_all
-MealTypeTag.destroy_all
-Collection.destroy_all
-Order.destroy_all
-Pin.destroy_all
-Review.destroy_all
-Restaurant.destroy_all
-Meal.destroy_all
-User.destroy_all
-DietTag.destroy_all
-CuisineTag.destroy_all
-MealType.destroy_all
+ puts 'Cleaning database...'
+ CuisineMealTag.destroy_all
+ DietMealTag.destroy_all
+ MealTypeTag.destroy_all
+ Collection.destroy_all
+ Order.destroy_all
+ Pin.destroy_all
+ Review.destroy_all
+ Restaurant.destroy_all
+ Meal.destroy_all
+ User.destroy_all
+ DietTag.destroy_all
+ CuisineTag.destroy_all
+ MealType.destroy_all
+
 
 
  require 'faker'

@@ -1,5 +1,6 @@
 
 class Meal < ApplicationRecord
+  attr_accessor :photo_list
   monetize :sponsored_posts_price_cents
 
   LOCATIONS = ['Canggu, Bali']
@@ -19,10 +20,27 @@ class Meal < ApplicationRecord
   has_many :pins, dependent: :destroy
 
   has_many :orders
-
   validates :name, presence: true
+  before_validation :set_pictures_error
+  after_create :save_photos
+  #validates :mealphotos, length: { minimum: 1, message: "You must include at least one photo of the meal." }
+
+
+  def set_pictures_error
+    self.errors.add(:meal_photos, "Please add some pictures of the meal.") if self.photo_list.nil?
+  end
+
+  def save_photos
+    self.photo_list.each do |photo|
+       po = Cloudinary::Uploader.upload(photo)
+       meal_photo = Mealphoto.new(meal: self)
+       meal_photo.remote_photo_url = po["url"]
+       meal_photo.save
+     end
+  end
+
   # validate the restaurant selection
-  validates_numericality_of :price
+  # validates_numericality_of :price, presence: false
 
   include PgSearch::Model
   pg_search_scope :global_search,

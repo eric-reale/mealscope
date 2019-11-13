@@ -1,10 +1,13 @@
-  <%= simple_form_for(@collection, html: { class: 'add-collection' }, remote: true) do |f| %>
+<%= simple_form_for(@collection, html: { class: 'add-collection' }, remote: true) do |f| %>
+  <div class="col-12 input-effect" onclick="event.stopPropagation()">
+    <%= f.input_field :name,
+      label: false,
+      placeholder: "What's the name of your collection?",
+      class: "bg-gray effect-18",
+      style: 'width: 100%;' %>
+    <label>asdjnadasd</label>
+    <span class="focus-border"></span>
+  </div>
+  <%= f.submit "Create", class: "mb-2 mx-auto mt-3",style: 'width: 100%;', id: "button" %>
 
-    <%= f.input :name,
-    label: false,
-    placeholder: "What's the name of your collection?",
-    input_html: {class: "bg-gray"} %>
-    <%= f.submit "Create", class: "addamealbtn mb-2"  %>
-
-  <% end %>
-
+<% end %>

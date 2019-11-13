@@ -4,20 +4,26 @@
 </div>
 
 <div class="container-fluid">
-  <div class="row p-5 container-show-card mx-auto">
-    <div class="col-md-7">
+
+  <div class="row px-5 container-show-card mx-auto mb-3" style="position: relative;">
+    <div class="col-md-7 mt-5">
       <div class="justify-content-between pb-4">
         <div class="row-title d-flex justify-content-between">
           <div class='d-flex' style='width: 550px'>
           <h2> <%= @meal.name %> </h2>
-          <!-- here -->
+          <div class="my-auto ml-2">
+            <a data-toggle='modal' data-target='#heart-modal'
+            class='index-heart'><i class='far fa-heart' href="/"></i></a>
+          </div>
           </div>
         <div class="stars-avg-rating d-flex justify-content-between" >
-          <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
+          <p style=""><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
         </div>
 
         </div>
+        <% if @meal.price %>
           <p style="font-size: 20px;">$<%= @meal.price %></p>
+          <% end %>
 
         <!-- # Authorization for editing and deleting meal -->
         <% if current_user == @meal.user  %>
@@ -35,13 +41,13 @@
   <div class="modal-dialog-heart" role="document">
     <div class="modal-content-heart mb-0" >
       <div class="modal-header">
-        <h4 class="modal-title">Add to your collections</h4>
+        <h4 class="modal-title py-auto">Add to collection</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-left mx-auto mt-3">
-        <h6 class="my-auto" style="width: 80%">  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <div class="modal-body text-left mx-auto mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <h6 class="my-auto" style="width: 80%; font-size: 20px;">  <a>
     <i class="fas fa-plus mx-1"></i> Create a new collection
   </a></h6>
   <div class="collapse add-collection" id="collapseExample" style="border: none">
@@ -52,20 +58,21 @@
   </div>
 
 </div>
-</div> <div class='collection-modal-container' id="collections">
+</div>
+    <div class='collection-modal-container' id="collections">
       <% current_user.collections.reverse.each do |c| %>
-      <div class="collection row d-flex justify-content-between m-3 py-2 px-3">
-       <h5 class="my-auto" style="font-weight: normal;"> <%= c.name %></h5>
+        <div class="collection row d-flex justify-content-between m-3 py-2 px-3">
+          <h5 class="my-auto" style="font-weight: normal;"> <%= c.name %></h5>
 
-      <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
-      <%# end %>
+        <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
+          <a id = "#heart-toggle" class='index-heart-toggle py-auto my-auto heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
+        <%# end %>
 
-      </div>
-        <% end %>
-         <div class="modal-footer justify-content-center my-auto mb-0">
-        <button type="button" class="my-auto py-2 px-5" style="border-radius: 4px; margin-top: 18px;" data-dismiss="modal" id="button">Done</button>
-      </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="modal-footer justify-content-center my-auto mb-0">
+      <button type="button" class="my-auto py-2 px-5" style="border-radius: 4px; margin-top: 18px;" data-dismiss="modal" id="button">Done</button>
     </div>
     </div>
   </div>
@@ -109,8 +116,7 @@
             <span class="sr-only">Next</span>
           </a>
           <% end %>
-          <div><a data-toggle='modal' data-target='#heart-modal'
-            class='index-heart'><i class='far fa-heart' href="/"></i></a></div>
+
         </div>
       </div>
       <div class="filter-container ml-0">
@@ -134,7 +140,8 @@
           <h3>Leave a review!</h3>
           <%= simple_form_for ([@meal, @review]) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-            <%= f.input :content, label: "Say something", class: "form-review" %>
+            <%= f.input :content, label: false, placeholder: "Say something...", class: "form-review" %>
+            <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
             <%= f.submit "Submit", class: "btn btn-outline-danger", id: "button", style: "border-radius: 4px;" %>
           <% end %>
         </div>
@@ -165,7 +172,9 @@
                 </div>
 
               </div>
+              <% if r.content != "" %>
               <em> "<%= r.content %>"</em>
+              <% end %>
             </div>
 
           <% end %>
@@ -180,7 +189,10 @@
     </div>
   </div>
 
-  <div class="col-md-5 justify-content-between pb-4">
+    <div class="row ml-2 pl-2" id="back-icon" style="position: absolute; top: 22px; right: 46px;">
+  <%= link_to url_for(:back), class: "link-color" do %> <p style="" align="right"><i class="fas fa-times"></i></p> <% end %>
+</div>
+  <div class="col-md-5 justify-content-between pb-4 mt-5 pt-0">
     <div class="instagram-container">
     <div class="row-title-resto">
       <div>
@@ -200,9 +212,7 @@
     </div>
     <div>
        <div class="other-meals-container ml-4">
-        <div class="restaurant-name-container">
-        <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
-        </div>
+
 
       <!-- Loop Logic for 3 Sample Meal -- Make sure that 3 other meals from restaurant are not the primary meal displayed
         and are 3 unique meals -->
@@ -216,8 +226,13 @@
         <% m3 = (@restaurant_meals - selected - primary_meal).sample%>
         <% selected << m3 %>
 
+
         <!-- Displaying 3 other meals from this restaurant -->
       <% if m1 %>
+        <div class="restaurant-name-container">
+          <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
+        </div>
+          <%= link_to(m1) do %>
         <div class="card-trip">
             <%# m1 = @restaurant_meals.sample %>
             <% m1 = selected[0] %>
@@ -230,7 +245,9 @@
           <h2 class="card-trip-pricing"><% m1.price %></h2>
         </div>
       </div>
+        <% end %>
       <% elsif m2 %>
+          <%= link_to(m2) do %>
          <div class="card-trip">
             <% m2 = selected[1] %>
             <%= cl_image_tag m2.mealphotos[0].photo, height: 300, width: 400 %>
@@ -242,7 +259,9 @@
           <h2 class="card-trip-pricing"><% m2.price %></h2>
         </div>
       </div>
+        <% end %>
       <% elsif m3 %>
+      <%= link_to(m3) do %>
        <div class="card-trip">
             <% m3 = selected[2] %>
         <%= cl_image_tag m3.mealphotos[0].photo, height: 300, width: 400 %>
@@ -255,11 +274,29 @@
         </div>
         </div>
         <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 
 </div>
+
+<script>
+  // JavaScript for label effects only
+  $(window).load(function(){
+    $(".col-3 input").val("");
+    console.log($(".col-3 input"))
+
+    $(".input-effect input").focusout(function(){
+      console.log($(".input-effect input"))
+      if($(this).val() != ""){
+        $(this).addClass("has-content");
+      }else{
+        $(this).removeClass("has-content");
+      }
+    })
+  });
+</script>
 
 
 
