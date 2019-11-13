@@ -21,6 +21,7 @@ class Meal < ApplicationRecord
 
   has_many :orders
   validates :name, presence: true
+  # before_validation :check_meal_in_restaurant
   before_validation :set_pictures_error
   after_create :save_photos
   #validates :mealphotos, length: { minimum: 1, message: "You must include at least one photo of the meal." }
@@ -38,6 +39,26 @@ class Meal < ApplicationRecord
        meal_photo.save
      end
   end
+
+  def check_meal_in_restaurant
+    if !self.name_list.blank?
+    raise
+    @restaurant = Restaurant.find(restaurant.id)
+    @restaurant_meal_names = []
+    @restaurant.meals.each do |meal_name|
+      @restaurant_meal_names << meal_name.name
+    end
+  end
+  end
+
+  #   if restaurant_meal_names.include? self.name
+  #     @previous_meal = restaurant.meals.find_by_name(self.name)
+  #     #  # # @previous_meal = Meal.find(self.id)
+  #     #  redirect_to meal_path(@previous_meal)
+  #     # # redirect_to "/meals/#{@previous_meal.id}"
+  #   end
+  #   raise
+  # end
 
   # validate the restaurant selection
   # validates_numericality_of :price, presence: false
