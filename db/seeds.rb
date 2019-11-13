@@ -14,6 +14,7 @@
  MealType.destroy_all
 
 
+
  require 'faker'
 
 
