@@ -60,7 +60,7 @@
           <h5 class="my-auto" style="font-weight: normal;"> <%= c.name %></h5>
 
         <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-          <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
+          <a id = "#heart-toggle" class='index-heart-toggle py-auto my-auto heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
         <%# end %>
 
         </div>

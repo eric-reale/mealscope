@@ -70,14 +70,14 @@ i.far.fa-heart {
 
 .collection:hover {
   background-color: #FAFAFA;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: lighter;
 }
 
 .modal-body.text-left {
   width: 95%;
   margin-top: 5px;
-  border-radius: 5px;
+  border-radius: 8px;
   &:hover{
   background-color: #FAFAFA;
   cursor: pointer;
@@ -100,6 +100,7 @@ i.far.fa-heart {
   border: none;
      &:hover{
   background-color: #FAFAFA;
+    // cursor: pointer;
 
   }
 }
