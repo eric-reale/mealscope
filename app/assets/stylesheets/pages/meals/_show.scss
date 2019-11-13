@@ -249,6 +249,8 @@ i.far.fa-heart {
   font-weight: lighter;
   margin-top: auto;
   margin-bottom: auto;
+  width: max-content;
+  padding-right: 10px
 }
 
 
@@ -359,6 +361,11 @@ color:black;
   .cards-resto {
     grid-template-columns: 1fr 1fr;
   }
+  #back-icon {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+}
 }
 
 // Medium devices (tablets, 768px and up)
