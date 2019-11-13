@@ -8,11 +8,12 @@ initStarRating();
 import { typedJS } from '../plugins/typed'
 import { starsOnIndex } from '../components/starsOnIndex'
 import { heartToggle} from '../components/heartToggle'
+import { selectdropdown } from '../plugins/init_select2';
 
 // import ahoy from "ahoy.js";
 
 // ahoy.trackAll();
-
+selectdropdown()
 
 // typedJS();
 // starsOnIndex();
