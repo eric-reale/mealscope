@@ -226,6 +226,7 @@
         <div class="restaurant-name-container">
           <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
         </div>
+          <%= link_to(m1) do %>
         <div class="card-trip">
             <%# m1 = @restaurant_meals.sample %>
             <% m1 = selected[0] %>
@@ -238,7 +239,9 @@
           <h2 class="card-trip-pricing"><% m1.price %></h2>
         </div>
       </div>
+        <% end %>
       <% elsif m2 %>
+          <%= link_to(m2) do %>
          <div class="card-trip">
             <% m2 = selected[1] %>
             <%= cl_image_tag m2.mealphotos[0].photo, height: 300, width: 400 %>
@@ -250,7 +253,9 @@
           <h2 class="card-trip-pricing"><% m2.price %></h2>
         </div>
       </div>
+        <% end %>
       <% elsif m3 %>
+      <%= link_to(m3) do %>
        <div class="card-trip">
             <% m3 = selected[2] %>
         <%= cl_image_tag m3.mealphotos[0].photo, height: 300, width: 400 %>
@@ -262,6 +267,7 @@
           <h2 class="card-trip-pricing"><% m3.price %></h2>
         </div>
         </div>
+        <% end %>
         <% end %>
       </div>
     </div>
