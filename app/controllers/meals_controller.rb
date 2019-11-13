@@ -174,37 +174,33 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-    @meal.restaurant_id = params[:meal][:restuarant]
+    @meal.photo_list = params[:meal][:meal_photos]
+    @meal.restaurant_id = params[:meal][:restaurant]
     authorize @meal
-    @restaurant = @meal.restaurant
     @meal.user = current_user
-      if @meal.save
-        params[:meal][:diet_meal_tag_ids].each do |tag|
-          if tag.length > 0
-          diet_tags = DietTag.find_by_name(tag)
-          DietMealTag.create(meal: @meal, diet_tag: diet_tags)
-          end
+    if params[:meal][:meal_photos].nil?
+      render :new
+    elsif @meal.save
+      params[:meal][:diet_meal_tag_ids].each do |tag|
+        if tag.length > 0
+        diet_tags = DietTag.find_by_name(tag)
+        DietMealTag.create(meal: @meal, diet_tag: diet_tags)
         end
-        params[:meal][:cuisine_meal_tag_ids].each do |tag|
-          if tag.length > 0
-          cuisine_tags = CuisineTag.find_by_name(tag)
-          CuisineMealTag.create(meal: @meal, cuisine_tag: cuisine_tags)
-          end
+      end
+      params[:meal][:cuisine_meal_tag_ids].each do |tag|
+        if tag.length > 0
+        cuisine_tags = CuisineTag.find_by_name(tag)
+        CuisineMealTag.create(meal: @meal, cuisine_tag: cuisine_tags)
         end
-        params[:meal][:meal_type_tag_ids].each do |tag|
-          if tag.length > 0
-          meal_types = MealType.find_by_name(tag)
-          MealTypeTag.create(meal: @meal, meal_type: meal_types)
-          end
+      end
+      params[:meal][:meal_type_tag_ids].each do |tag|
+        if tag.length > 0
+        meal_types = MealType.find_by_name(tag)
+        MealTypeTag.create(meal: @meal, meal_type: meal_types)
         end
-        params[:meal][:meal_photos].each do |photo|
-          po = Cloudinary::Uploader.upload(photo)
-          meal_photo = Mealphoto.new(meal: @meal)
-          meal_photo.remote_photo_url = po["url"]
-          meal_photo.save
-        end
-        redirect_to meal_path(@meal)
-      else
+      end
+      redirect_to meal_path(@meal)
+    else
       render :new
     end
   end

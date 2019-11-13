@@ -37,4 +37,4 @@ en:
         mealphotos: ""
   placeholders:
     meal:
-      restaurant_id: "test"
+      restaurant_id: ""

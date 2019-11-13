@@ -18,7 +18,9 @@
         </div>
 
         </div>
+        <% if @meal.price %>
           <p style="font-size: 20px;">$<%= @meal.price %></p>
+          <% end %>
 
         <!-- # Authorization for editing and deleting meal -->
         <% if current_user == @meal.user  %>
@@ -167,7 +169,9 @@
                 </div>
 
               </div>
+              <% if r.content != "" %>
               <em> "<%= r.content %>"</em>
+              <% end %>
             </div>
 
           <% end %>
