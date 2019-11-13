@@ -4,6 +4,12 @@
   background: white;
   margin-bottom: 20px;
   margin-left: 45px;
+  text-decoration: none;
+  color:black;
+  &:hover{
+    text-decoration: none;
+       color:black;
+}
 }
 
 .card-trip > img {
