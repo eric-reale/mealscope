@@ -1,5 +1,22 @@
 @import "show";
 
+.modal-body.text-left {
+  width: 95%;
+  margin-top: 5px;
+  border-radius: 8px;
+  &:hover{
+  background-color: #FAFAFA;
+  cursor: pointer;
+  }
+}
+
+.collection:hover {
+  background-color: #FAFAFA;
+  border-radius: 8px;
+  font-weight: lighter;
+
+}
+
 @media (min-width: 100px) and (max-width: 768px) {
   #map {
     margin: -10px;
