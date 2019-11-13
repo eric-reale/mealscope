@@ -1,0 +1,14 @@
+#button2 {
+  // width: 100%;
+  background-color: transparent;
+  margin: auto;
+  padding: 8px 20px;
+  border-radius: 10px;
+  color: #e26757;
+  border-color: #e26757;
+    &:hover {
+      color: #fff;
+      background-color: #e26757;
+      border-color: #e26757;
+    }
+}
