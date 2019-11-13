@@ -178,7 +178,18 @@ class MealsController < ApplicationController
     @meal.restaurant_id = params[:meal][:restaurant]
     authorize @meal
     @meal.user = current_user
-    if params[:meal][:meal_photos].nil?
+
+    @restaurant = Restaurant.find(params[:meal][:restaurant])
+    @restaurant_meal_names = []
+    @restaurant.meals.each do |meal_name|
+      @restaurant_meal_names << meal_name.name
+    end
+
+    if @restaurant_meal_names.include? @meal.name
+        @previous_meal = @restaurant.meals.find_by_name(@meal.name)
+        flash[:notice] = "Something went wrong."
+        redirect_to meal_path(@previous_meal)
+    elsif params[:meal][:meal_photos].nil?
       render :new
     elsif @meal.save
       params[:meal][:diet_meal_tag_ids].each do |tag|
