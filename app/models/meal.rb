@@ -22,8 +22,8 @@ class Meal < ApplicationRecord
   has_many :orders
   validates :name, presence: true
   # before_validation :check_meal_in_restaurant
-  before_validation :set_pictures_error
-  after_create :save_photos
+   before_validation :set_pictures_error
+   after_create :save_photos
   #validates :mealphotos, length: { minimum: 1, message: "You must include at least one photo of the meal." }
 
 
@@ -32,6 +32,7 @@ class Meal < ApplicationRecord
   end
 
   def save_photos
+    return if self.photo_list == 0
     self.photo_list.each do |photo|
        po = Cloudinary::Uploader.upload(photo)
        meal_photo = Mealphoto.new(meal: self)

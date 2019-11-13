@@ -9,7 +9,6 @@
   <div class="profile-body mx-auto">
     <div class='d-flex justify-content-center'>
 
-
       <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
       <div><h2>Add a meal</h2></div>
       <% if @meal.errors.any? %>
@@ -24,14 +23,15 @@
 
 
       <div class="form-inputs align-items-center m-auto pt-3" style="width: 100%;">
-       <%= f.input :restaurant,
+       <%= f.input :restaurant_id,
        label: false,
        input_html: {class: "opacity-style"},
        collection: Restaurant.all,
        include_blank: 'Select a restaurant' %>
        <%= f.input :name,
        label: false,
-       placeholder: 'Name' %>
+       placeholder: 'Name',
+       error: false %>
        <%= f.input :description,
        label: false,
        placeholder: 'Description',
