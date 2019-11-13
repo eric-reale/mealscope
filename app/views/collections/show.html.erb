@@ -17,7 +17,7 @@
             <% pin.meal.mealphotos.each do |mealphoto| %>
               <%= link_to cl_image_tag(mealphoto.photo, alt:"<div class=\"d-flex justify-content-between\">
               <div><p class='index-rating my-auto' style='font-weight: lighter;'> #{pin.meal.check_rating(pin.meal.average_rating)} #{pin.meal.display_rating_count(pin.meal.reviews.count)}</p></div>
-              <div class='my-auto' id='link-color' style='color: gray;'><a href=\"#{request.base_url}/meals/#{pin.meal.id}/pins/#{pin.id}\" data-method=\"delete\"><i class=\"fa fa-times\"></i></a></div>
+
               </div>
               <p class='my-auto' style='font-weight: lighter;'>#{pin.meal.name} <br>@#{pin.meal.restaurant.name}</p>", ), meal_path(pin.meal) %>
             <% end %>
