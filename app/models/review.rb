@@ -2,12 +2,12 @@ class Review < ApplicationRecord
   belongs_to :meal
   belongs_to :user
 
-  validates :content, presence: true
+  # validates :content, presence: true
   validates :rating, presence: true
   validates :rating, inclusion: { in: [1, 2, 3, 4, 5] }
   validates_numericality_of :rating
   after_create :calculate_average_rating
-  after_destroy :calculate_average_rating
+  # after_destroy :calculate_average_rating
 
   after_create :add_review_to_user
 
