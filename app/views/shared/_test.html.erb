@@ -1,139 +1,56 @@
-<form id="navbar-form" action="/meals" method="get">
-      <h4>Cuisines</h4>
-        <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
-        <div class="form-check form-checkboxes-6 cuisine-list">
-        <% CuisineTag::CUISINE_TAG.each do |tag| %>
-        <!-- <div class="form-groups"> -->
-          <div class="control-group">
-              <div class="controls">
-                <select data-select="cuisine-multiple" multiple="multiple" name="cuisine_tags[]">
-                   <option class="" value="<%= tag %>"><%=tag%></option>
-                  </select>
-                </div>
-            <!-- </label> -->
-              </div>
-          <% end %>
-        </div>
-      <br>
-        <h4>Dietary Restrictions</h4>
-          <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
-      <div class="form-check form-checkboxes-4 diet-list">
-        <% DietTag::DIET_TAG.each do |tag| %>
-        <div class="control-group">
-              <div class="controls">
-                <select data-select="multiple" multiple="multiple" name="diet_tags[]">
-                   <option value="<%= tag %>"><%= tag %></option>
-                  </select>
-                </div>
-            <!-- </label> -->
-        </div>
-          <% end %>
-        </div>
-        <br>
-        <h4>Types of Meals</h4>
-          <hr class="mx-auto mt-1 mb-1" style="width: 33%;">
-        <div class="form-check form-checkboxes-4 meal-list">
-        <% MealType::MEAL_TYPE.each do |tag| %>
-        <div class="control-group">
-              <div class="controls">
-                <select data-select="multiple" multiple="multiple" name="meal_tags[]">
-                   <option value="<%= tag %>"><%=tag%></option>
-                  </select>
-                </div>
+
+
+<div class="d-flex flex-row mx-auto" style="margin-bottom: 50px">
+          <div class="">
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+              Cuisines
+            </button>
+
+            <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
+                    <div class="form-checkboxes-4">
+                    <%= f.association :cuisine_meal_tags,
+                              collection: CuisineTag::CUISINE_TAG,
+                              as: :check_boxes,
+                              legend: false %>
+                    </div>
+            </div>
           </div>
-          <% end %>
-        </div>
-        <br>
-        <input type="hidden" id="modal-query-field" name="query" value="<%= @query %>">
-           <button id="navbar-form-btn" type="submit" class="loopicon"><i class="fa fa-search"></i></button>
-         </form>
-         <br>
-      </div>
-
-    </div>
-  </div>
-  </div>
+          </div>
 
 
+        <div class='mt-3'></div>
 
-<script>
-  const input = document.querySelector("#input-query")
-  const hiddenField = document.querySelector("#modal-query-field")
-  input.addEventListener("change", (e) => {
-    const queryValue = e.target.value
-    hiddenField.value = queryValue
-  })
-  const button = document.querySelector("#navbar-form-btn")
-  button.addEventListener("click", () => {
-   document.querySelector("#navbar-form").submit()
-  })
+        <div class="text-left">
+          <div class="btn-group text-left dropup">
+            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+              Dietary Restrictions
+            </button>
+            <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
+                        <div class="form-checkboxes-4">
+                    <%= f.association :diet_meal_tags,
+                              collection: DietTag::DIET_TAG,
+                              as: :check_boxes,
+                              label: false %>
+                    </div>
+            </div>
+          </div>
+          </div>
 
-
-</script>
-
-<script>
-$('[data-select="cuisine-multiple"]').each(function () {
-  var $select = $(this)
-      $mselect = $('<div class="mselect"></div>');
-
-  $select.hide();
-
-  var $opts = $select.find('option');
-
-
- $select.after($mselect);
-  $opts.each(function (i, opt) {
-    $mselect.append('<a href="#" class="mselect-opt-cuisine" data-idx="' + i + '"><i class="icon-ok  icon-white pull-right"></i>' + $(opt).text() + '</a>');
-  });
-
-
-});
-
-$('[data-select="multiple"]').each(function () {
-  var $select = $(this)
-      $mselect = $('<div class="mselect"></div>');
-
-  $select.hide();
-
-  var $opts = $select.find('option');
-
-
- $select.after($mselect);
-  $opts.each(function (i, opt) {
-    $mselect.append('<a href="#" class="mselect-opt" data-idx="' + i + '"><i class="icon-ok  icon-white pull-right"></i>' + $(opt).text() + '</a>');
-  });
-
-
-});
-
-$(document).on('click', '.mselect-opt', function (event) {
-  event.preventDefault();
-  var $parent = $(this).parents('.mselect'),
-      $opts = $parent.find('.mselect-opt'),
-      $ogselect = $parent.prev('select'),
-      idx = $(this).data('idx'),
-      $ogopt = $ogselect.find('option').eq(idx);
-
-  $(this).toggleClass('selected');
-  var val = !$ogopt.is(':selected') ? 'selected' : '';
-
-  $ogopt.prop('selected', val);
-});
-
-$(document).on('click', '.mselect-opt-cuisine', function (event) {
-  console.log("blabla")
-  event.preventDefault();
-  var $parent = $(this).parents('.mselect'),
-      $opts = $parent.find('.mselect-opt-cuisine'),
-      $ogselect = $parent.prev('select'),
-      idx = $(this).data('idx'),
-      $ogopt = $ogselect.find('option').eq(idx);
-
-  $(this).toggleClass('selected');
-  var val = !$ogopt.is(':selected') ? 'selected' : '';
-
-  $ogopt.prop('selected', val);
-});
-</script>
-
-
+            <div></div>
+        <div class="text-left">
+         <div class="btn-group text-left dropup">
+            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false" style="width: 100%">
+              Type of Meal
+            </button>
+            <div class="dropdown-menu dropdown-menu-left dropdown-menu-lg-right p-5">
+                        <div class="form-checkboxes-4">
+                    <%= f.association :meal_type_tags,
+                              collection: MealType::MEAL_TYPE,
+                              as: :check_boxes,
+                              label: false %>
+                   </div>
+            </div>
+          </div>
+          </div>
+</div>

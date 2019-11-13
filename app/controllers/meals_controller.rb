@@ -71,7 +71,7 @@ class MealsController < ApplicationController
         end
       end
 
-      @meals = @meals.order(average_rating: :desc).flatten.uniq
+      # @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
 
       unless @meals.count.zero?
         @restaurants = []
@@ -95,7 +95,7 @@ class MealsController < ApplicationController
     #######################################
     # CASE 3 need to handle all cases where query not present but filters are
     elsif !params[:query].present? && (params[:diet_tags].present? ||
-      params[:cuisine_tags].present? ||
+      params[:cuisine_tags] != [''] ||
       params[:meal_tags].present?)
       @meals = []
       if params[:diet_tags].present?
@@ -119,7 +119,7 @@ class MealsController < ApplicationController
         end
       end
 
-      @meals = @meals.order(average_rating: :desc).flatten.uniq
+      # @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
 
       unless @meals.count.zero?
         @restaurants = []
@@ -164,6 +164,7 @@ class MealsController < ApplicationController
         }
       end
     end
+    @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
     # @meals = policy_scope(Meal) ## NEED TO FIX. MESSING WITH THE FILTERS
   end
 
@@ -178,8 +179,18 @@ class MealsController < ApplicationController
     @meal.restaurant_id = params[:meal][:restaurant]
     authorize @meal
     @meal.user = current_user
-    if params[:meal][:meal_photos].nil?
-      raise
+
+    @restaurant = Restaurant.find(params[:meal][:restaurant])
+    @restaurant_meal_names = []
+    @restaurant.meals.each do |meal_name|
+      @restaurant_meal_names << meal_name.name
+    end
+
+    if @restaurant_meal_names.include? @meal.name
+        @previous_meal = @restaurant.meals.find_by_name(@meal.name)
+        flash[:alert] = "The meal you entered already exists. See it here!"
+        redirect_to meal_path(@previous_meal)
+    elsif params[:meal][:meal_photos].nil?
       render :new
     elsif @meal.save
       params[:meal][:diet_meal_tag_ids].each do |tag|
