@@ -31,3 +31,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      meal:
+        mealphotos: ""
+  placeholders:
+    meal:
+      restaurant_id: ""
