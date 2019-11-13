@@ -135,7 +135,8 @@
           <h3>Leave a review!</h3>
           <%= simple_form_for ([@meal, @review]) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-            <%= f.input :content, label: "Say something", class: "form-review" %>
+            <%= f.input :content, label: false, placeholder: "Say something...", class: "form-review" %>
+            <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
             <%= f.submit "Submit", class: "btn btn-outline-danger", id: "button", style: "border-radius: 4px;" %>
           <% end %>
         </div>
@@ -201,9 +202,7 @@
     </div>
     <div>
        <div class="other-meals-container ml-4">
-        <div class="restaurant-name-container">
-        <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
-        </div>
+
 
       <!-- Loop Logic for 3 Sample Meal -- Make sure that 3 other meals from restaurant are not the primary meal displayed
         and are 3 unique meals -->
@@ -217,8 +216,12 @@
         <% m3 = (@restaurant_meals - selected - primary_meal).sample%>
         <% selected << m3 %>
 
+
         <!-- Displaying 3 other meals from this restaurant -->
       <% if m1 %>
+        <div class="restaurant-name-container">
+          <h4>Check out some of <%= @meal.restaurant.name %>'s other top dishes.</h4>
+        </div>
         <div class="card-trip">
             <%# m1 = @restaurant_meals.sample %>
             <% m1 = selected[0] %>

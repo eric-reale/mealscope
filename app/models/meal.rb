@@ -21,8 +21,11 @@ class Meal < ApplicationRecord
   has_many :orders
 
   validates :name, presence: true
+  validates :mealphotos, length: { minimum: 1, message: "You must include at least one photo of the meal." }
+
+
   # validate the restaurant selection
-  validates_numericality_of :price
+  # validates_numericality_of :price, presence: false
 
   include PgSearch::Model
   pg_search_scope :global_search,

@@ -174,11 +174,10 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
+    @meal.restaurant_id = params[:meal][:restuarant]
     authorize @meal
-    @restaurant = params[:meal][:restaurant]
-    @restaurant = Restaurant.find(@restaurant)
-    @meal.restaurant = @restaurant
-      @meal.user = current_user
+    @restaurant = @meal.restaurant
+    @meal.user = current_user
       if @meal.save
         params[:meal][:diet_meal_tag_ids].each do |tag|
           if tag.length > 0
@@ -211,6 +210,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    skip_authorization
     @collection = Collection.new # Instantiating a new collection to be made from the model index page
     @pin = Pin.new
     @review = Review.new

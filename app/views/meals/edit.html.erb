@@ -12,6 +12,15 @@
 
     <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
           <div><h2>Edit a meal</h2></div>
+            <% if @meal.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+              <% @meal.errors.full_messages.each do |msg| %>
+                <li style="color: red"><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
         <div class="form-inputs align-items-center m-auto pt-3" style="width: 75%;">
           <%= f.input :name,

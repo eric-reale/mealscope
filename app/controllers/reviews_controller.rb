@@ -12,13 +12,15 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     @review.meal = @meal
     if @review.save
-        params[:review][:meal_photos].each do |photo|
-        po = Cloudinary::Uploader.upload(photo)
-        meal_photo = Mealphoto.new(meal: @meal)
-        meal_photo.remote_photo_url = po["url"]
-        meal_photo.save
+        if params[:review][:meal_photos].present?
+          params[:review][:meal_photos].each do |photo|
+          po = Cloudinary::Uploader.upload(photo)
+          meal_photo = Mealphoto.new(meal: @meal)
+          meal_photo.remote_photo_url = po["url"]
+          meal_photo.save
         end
-        @meal.save
+      end
+      @meal.save
       redirect_to meal_path(@meal)
     else
       flash[:alert] = "Something went wrong."
