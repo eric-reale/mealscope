@@ -29,6 +29,10 @@ def track_meals_viewed
   ahoy.track "Viewed #{params[:id]}", request.filtered_parameters
 end
 
+def default_url_options
+  { host: ENV["DOMAIN"] || "localhost:3000" }
+end
+
   private
 
   def after_sign_in_path_for(resource)
