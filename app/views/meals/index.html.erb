@@ -61,7 +61,7 @@
                   <div class='index-font my-auto' style='font-weight: lighter;'> @#{m.restaurant.name}</div>
 
                   <div><a data-toggle='modal' data-target='#heart-modal'
-                   class='index-heart'href=\"/\"><i class='far fa-heart'></i></a></div>
+                   class='index-heart'href=\"/\"><i class='far fa-heart' data-meal-id=#{m.id}></i></a></div>
 
                   </div>" %>
                     <% unless m.mealphotos.empty? %>
@@ -109,10 +109,10 @@
 
       </div>
         <% end %>
+    </div>
          <div class="modal-footer justify-content-center">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
       </div>
-    </div>
     </div>
   </div>
 </div>
