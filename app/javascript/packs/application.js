@@ -8,11 +8,12 @@ initStarRating();
 import { typedJS } from '../plugins/typed'
 import { starsOnIndex } from '../components/starsOnIndex'
 import { heartToggle} from '../components/heartToggle'
+import { selectdropdown } from '../plugins/init_select2';
 
 // import ahoy from "ahoy.js";
 
 // ahoy.trackAll();
-
+selectdropdown()
 
 // typedJS();
 // starsOnIndex();
@@ -41,23 +42,37 @@ document.addEventListener('DOMContentLoaded', () => {
         let initialHref = heart.getAttribute('href').split('/')
         // console.log(initialHref)
         initialHref[2] = link
-        console.log(initialHref)
+        // console.log(initialHref)
         const finalHref = initialHref.join('/')
         heart.setAttribute('href', finalHref);
       })
     })
   })
+
+  const mealCard = document.querySelectorAll('a.index-heart i.far.fa-heart');
+  const modalCollections = document.querySelector('#collections');
+  mealCard.forEach(card => {
+    card.addEventListener('click', e => {
+      const mealId = e.currentTarget.dataset.mealId;
+      console.log(modalCollections)
+      modalCollections.insertAdjacentHTML('beforeend', `
+        <div class="d-none">
+         <p><a id="heart-toggle" href="/meals/${mealId}/pins?collection_id=150" data-controller="pins" data-method="post" data-remote="true"><i class="far fa-heart"></i></a></p>
+        </div>
+      `)
+    })
+  })
 })
 
-  const wrapper = document.querySelector('#new_review')
-  const hearts = document.querySelector(".far")
-  hearts.addEventListener('click', e => {
-    // console.log('Im here');
-    // console.log(wrapper);
-    let initialHref = wrapper.getAttribute('action').split('/')
-    const link = initialHref[2]
-    console.log(link)
-})
+//   const wrapper = document.querySelector('#new_review')
+//   const hearts = document.querySelector(".far")
+//   hearts.addEventListener('click', e => {
+//     // console.log('Im here');
+//     // console.log(wrapper);
+//     let initialHref = wrapper.getAttribute('action').split('/')
+//     const link = initialHref[2]
+//     console.log(link)
+// })
 
 
     // const link = wrapper.getAttribute('action').replace('/meals/', '');
