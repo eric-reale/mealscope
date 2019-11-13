@@ -187,7 +187,7 @@ class MealsController < ApplicationController
 
     if @restaurant_meal_names.include? @meal.name
         @previous_meal = @restaurant.meals.find_by_name(@meal.name)
-        flash[:notice] = "Something went wrong."
+        flash[:alert] = "The meal you entered already exists. See it here!"
         redirect_to meal_path(@previous_meal)
     elsif params[:meal][:meal_photos].nil?
       render :new
