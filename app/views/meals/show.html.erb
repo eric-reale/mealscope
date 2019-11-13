@@ -5,18 +5,20 @@
 </div>
 
 <div class="container-fluid">
-  <div class="row mx-5 p-5 no-margin container-show-card mx-auto">
+  <div class="row p-5 container-show-card mx-auto">
     <div class="col-md-7">
-      <div class="justify-content-between py-4">
+      <div class="justify-content-between pb-4">
         <div class="row-title d-flex justify-content-between">
           <div class='d-flex' style='width: 550px'>
           <h2> <%= @meal.name %> </h2>
-
-          <div><a data-toggle='modal' data-target='#heart-modal'
-            class='index-heart'><i class='far fa-heart' href="/" style='font-size: 20px; color: red; margin-left: 20px; margin-top: 10px'></i></a></div></div>
-          <p>$<%= @meal.price %></p>
+          <!-- here -->
+          </div>
+        <div class="stars-avg-rating d-flex justify-content-between" >
+          <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
         </div>
-        <div class="stars-avg-rating d-flex justify-content-between" > <p><%= @meal.check_rating(@meal.average_rating) %> <%= @meal.display_rating_count(@meal.reviews.count) %></p>
+
+        </div>
+          <p style="font-size: 20px;">$<%= @meal.price %></p>
 
         <!-- # Authorization for editing and deleting meal -->
         <% if current_user == @meal.user  %>
@@ -28,21 +30,20 @@
           </div>
         <% end %>
 
-        </div>
 
 <!-- MODAL FOR PINS -->
   <div class="modal" id="heart-modal" tabindex="-1" role="dialog">
   <div class="modal-dialog-heart" role="document">
-    <div class="modal-content-heart">
+    <div class="modal-content-heart mb-0" >
       <div class="modal-header">
         <h4 class="modal-title">Add to your collections</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body text-left">
-        <h6>  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Create a new collection
+      <div class="modal-body text-left mx-auto mt-3">
+        <h6 class="my-auto" style="width: 80%">  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-plus mx-1"></i> Create a new collection
   </a></h6>
   <div class="collapse add-collection" id="collapseExample" style="border: none">
   <div class="card card-body card-body-new-collection">
@@ -54,17 +55,17 @@
 </div>
 </div> <div class='collection-modal-container' id="collections">
       <% current_user.collections.reverse.each do |c| %>
-      <div class="row d-flex justify-content-between m-3 ">
-       <h5> <%= c.name %></h5>
+      <div class="collection row d-flex justify-content-between m-3 py-2 px-3">
+       <h5 class="my-auto" style="font-weight: normal;"> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <p><a id = "#heart-toggle" class='index-heart-toggle heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a></p>
+     <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
       <%# end %>
 
       </div>
         <% end %>
-         <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+         <div class="modal-footer justify-content-center my-auto mb-0">
+        <button type="button" class="my-auto py-2 px-5" style="border-radius: 4px; margin-top: 18px;" data-dismiss="modal" id="button">Done</button>
       </div>
     </div>
     </div>
@@ -109,6 +110,8 @@
             <span class="sr-only">Next</span>
           </a>
           <% end %>
+          <div><a data-toggle='modal' data-target='#heart-modal'
+            class='index-heart'><i class='far fa-heart' href="/"></i></a></div>
         </div>
       </div>
       <div class="filter-container ml-0">
@@ -117,9 +120,6 @@
           <% end %>
           <% @meal.diet_tags.each do |diet| %>
           <%= link_to diet.name, meals_path(query: diet.name), class: "btn btn-hover cuisine-taggy" %>
-          <% end %>
-           <% @meal.meal_types.each do |type| %>
-          <%= link_to type.name, meals_path(query: type.name), class: "btn btn-hover cuisine-taggy" %>
           <% end %>
         </p>
       </div>
@@ -136,8 +136,7 @@
           <%= simple_form_for ([@meal, @review]) do |f| %>
             <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
             <%= f.input :content, label: "Say something", class: "form-review" %>
-            <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
-            <%= f.submit "Submit", class: "btn btn-outline-danger", style: "border-radius: 4px;" %>
+            <%= f.submit "Submit", class: "btn btn-outline-danger", id: "button", style: "border-radius: 4px;" %>
           <% end %>
         </div>
       </div>
@@ -182,12 +181,12 @@
     </div>
   </div>
 
-  <div class="col-md-5 justify-content-between py-4">
+  <div class="col-md-5 justify-content-between pb-4">
     <div class="instagram-container">
     <div class="row-title-resto">
       <div>
-      <h2>
-        <%= @meal.restaurant.name %> </h2><p><%=@meal.restaurant.address %></p>
+      <h2><%= @meal.restaurant.name %></h2>
+        <tr><td><p class="location my-1" style="width: 70%"><i class="fas fa-map-marker-alt" style="color: #e26757;"></i> <%= @meal.restaurant.address %></p></td></tr>
         <div class="d-flex justify-content-between">
         <p><%= link_to nil, @meal.restaurant.website_url, class: "link-color", :target => "_blank" %></p>
         <p><%= link_to "@#{@meal.restaurant.instagram_handle}", "http://instagram.com/#{@meal.restaurant.instagram_handle}", class: "link-color", :target => "_blank" %></p>
