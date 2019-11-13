@@ -74,7 +74,6 @@
    users.save!
  end
 #
- puts "Pins created!"
 
  puts "Generating Canggu restuarants..."
  restaurant_attributes = [
@@ -1458,7 +1457,7 @@ end
 
  puts "Generating reviews"
 
- 1500.times do
+ 100.times do
   reviews = Review.new(
    rating: (rand(1..5)),
    content: Faker::Restaurant.review,

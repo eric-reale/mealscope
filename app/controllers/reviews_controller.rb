@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
           meal_photo.save
         end
       end
-      @meal.save
+      # @meal.save
       redirect_to meal_path(@meal)
     else
       flash[:alert] = "Something went wrong."
