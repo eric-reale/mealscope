@@ -46,7 +46,7 @@
 i.far.fa-heart {
   color: #e26757;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 24px;
   margin: auto;
     &:hover {
     font-weight: bold;
@@ -58,8 +58,8 @@ i.far.fa-heart {
 .fa-heart:before {
   color: #e26757;
   cursor: pointer;
-  font-size: 28px;
-  margin: auto;
+  font-size: 24px;
+  // margin: auto;
     &:hover {
     font-weight: normal;
     // color: #e26757;

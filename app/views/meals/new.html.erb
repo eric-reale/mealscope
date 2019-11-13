@@ -2,6 +2,7 @@
 
   <div class="profile-header">
 
+
     <i class="fas fa-plus-circle"></i>
     <%= image_tag 'chicken.svg' , class: "img" %>
   </div>
@@ -103,12 +104,13 @@
           <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
           <div class="mx-auto my-3" style="width: 50%;">
           </div>
-          <div class="form-actions">
+          <div class="form-actions d-flex justify-content-between">
           <%= f.button :submit, 'Add your meal!' , class: "addamealbtn mb-2", style: "width: 100%;" %>
 
       <% end %>
 
   </div>
+            <%= link_to "Cancel", url_for(:back), class: "link-color mb-2" %>
 </div>
 </div>
 </div>

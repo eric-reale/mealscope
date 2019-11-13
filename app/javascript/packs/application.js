@@ -64,6 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 })
 
+const inputBox = document.querySelector('#input-query');
+const submitButton = document.querySelector('#navbar-form-btn');
+inputBox.addEventListener('keyup', e => {
+  if (e.code === 'Enter') {
+    submitButton.click();
+  }
+})
+
 //   const wrapper = document.querySelector('#new_review')
 //   const hearts = document.querySelector(".far")
 //   hearts.addEventListener('click', e => {

@@ -2,13 +2,23 @@
 
 <nav class="navbar navbar-light navbar-expand-lg sticky-top navbar-mealscope-color">
 
-        <%= link_to image_tag("logo-black.png"), root_path, class: "navbar-brand"%>
+        <%= link_to image_tag("logo7.png"), meals_path, class: "navbar-brand"%>
 
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
 <!-- NAV BAR -->
+
+  <div class="d-flex justify-content-between align-items-center" style="width: 16%;">
+  <div class="nav-text-buttons d-flex justify-content-around" style="width: 70%;">
+    <a class="link-color-darker" href="/meals/new">
+      Add a meal
+    </a>
+    <a class="link-color-darker" href="/">
+      Home
+    </a>
+  </div>
 
   <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -20,10 +30,10 @@
             <%= image_tag 'person-placeholder.jpg' , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile", profile_path, class: "dropdown-item" %>
+            <%= link_to "Profile", profile_path, class: "dropdown-item text-center" %>
             <hr class="mx-auto mt-1 mb-0 p-0 d-flex" style="width: 75%;">
 
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
           </div>
         </li>
       <% else %>
@@ -31,14 +41,13 @@
           <a class="nav-link" data-toggle="modal" data-target="#loginNavbarModal">
               Log In |
           </a>
-
           <a class="nav-link" data-toggle="modal" data-target="#signupNavbarModal">
               Sign Up
           </a>
-
         </li>
       <% end %>
     </ul>
+  </div>
   </div>
 </nav>
 
