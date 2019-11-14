@@ -2,13 +2,13 @@
 
   <div class="profile-header">
 
-
     <i class="fas fa-plus-circle"></i>
     <%= image_tag 'chicken.svg' , class: "img" %>
   </div>
 
   <div class="profile-body mx-auto">
     <div class='d-flex justify-content-center'>
+
 
       <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
       <div><h2>Add a meal</h2></div>
@@ -24,15 +24,14 @@
 
 
       <div class="form-inputs align-items-center m-auto pt-3" style="width: 100%;">
-       <%= f.input :restaurant_id,
+       <%= f.input :restaurant,
        label: false,
        input_html: {class: "opacity-style"},
        collection: Restaurant.all,
        include_blank: 'Select a restaurant' %>
        <%= f.input :name,
        label: false,
-       placeholder: 'Name',
-       error: false %>
+       placeholder: 'Name' %>
        <%= f.input :description,
        label: false,
        placeholder: 'Description',
@@ -42,35 +41,14 @@
        label: false,
        placeholder: "Price" %>
 
-          <hr class="mx-auto mt-2 mb-2" style="width: 75%;">
-          <div class="photo-input-button"><p>Add some photos 📷 </p></div>
-          <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png", input_html: { name: 'Photos', label: 'Photos' }    %>
-          <hr class="mx-auto mt-4 mb-3" style="width: 75%;">
-          <div class="mx-auto my-3" style="width: 50%;">
-          </div>
-          <div class="form-actions d-flex justify-content-between">
-          <%= f.button :submit, 'Add your meal!' , class: "addamealbtn mb-2", style: "width: 100%;" %>
+       <div class="d-flex flex-column mx-auto" style="margin-bottom: 10px">
+          <h5>Cuisines</h5>
 
-<!--        <div class="d-flex flex-column mx-auto" style="margin-bottom: 10px">
-          <h5>Cuisines</h5> -->
-
-
-
-  </div>
-            <%= link_to "Cancel", url_for(:back), class: "link-color mb-2" %>
-</div>
-</div>
-</div>
-<div id="credits">Icons made by <a id="credits" href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a id="credits" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-</div>
-  </div>
-  </div>
-</div>
-  </div>
 
 
             <%= f.association :cuisine_meal_tags,
             label: false,
+            placeholder: 'Cuisine',
             collection: CuisineTag::CUISINE_TAG,
             id:"cuisine_addameal_type",
             input_html: { multiple: true, id: "cuisine_addameal_type" },
