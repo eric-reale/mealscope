@@ -547,6 +547,12 @@
 #  #  website_url:       'http://maitaibali.com/',
 #  #  instagram_handle:  'maitaibali'
 #  # },
+#             {
+#  #  name:              'Metta Cafe',
+#  #  address:           'Jl Pantai Batu Bolong , Canggu , Kuta Utara, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80361',
+#  #  website_url:       'https://metta-cafe.business.site/',
+#  #  instagram_handle:  'mettacanggucafe'
+#  # },
 #  #             {
 #  #  name:              'Gaya Gelato',
 #  #  address:           'Jalan Batu Mejan Echo Beach, Canggu, Kuta Utara, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80351',
