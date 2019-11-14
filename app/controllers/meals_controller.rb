@@ -185,7 +185,8 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.photo_list = params[:meal][:meal_photos]
-    @meal.restaurant_id = params[:meal][:restaurant_id]
+    @meal.restaurant_id = params[:meal][:restaurant] # edit from resto id
+    @meal.restaurant = Restaurant.find(@meal.restaurant_id) if @meal.restaurant_id #new line
     authorize @meal
     @meal.user = current_user
 
