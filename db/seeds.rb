@@ -15,6 +15,7 @@
 
 
 
+
  require 'faker'
 
 
@@ -227,6 +228,12 @@
 #   address:           '',
 #   website_url:       'https://www.facebook.com/pages/category/Restaurant/Lettuce-Inn-Bali-235195897347707/',
 #   instagram_handle:  'lettuceinnbali'
+#  },
+#   {
+#   name:              'Tropikale Bali',
+#   address:           'Jl. Pantai Batu Mejan No.108, Canggu, Kec. Kuta Utara, Kabupaten Badung, Bali 80363',
+#   website_url:       'https://tropikale.com',
+#   instagram_handle:  'tropikalebali'
 #  },
 #    {
 #   name:              'Warung Smile Canggu',
