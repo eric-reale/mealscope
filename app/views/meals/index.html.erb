@@ -108,7 +108,7 @@
        <h5 class="my-auto" style="font-weight: normal; color: gray;"> <%= c.name %></h5>
 
       <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
+     <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='index-heart-toggle far fa-heart'></i></a>
       <%# end %>
 
       </div>
