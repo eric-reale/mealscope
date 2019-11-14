@@ -122,6 +122,12 @@
 
 .home-button {
 opacity: 1;
+background-color: #eb4a3d !important;
+border: none;
+  &:hover{ background-color: #f64e41 !important;
+            border: none;
+
+  }
 }
 
 .fixed-top {
