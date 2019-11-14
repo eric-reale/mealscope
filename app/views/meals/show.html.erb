@@ -20,7 +20,7 @@
 
         </div>
         <% if @meal.price %>
-          <p style="font-size: 20px;">$<%= @meal.price %></p>
+          <p style="font-size: 20px;">$<%= number_with_precision(@meal.price, precision: 2) %></p>
           <% end %>
 
         <!-- # Authorization for editing and deleting meal -->
