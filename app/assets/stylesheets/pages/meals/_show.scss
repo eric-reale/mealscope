@@ -1,7 +1,87 @@
 
+
+body h2, h3, h4 {
+  color: $dark-gray;
+}
+
+body p {
+  color: $p-gray;
+}
+
 .filter-container{
   width: 100%;
 
+}
+
+// .upload-photo {
+//   border: $dark-gray solid 1px;
+//   color: $dark-gray;
+//   padding: 16px 24px;
+//   cursor: pointer;
+//   font-weight: 500;
+//   background: transparent;
+//   border-radius: 2px;
+//     &:hover {
+//         border: black solid 1px;
+//         color: black;
+//     }
+// }
+
+#photo-input {
+  color: $p-gray;
+  cursor: pointer ;
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.hidden #photo-input {
+  // width: 2px;
+  cursor: pointer ;
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.upload-btn-wrapper {
+    color: $p-gray;
+
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  border: 1px solid $p-gray;
+  border-radius: 10px;
+  padding: 8px 20px;
+  cursor: pointer;
+  &:hover {
+    cursor: pointer !important;
+  }
+}
+
+.upload-photo {
+  background-color: transparent;
+  margin: auto;
+  color: $p-gray;
+  cursor: pointer;
+    &:hover {
+      color: black;
+      background-color: transparent;
+      border-color: black;
+    }
+}
+
+
+.upload-btn-wrapper input[type=file] {
+  // font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+
+i .fas .fa-map-marker-alt {
+  color: $primary;
 }
 
 #carouselExampleIndicators {
@@ -21,12 +101,12 @@
   margin: auto;
   padding: 8px 20px;
   border-radius: 10px;
-  color: #e26757;
-  border-color: #e26757;
+  color: $primary;
+  border-color: $primary;
     &:hover {
       color: #fff;
-      background-color: #e26757;
-      border-color: #e26757;
+      background-color: $primary;
+      border-color: $primary;
     }
 }
 
@@ -44,7 +124,7 @@
 
 
 i.far.fa-heart {
-  color: #e26757;
+  color: $primary;
   cursor: pointer;
   font-size: 24px;
   margin: auto;
@@ -56,7 +136,7 @@ i.far.fa-heart {
 
 
 .fa-heart:before {
-  color: #e26757;
+  color: $primary;
   cursor: pointer;
   font-size: 24px;
   // margin: auto;
@@ -69,7 +149,7 @@ i.far.fa-heart {
 }
 
 .collection:hover {
-  background-color: #FAFAFA;
+  background-color: $very-light-gray;
   border-radius: 8px;
   font-weight: lighter;
 }
@@ -79,15 +159,15 @@ i.far.fa-heart {
   margin-top: 5px;
   border-radius: 8px;
   &:hover{
-  background-color: #FAFAFA;
+  background-color: $very-light-gray;
   cursor: pointer;
   }
 }
 
 .modal-body.text-left a {
-  color: #e26757;
+  color: $primary;
   &:hover {
-      color: #e26757;
+      color: $primary;
       cursor: pointer;
     // text-decoration: none;
     // opacity: 0.6;
@@ -99,7 +179,7 @@ i.far.fa-heart {
   background-color: transparent;
   border: none;
      &:hover{
-  background-color: #FAFAFA;
+  background-color: $very-light-gray;
     // cursor: pointer;
 
   }
@@ -109,6 +189,7 @@ i.far.fa-heart {
   font-size: 18px;
     &:hover {
       font-size: 19px;
+      color: $primary;
     }
 }
 
@@ -144,7 +225,7 @@ input:focus{outline: none;}
 // .effect-18 ~ label{position: absolute; left: 0; width: 100%; top: 9px; color: #aaa; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;}
 // .effect-18:focus ~ label, .has-content.effect-18 ~ label{top: -16px; font-size: 12px; color: #3399FF; transition: 0.3s;}
 
-.effect-18 ~ .focus-border{position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background-color: #eb4a3d; transition: 0.4s;}
+.effect-18 ~ .focus-border{position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background-color: $primary; transition: 0.4s;}
 .effect-18:focus ~ .focus-border,
 .has-content.effect-18 ~ .focus-border{width: 100%; transition: 0.4s; left: 0;}
 .effect-18 ~ label{position: absolute; left: 0; width: 100%; top: 9px; color: black; transition: 0.3s; z-index: -1; letter-spacing: 0.5px;}
@@ -153,7 +234,7 @@ input:focus{outline: none;}
 // pop-up input end
 
 #heart-toggle a {
-  color: #e26757;
+  color: $primary;
   cursor: pointer;
   font-size: 26px;
   margin: auto;
@@ -170,6 +251,7 @@ input:focus{outline: none;}
 
 .stars-avg-rating p {
   font-size: 12px;
+  color: $p-gray;
   // width: 0%;
 }
 
@@ -236,6 +318,9 @@ input:focus{outline: none;}
     display: none;
 }
 
+a .br-widget {
+  color: $yellow !important;
+}
 
 .link {
 
@@ -244,25 +329,33 @@ input:focus{outline: none;}
 }
 
 .fa-star {
-  color: #F9EA3E;
+  color: $yellow !important;
 
 }
 
 .fa-edit {
-  color: #a6a6a6;
-  text-decoration: none;
+  color: gray;
+  // text-decoration: none;
+  background-color: transparent;
+  border: transparent;
   &:hover {
       text-decoration: none;
-      color:black;
+      color: black;
+      background-color: transparent;
+      border: transparent;
     }
 }
 
 .fa-trash {
-  color: #a6a6a6;
+  color: gray;
   text-decoration: none;
+  background-color: transparent;
+  border: transparent;
   &:hover {
       text-decoration: none;
-      color:black;
+      color: black;
+      background-color: transparent;
+      border: transparent;
     }
 }
 
@@ -296,7 +389,8 @@ input:focus{outline: none;}
   margin-top: auto;
   margin-bottom: auto;
   width: max-content;
-  padding-right: 10px
+  padding-right: 10px;
+  color: $p-gray;
 }
 
 

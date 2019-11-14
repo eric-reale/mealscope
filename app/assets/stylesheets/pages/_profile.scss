@@ -15,6 +15,10 @@
   height: 100px;
 }
 
+//   button #sweet-alert-demo  {
+//     background-color: white;
+//     border: white;
+// }
 
 .container-profile .profile-header .img {
   height: 160px;
@@ -78,16 +82,16 @@
   color: gray;
     &:hover {
       text-decoration: none;
-      color: #e26757;
+      color: #f84e41;
     }
 }
 
 .card-info a {
-  color: black;
+  color: $dark-gray;
   font-size: 20px;
     &:hover {
       text-decoration: none;
-      color: #e26757;
+      color: $primary;
     }
 }
 
@@ -107,7 +111,7 @@
     }
 }
 .card-info p {
-  color: gray;
+  color: $p-gray;
   font-size: 13px;
 }
 

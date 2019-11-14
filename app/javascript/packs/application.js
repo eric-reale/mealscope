@@ -5,9 +5,11 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 
 initStarRating();
 
+import { previewImageOnFileSelect } from '../components/photo_preview';
+
 import { typedJS } from '../plugins/typed'
-import { starsOnIndex } from '../components/starsOnIndex'
-import { heartToggle} from '../components/heartToggle'
+import { starsOnIndex } from '../components/starsOnIndex';
+import { heartToggle} from '../components/heartToggle';
 import { selectdropdown } from '../plugins/init_select2';
 import { cuisinetype } from '../plugins/init_select2';
 import { dietrestrict } from '../plugins/init_select2';
@@ -21,7 +23,9 @@ dietrestrict()
 mealtype()
 // typedJS();
 // starsOnIndex();
+
 let currentMealId;
+
 
 initSweetalert('#sweet-alert-demo', {
   title: "Are you sure?",
@@ -33,6 +37,8 @@ initSweetalert('#sweet-alert-demo', {
   console.log(value);
 }
 );
+
+
 
 // typedJS();
 // Bringing meal_id and collection_id into Pin params for creating
@@ -115,11 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const inputBox = document.querySelector('#input-query');
 const submitButton = document.querySelector('#navbar-form-btn');
-inputBox.addEventListener('keyup', e => {
-  if (e.code === 'Enter') {
-    submitButton.click();
-  }
-})
+if (inputBox) {
+  inputBox.addEventListener('keyup', e => {
+    if (e.code === 'Enter') {
+      submitButton.click();
+    }
+  })
+}
 
 //   const wrapper = document.querySelector('#new_review')
 //   const hearts = document.querySelector(".far")

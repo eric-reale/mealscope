@@ -2,10 +2,12 @@
   text-decoration: none;
   p a {
     text-decoration: none;
-    color: black;
-  }
+    color: gray;
+
     &:hover {
     text-decoration: none !important;
+    color: black;
+  }
   }
 }
 

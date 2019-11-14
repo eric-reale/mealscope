@@ -1,4 +1,4 @@
-<%= simple_form_for(@collection, html: { class: 'add-collection' }, remote: true) do |f| %>
+<%= simple_form_for(collection, html: { class: 'add-collection' }, remote: true) do |f| %>
   <div class="col-12 input-effect" onclick="event.stopPropagation()">
     <%= f.input_field :name,
       label: false,

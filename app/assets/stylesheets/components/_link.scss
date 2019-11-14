@@ -1,16 +1,28 @@
 
 .link-color {
   color: gray;
+  background-color: transparent;
+  border: transparent;
     &:hover {
       text-decoration: none;
-      color: #e26757;
+      color: #f84e41 !important;
+    }
+}
+
+i .link-color {
+  color: gray;
+  background-color: transparent;
+  border: transparent;
+    &:hover {
+      text-decoration: none;
+      color: #f84e41 !important;
     }
 }
 
 .link-color-darker {
-  color: #20202D;
+  color: $dark-gray;
     &:hover {
       text-decoration: none;
-      color: #e26757;
+      color: $primary;
     }
 }

@@ -20,18 +20,19 @@
 
         </div>
         <% if @meal.price %>
-          <p style="font-size: 20px;">$<%= number_with_precision(@meal.price, precision: 2) %></p>
+
+          <p style="font-size: 20px; font-weight: lighter;">$<%= number_with_precision(@meal.price, precision: 2) %></p>
           <% end %>
 
         <!-- # Authorization for editing and deleting meal -->
-        <% if current_user == @meal.user  %>
-          <div class="icon-font d-flex justify-content-end">
-            <button class="btn btn-2 btn-light" type="submit" style="margin-left: 8px">
-            <%= link_to 'Edit', edit_meal_path, class: "link-color" %></button>
-            <button id="sweet-alert-demo" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-            <%= link_to "", meal_path(@meal)  , method: :delete, id:"delete-link", class: "hidden" %>
-          </div>
-        <% end %>
+        <%# if current_user == @meal.user  %>
+          <!-- <div class="icon-font d-flex justify-content-end mt-0 pt-0 mb-3"> -->
+            <!-- <%#= link_to edit_meal_path do %><i class="fas fa-edit mx-1"></i><%# end %> -->
+
+            <!-- <button id="sweet-alert-demo" class="link-color mx-1"><i class="fas fa-trash"></i></button> -->
+            <%#= link_to "", meal_path(@meal)  , method: :delete, id:"delete-link", class: "hidden" %>
+          <!-- </div> -->
+        <%# end %>
 
 
 <!-- MODAL FOR PINS -->
@@ -39,15 +40,15 @@
   <div class="modal-dialog-heart" role="document">
     <div class="modal-content-heart mb-0" >
       <div class="modal-header">
-        <h4 class="modal-title py-auto">Add to collection</h4>
+        <h4 class="modal-title py-auto">ADD TO COLLECTION</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body text-left mx-auto mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <h6 class="my-auto" style="width: 80%; font-size: 20px;">  <a>
+        <p class="my-auto" style="width: 80%; font-size: 19px; font-weight: lighter;">  <a>
     <i class="fas fa-plus mx-1"></i> Create a new collection
-  </a></h6>
+  </a></p>
   <div class="collapse add-collection" id="collapseExample" style="border: none">
   <div class="card card-body card-body-new-collection">
 
@@ -60,7 +61,7 @@
     <div class='collection-modal-container' id="collections">
       <% current_user.collections.reverse.each do |c| %>
         <div class="collection row d-flex justify-content-between m-3 py-2 px-3">
-          <h5 class="my-auto" style="font-weight: normal;"> <%= c.name %></h5>
+          <p class="my-auto" style="font-weight: lighter; font-size: 19px;"> <%= c.name %></p>
 
         <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
           <a id = "#heart-toggle" class='index-heart-toggle py-auto my-auto heart-toggle-<%= c.id %>' href="/meals/<%= params[:id] %>/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
@@ -135,21 +136,43 @@
 
 
 <!-- Review form end -->
-    <div class="container-review mt-3">
+    <div class="container-review mt-3 pb-2 border-bottom mx-auto" style="width: 80%">
       <div class="row-review">
         <div class="col-xs-4">
-          <h3>Leave a review!</h3>
-          <%= simple_form_for ([@meal, @review]) do |f| %>
-            <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-            <%= f.input :content, label: false, placeholder: "Say something...", class: "form-review" %>
-            <%= f.file_field :meal_photos, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png"  %>
-            <div>
-            <%= f.submit "Submit", class: "btn btn-outline-danger mt-3", id: "button", style: "border-radius: 4px;" %>
+          <div class="modal-body text-left mx-auto mt-3" data-toggle="collapse" href="#review-modal" role="button" aria-expanded="false" aria-controls="review-modal">
+            <h6 class="mx-auto text-center" style="width: 80%; font-size: 20px;"><a>Leave a review <i class="fas fa-angle-double-down mb-0" style="font-size: 16px;" ></i></a></h6>
+            <div class="collapse add-collection" id="review-modal" style="border: none">
+              <div class="card card-body card-body-new-collection">
+                <hr class="mx-auto" style="width: 50%">
+                <%= simple_form_for ([@meal, @review]) do |f| %>
+                  <div class="form-leave-review" onclick="event.stopPropagation()">
+                    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", class: "" %>
+                    <div class="text-center">
+                      <%= f.input :content, label: false, placeholder: "Say something...", class: "form-review" %>
+                      <hr class="mx-auto" style="width: 50%">
+
+                      <div class="upload-btn-wrapper">
+                        <!-- <button role="foo" class="upload-photo" id='photo-input'>📷 Upload a photo</button> -->
+                        <a class="mb-0 upload-photo" id="photo-input">📷 Upload a photo</a>
+                        <%= f.file_field :meal_photos, class: 'hidden', id: 'photo-input', multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png", type: "file" %>
+                        <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+                      </div>
+
+                      <hr class="mx-auto" style="width: 50%">
+                    </div>
+                    <div class="text-center">
+                      <%#= f.submit "Submit", class: "btn btn-outline-danger mt-3 mx-auto", id: "button", style: "border-radius: 4px;" %>
+                      <button type="submit" class="btn btn-outline-danger mt-3 mx-auto" id="button" style="border-radius: 4px;">Submit</button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
+
     <div class="nav-tabs-reviews p-2 my-3">
       <% if @meal.reviews.count > 0 %>
       <h4>Comments</h4>
@@ -170,7 +193,7 @@
 
                 </div>
 
-                <div class="my-auto" style="color: yellow">
+                <div class="my-auto" style="color: $yellow;">
                   <p> <%= r.display_ratings %></p>
                 </div>
 
@@ -200,7 +223,7 @@
     <div class="row-title-resto">
       <div>
       <h2><%= @meal.restaurant.name %></h2>
-        <tr><td><p class="location my-1" style="width: 70%"><i class="fas fa-map-marker-alt" style="color: #e26757;"></i> <%= @meal.restaurant.address %></p></td></tr>
+        <tr><td><p class="location my-1" style="width: 70%"><i class="fas fa-map-marker-alt" style="color: #f84e41;"></i> <%= @meal.restaurant.address %></p></td></tr>
         <div class="d-flex justify-content-between">
         <p><%= link_to nil, @meal.restaurant.website_url, class: "link-color", :target => "_blank" %></p>
         <p><%= link_to "@#{@meal.restaurant.instagram_handle}", "http://instagram.com/#{@meal.restaurant.instagram_handle}", class: "link-color", :target => "_blank" %></p>
@@ -287,10 +310,10 @@
   // JavaScript for label effects only
   $(window).load(function(){
     $(".col-3 input").val("");
-    console.log($(".col-3 input"))
+    // console.log($(".col-3 input"))
 
     $(".input-effect input").focusout(function(){
-      console.log($(".input-effect input"))
+      // console.log($(".input-effect input"))
       if($(this).val() != ""){
         $(this).addClass("has-content");
       }else{
@@ -299,6 +322,9 @@
     })
   });
 </script>
+
+
+
 
 
 
