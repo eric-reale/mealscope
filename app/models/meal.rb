@@ -22,7 +22,7 @@ class Meal < ApplicationRecord
   has_many :orders
   validates :name, presence: true
   # before_validation :check_meal_in_restaurant
-   before_validation :set_pictures_error
+   before_validation :set_pictures_error, on: :create
    after_create :save_photos
   #validates :mealphotos, length: { minimum: 1, message: "You must include at least one photo of the meal." }
 
@@ -112,7 +112,8 @@ class Meal < ApplicationRecord
 
 
   def check_rating(rating)
-    case rating
+    # raise
+    case rating.to_i
     when 5
       return "<i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i> <i class='fas fa-star'></i>".html_safe
     when 4

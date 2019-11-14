@@ -75,10 +75,14 @@ class MealsController < ApplicationController
 
       unless @meals.count.zero?
         @restaurants = []
-        meals_ids = @meals.pluck(:restaurant_id)
-        meals_ids.each do |id|
-          resto = Restaurant.find(id)
-          @restaurants << resto
+        # @meals.each do |resto|
+        #   @meals_ids << resto.id
+        # end
+        @meals = @meals[0]
+        # @meal_ids = []
+        @meals.each do |meal|
+            resto = Restaurant.find(meal.restaurant.id)
+            @restaurants << resto
         end
         restaurants_with_latlng = @restaurants.select { |r| r.latitude.present? && r.longitude.present? }
         @markers = restaurants_with_latlng.map do |restaurant|
@@ -95,7 +99,7 @@ class MealsController < ApplicationController
     #######################################
     # CASE 3 need to handle all cases where query not present but filters are
     elsif !params[:query].present? && (params[:diet_tags].present? ||
-      params[:cuisine_tags] != [''] ||
+      params[:cuisine_tags].present? ||
       params[:meal_tags].present?)
       @meals = []
       if params[:diet_tags].present?
@@ -123,11 +127,17 @@ class MealsController < ApplicationController
 
       unless @meals.count.zero?
         @restaurants = []
-        meals_ids = @meals.pluck(:restaurant_id)
-        meals_ids.each do |id|
-          resto = Restaurant.find(id)
-          @restaurants << resto
+        @meals = @meals[0]
+        # @meal_ids = []
+        @meals.each do |meal|
+            resto = Restaurant.find(meal.restaurant.id)
+            @restaurants << resto
         end
+        # meals_ids = @meals.pluck(:restaurant_id)
+        # @meals_ids.each do |id|
+        #   resto = Restaurant.find(id)
+        #   @restaurants << resto
+        # end
         restaurants_with_latlng = @restaurants.select { |r| r.latitude.present? && r.longitude.present? }
         @markers = restaurants_with_latlng.map do |restaurant|
           {
@@ -165,7 +175,6 @@ class MealsController < ApplicationController
       end
     end
     @meals = @meals.sort_by { |meal| -meal.average_rating }.flatten.uniq
-    # @meals = policy_scope(Meal) ## NEED TO FIX. MESSING WITH THE FILTERS
   end
 
   def new
@@ -182,11 +191,7 @@ class MealsController < ApplicationController
 
     @restaurant = @meal.restaurant  if @meal.restaurant
     @other_meal = @restaurant.meals.where(name: @meal.name).first if( @meal.name && @restaurant )
-    # if @restaurant = Restaurant.find(params[:meal][:restaurant])
-    # @restaurant_meal_names = []
-    #  @restaurant.meals.each do |meal_name|
-    #   @restaurant_meal_names << meal_name.name
-    # end
+
     if @other_meal
         @previous_meal = @restaurant.meals.find_by_name(@meal.name)
         flash[:alert] = "The meal you entered already exists. See it here!"
