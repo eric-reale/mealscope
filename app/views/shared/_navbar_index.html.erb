@@ -8,8 +8,7 @@
   <div class="search-and-filter" id="search-index-input">
     <div class="col-9 input-effect mx-auto">
       <!--  SEARCH  -->
-
-      <input type="text" name="query" class="effect-18 ml-3 pb-1" id="input-query" placeholder="Search meal" style="width: 100%; padding: 0; opacity: 0.5;"  >
+      <input type="text" name="query" class="effect-18 ml-3 pb-1" id="input-query" value="<%= params[:query] %>" placeholder="Search meal" style="width: 100%; padding: 0; opacity: 0.5;"  >
       <span class="focus-border ml-3" style=''></span>
     </div>
 
@@ -201,6 +200,16 @@
   </div>
 
   <script>
+    // document.getElementById("#input-query").innerHTML = "Paragraph changed!";
+    // document.getElementById('#input-query').value = document.getElementById('#input-query').value + "hello"
+    //  console.log(document.getElementById('#input-query').value)
+
+    // document.addEventListener('DOMContentLoaded', () => {
+    //   $("#input-query").focus()
+    //   document.querySelector("#input-query").value = "<%= params[:query] %>"
+    //   $("#input-query").focusout()
+    // })
+
     // JavaScript for label effects only
     $(window).load(function(){
       $(".col-3 input").val("");

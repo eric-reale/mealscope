@@ -69,7 +69,7 @@ text-align: center;
 .mselect {
   text-decoration: none;
   text-align: center;
-  color:#d1d1d1;
+  color:#a4a4a4;
   display: inline-block;
   padding: 4px;
   font-size: 14px;
@@ -84,7 +84,7 @@ text-align: center;
 .mselect-cuisine {
   text-decoration: none;
   text-align: center;
-  color:#d1d1d1;
+  color:#a4a4a4;
   display: inline-block;
   padding: 4px;
   font-size: 14px;
@@ -103,9 +103,9 @@ text-align: center;
 
 .mselect-opt-cuisine{
   width: 100px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #a4a4a4;
   font-weight: lighter;
-  color: #d1d1d1;
+  color: #a4a4a4;
   border-radius: 10px;
   padding: 9px;
   display:block;
@@ -130,9 +130,9 @@ text-align: center;
 }
 
 .mselect-opt {
-  border: 1px solid #d1d1d1;
+  border: 1px solid #a4a4a4;
   font-weight: lighter;
-  color: #d1d1d1;
+  color: #a4a4a4;
   border-radius: 10px;
   padding: 9px;
   display:block;
@@ -189,7 +189,7 @@ text-align: center;
 }
 
 .select2-results__option{
-  color: #d1d1d1;
+  color: #a4a4a4;
   &:hover{
     color:black;
     background-color: #f9f7f7;
@@ -198,9 +198,9 @@ text-align: center;
 
 .select2-selection__choice{
   text-align: center;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #a4a4a4;
   font-weight: lighter;
-  color: #d1d1d1;
+  color: #a4a4a4;
   border-radius: 10px;
   padding: 5px !important;
   background-color: white !important;
@@ -216,17 +216,17 @@ text-align: center;
 }
 
 .select2-container--default.select2-container--focus.select2-selection--multiple{
-border: 1px solid #d1d1d1 !important;
+border: 1px solid #a4a4a4 !important;
 border-radius: 10px;
 }
 
 .select2-container--default .select2-selection--multiple {
   margin-top: 1%;
-  border: 1px solid #d1d1d1 !important;
+  border: 1px solid #a4a4a4 !important;
   }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-border: 1px solid #d1d1d1 !important;
+border: 1px solid #a4a4a4 !important;
 padding: 3px !important;
   &:hover{
     // border: 1px solid black !important;
@@ -234,7 +234,7 @@ padding: 3px !important;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]{
-  background-color: #d1d1d1 !important;
+  background-color: #a4a4a4 !important;
 }
 
 // .select2-container--default{
@@ -242,5 +242,5 @@ padding: 3px !important;
 // }
 
 // .select2-selection--multiple{
-//   border: 1px solid #d1d1d1;
+//   border: 1px solid #a4a4a4;
 // }
