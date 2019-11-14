@@ -20,7 +20,8 @@
 
         </div>
         <% if @meal.price %>
-          <p class="" style="font-size: 20px; font-weight: lighter;">$<%= @meal.price %></p>
+
+          <p style="font-size: 20px; font-weight: lighter;">$<%= number_with_precision(@meal.price, precision: 2) %></p>
           <% end %>
 
         <!-- # Authorization for editing and deleting meal -->
@@ -123,6 +124,9 @@
           <% end %>
           <% @meal.diet_tags.each do |diet| %>
           <%= link_to diet.name, meals_path(query: diet.name), class: "btn btn-hover cuisine-taggy" %>
+          <% end %>
+          <% @meal.meal_types.each do |type| %>
+          <%= link_to type.name, meals_path(query: type.name), class: "btn btn-hover cuisine-taggy" %>
           <% end %>
         </p>
       </div>

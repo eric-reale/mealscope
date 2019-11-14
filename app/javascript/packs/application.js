@@ -23,7 +23,9 @@ dietrestrict()
 mealtype()
 // typedJS();
 // starsOnIndex();
-// previewImageOnFileSelect()
+
+let currentMealId;
+
 
 initSweetalert('#sweet-alert-demo', {
   title: "Are you sure?",
@@ -39,7 +41,6 @@ initSweetalert('#sweet-alert-demo', {
 
 
 // typedJS();
-
 // Bringing meal_id and collection_id into Pin params for creating
 document.addEventListener('DOMContentLoaded', () => {
   const wrapper = document.querySelectorAll('.ug-tiles-wrapper a.ug-thumb-wrapper')
@@ -49,9 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const indexHearts = document.querySelectorAll('.index-heart-toggle');
       indexHearts.forEach(heart => {
         let initialHref = heart.getAttribute('href').split('/')
-        // console.log(initialHref)
         initialHref[2] = link
-        // console.log(initialHref)
+        currentMealId = initialHref[2];
         const finalHref = initialHref.join('/')
         heart.setAttribute('href', finalHref);
       })
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mealCard.forEach(card => {
     card.addEventListener('click', e => {
       const mealId = e.currentTarget.dataset.mealId;
-      console.log(modalCollections)
+      currentMealId = mealId;
       modalCollections.insertAdjacentHTML('beforeend', `
         <div class="d-none">
          <p><a id="heart-toggle" href="/meals/${mealId}/pins?collection_id=150" data-controller="pins" data-method="post" data-remote="true"><i class="far fa-heart"></i></a></p>
@@ -71,7 +71,53 @@ document.addEventListener('DOMContentLoaded', () => {
       `)
     })
   })
+
+  const closeModal = document.querySelector('#heart-modal > div > div > div.modal-header > button');
+  closeModal.addEventListener('click', (event) => {
+    const heartToggles = document.querySelectorAll('.collection a');
+    heartToggles.forEach(heart => {
+      console.log('inital heart', heart);
+      if (heart.dataset.method === 'delete') {
+        const heartCollectionId = heart.classList[2].split('-')[2];
+        const initialLink = heart.href.split('/');
+        const finalLink = `/meals/${currentMealId}/pins?collection_id=${heartCollectionId}`
+        // initialLink.push(`pins?collection_id=${heartCollectionId}`);
+        // console.log(initialLink)
+        // heart.href = initialLink.join('/');
+        console.log('Final link', finalLink);
+        heart.href = finalLink
+        heart.innerHTML = '<i class="far fa-heart"></i>';
+        heart.dataset.method = 'post';
+        console.log('modified heart', heart);
+      }
+    })
+  })
+
+  const doneModal = document.querySelector('#button.mt-3.py-2.px-5');
+  doneModal.addEventListener('click', (event) => {
+    const heartToggles = document.querySelectorAll('.collection a');
+    heartToggles.forEach(heart => {
+      console.log('inital heart', heart);
+      if (heart.dataset.method === 'delete') {
+        const heartCollectionId = heart.classList[2].split('-')[2];
+        const initialLink = heart.href.split('/');
+        const finalLink = `/meals/${currentMealId}/pins?collection_id=${heartCollectionId}`
+        // initialLink.push(`pins?collection_id=${heartCollectionId}`);
+        // console.log(initialLink)
+        // heart.href = initialLink.join('/');
+        console.log('Final link', finalLink);
+        heart.href = finalLink
+        heart.innerHTML = '<i class="far fa-heart"></i>';
+        heart.dataset.method = 'post';
+        console.log('modified heart', heart);
+      }
+    })
+  })
+
+
 })
+
+
 
 const inputBox = document.querySelector('#input-query');
 const submitButton = document.querySelector('#navbar-form-btn');

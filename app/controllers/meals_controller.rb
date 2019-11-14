@@ -6,10 +6,12 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
+    # raise
     skip_authorization
     @collection = Collection.new # Instantiating a new collection to be made from the model index page
     @pin = Pin.new
-
+    session[:hq] = params[:query] unless params[:query].empty?
+    @home_query = params[:query] if params[:query].present?
     ###################################
     # CASE 1 if search query but filters are not present
     if params[:query].present? && (!params[:diet_tags].present? &&
@@ -102,24 +104,47 @@ class MealsController < ApplicationController
       params[:cuisine_tags].present? ||
       params[:meal_tags].present?)
       @meals = []
-      if params[:diet_tags].present?
-        params[:diet_tags].each do
-          result = Meal.diet_search(params[:diet_tags])
-          @meals << result unless result.count.zero?
-        end
-      end
+
 
       if params[:cuisine_tags].present?
         params[:cuisine_tags].each do
           result = Meal.cuisine_search(params[:cuisine_tags])
           @meals << result unless result.count.zero?
+          @meals.flatten!
         end
       end
+
+
+      if params[:diet_tags].present?
+        params[:diet_tags].each do
+          result = Meal.diet_search(params[:diet_tags])
+          allowed_diets = result.map(&:diet_tags).flatten!
+
+          if params[:cuisine_tags].present?
+            result = @meals.select { |meal| !(meal.diet_tags & allowed_diets).empty? }
+            @meals = result unless result.count.zero?
+          else
+            @meals = result
+          end
+        end
+      end
+
+
 
       if params[:meal_tags].present?
         params[:meal_tags].each do
           result = Meal.meal_type_search(params[:meal_tags])
-          @meals << result unless result.count.zero?
+          allowed_meal_types = result.map(&:meal_types).flatten!
+          if params[:diet_tags].present?
+            result = @meals.select { |meal| !(meal.meal_types & allowed_meal_types).empty? }
+            @meals = result
+          elsif params[:cuisine_tags].present?
+            result = @meals.select { |meal| !(meal.meal_types & allowed_meal_types).empty? }
+            # byebug
+            @meals = result
+          else
+            @meals = result
+          end
         end
       end
 
@@ -127,7 +152,7 @@ class MealsController < ApplicationController
 
       unless @meals.count.zero?
         @restaurants = []
-        @meals = @meals[0]
+        # @meals = @meals[0]
         # @meal_ids = []
         @meals.each do |meal|
             resto = Restaurant.find(meal.restaurant.id)
@@ -185,7 +210,8 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     @meal.photo_list = params[:meal][:meal_photos]
-    @meal.restaurant_id = params[:meal][:restaurant_id]
+    @meal.restaurant_id = params[:meal][:restaurant] # edit from resto id
+    @meal.restaurant = Restaurant.find(@meal.restaurant_id) if @meal.restaurant_id #new line
     authorize @meal
     @meal.user = current_user
 
