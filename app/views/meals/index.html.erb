@@ -1,7 +1,10 @@
 
-<div class="container-fluid mt-3 index-container" >
+
+<!--              index-container        -->
+<div class="container-fluid" >  
   <div class="row">
-    <div class="col-lg-8 mb-5">
+    <div class="col-8 mt-4 mb-5">
+
       <% if @meals.count.zero? %>
 
 
@@ -37,7 +40,7 @@
 
 <!--           <div class="meal-card">
  -->        <% else %>
-              <div id="gallery" style="display: none; width: 100%;">
+              <div id="gallery" class="ml-auto mr-0 pr-0" style="display: none; width: 96%;">
                 <% if @meals %>
                   <% @meals.each do |m| %>
                     <% if !m.orders.empty? %>
@@ -125,8 +128,10 @@
     <div class="col-lg-4 pr-0">
       <div
         id="map"
+
         style="width: 100%;
         height: 745px;"
+
         data-markers="<%= @markers.to_json %>"
       ></div>
     </div>

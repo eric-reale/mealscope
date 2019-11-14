@@ -1,47 +1,33 @@
-<nav class="navbar navbar-light navbar-expand-lg sticky-top navbar-mealscope-color">
-
-        <%= link_to image_tag("logo-black.png"), root_path, class: "navbar-brand"%>
-
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-light navbar-expand-lg sticky-top navbar-mealscope-color d-flex justify-space-around">
+  <div class="d-flex justify-content-between" style="width: 49%">
+  <%= link_to image_tag("logo7.png"), root_path, class: "navbar-brand"%>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+  <div class="search-and-filter" id="search-index-input">
+    <div class="col-9 input-effect mx-auto">
+      <!--  SEARCH  -->
 
+      <input type="text" name="query" class="effect-18 ml-3 pb-1" id="input-query" placeholder="Search meal" style="width: 100%; padding: 0; opacity: 0.5;"  >
+      <span class="focus-border ml-3" style=''></span>
+    </div>
 
-<div class="search-and-filter" id="search-index-input">
- <!--  SEARCH  -->
-      <input type="text" name="query" class="sinput" id="input-query">
-      <button id="navbar-form-btn" type="submit" class="loopicon"><i class="fa fa-search"></i></button>
-      <a id="filtre" data-toggle="modal" data-target="#filter-modal" class="fas fa-sort" style="margin-left: 10px;">
-      Filter
-      </a>
-
-  <!--   SEARCH -->
-        <br>
+    <button id="navbar-form-btn" type="submit" class="loopicon ml-0 m-0 p-0" style="width: 4%;"><i class="fa fa-search"></i></button>
+    <a id="filtre" data-toggle="modal" data-target="#filter-modal" class="fas fa-sliders-h mx-auto" alt="Filter"></a>
+    <!--   SEARCH -->
   </div>
-
-
-
-
-    <!-- ADD A MEAL BUTTON -->
-
-
-
-
-
-<!-- ADD A MEAL END -->
-
-<!-- NAV BAR -->
-
-  <div class="nav-text-buttons d-flex justify-content-between">
+  </div>
+  <!-- ADD A MEAL BUTTON -->
+  <!-- ADD A MEAL END -->
+  <!-- NAV BAR -->
+<div class="d-flex justify-content-between align-items-center" style="width: 16%;">
+  <div class="nav-text-buttons d-flex justify-content-around" style="width: 70%;">
     <a class="link-color-darker" href="/meals/new">
       Add a meal
     </a>
     <a class="link-color-darker" href="/">
       Home
-    </a>
-    <a class="link-color-darker" href="/">
-      About Us
     </a>
   </div>
 
@@ -55,10 +41,10 @@
             <%= image_tag 'person-placeholder.jpg' , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile", profile_path, class: "dropdown-item" %>
+            <%= link_to "Profile", profile_path, class: "dropdown-item text-center" %>
             <hr class="mx-auto mt-1 mb-0 p-0 d-flex" style="width: 75%;">
 
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-center" %>
           </div>
         </li>
       <% else %>
@@ -72,6 +58,7 @@
         </li>
       <% end %>
     </ul>
+  </div>
   </div>
 </nav>
 
@@ -204,7 +191,7 @@
         </div>
         <br>
         <input type="hidden" id="modal-query-field" name="query" value="<%= @query %>">
-           <button id="navbar-form-btn" type="submit" class="loopicon"><i class="fa fa-search"></i></button>
+           <button id="navbar-form-btn" type="submit" class="loopicon px-5"><i class="fa fa-search"></i></button>
          </form>
          <br>
       </div>
@@ -213,6 +200,22 @@
   </div>
   </div>
 
+  <script>
+    // JavaScript for label effects only
+    $(window).load(function(){
+      $(".col-3 input").val("");
+      console.log($(".col-3 input"))
+
+      $(".input-effect input").focusout(function(){
+        console.log($(".input-effect input"))
+        if($(this).val() != ""){
+          $(this).addClass("has-content");
+        }else{
+          $(this).removeClass("has-content");
+        }
+      })
+    });
+  </script>
 
 
 <script>
