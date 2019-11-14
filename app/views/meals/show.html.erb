@@ -124,6 +124,9 @@
           <% @meal.diet_tags.each do |diet| %>
           <%= link_to diet.name, meals_path(query: diet.name), class: "btn btn-hover cuisine-taggy" %>
           <% end %>
+          <% @meal.meal_types.each do |type| %>
+          <%= link_to type.name, meals_path(query: type.name), class: "btn btn-hover cuisine-taggy" %>
+          <% end %>
         </p>
       </div>
 
