@@ -6,8 +6,8 @@
     <%= image_tag 'chicken.svg' , class: "img" %>
   </div>
 
-  <div class="profile-body mx-auto">
-    <div class='d-flex justify-content-center'>
+  <div class="profile-body mx-auto" style="">
+    <div class='d-flex justify-content-center mx-auto'>
 
 
       <%= simple_form_for(@meal, html: { multipart: true }) do |f| %>
@@ -23,7 +23,7 @@
       <% end %>
 
 
-      <div class="form-inputs align-items-center m-auto pt-3" style="width: 100%;">
+      <div class="form-inputs align-items-center m-auto mx-auto pt-3">
        <%= f.input :restaurant,
        label: false,
        input_html: {class: "opacity-style"},
