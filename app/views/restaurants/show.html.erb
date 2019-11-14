@@ -1,4 +1,8 @@
 <%= javascript_pack_tag "chartkick" %>
+<script>
+    var myChart = new Chart(ctx, {...});
+</script>
+
 
 <div class="container-pagemover mx-5 px-5 pt-2">
   <%= link_to '<< Back', url_for(:back), class: "link-color" %>
@@ -62,6 +66,17 @@
       <div class="meal-container">
     <%# @restaurant.meals.each do |m|%>
     <div class="mealscreated">
+      <div class="container">
+        <br />
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+      <!--       Chart.js Canvas Tag -->
+            <canvas id="barChart"></canvas>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
         <h5> Users click on meal </h5>
       <%= line_chart Meal.where(restaurant: params[:id]).group_by_day(:created_at).count %>
       <%#= column_chart Ahoy::Event.where(name: "Viewed meals#show").where_properties(id: "#{m.id}").count %>
@@ -160,5 +175,114 @@
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- JAVASCRIPT -->
+
+
+
+<script>
+
+var canvas = document.getElementById("barChart");
+var ctx = canvas.getContext('2d');
+
+// Global Options:
+Chart.defaults.global.defaultFontColor = 'black';
+Chart.defaults.global.defaultFontSize = 16;
+
+var data = {
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  datasets: [{
+      label: "",
+      fill: false,
+      // lineTension: 0.1,
+      backgroundColor: "rgba(225,0,0,0.4)",
+      borderColor: "red", // The main line color
+      // borderCapStyle: 'square',
+      borderDash: [], // try [5, 15] for instance
+      borderDashOffset: 0.0,
+      // borderJoinStyle: 'miter',
+      // pointBorderColor: "black",
+      // pointBackgroundColor: "white",
+      // pointBorderWidth: 1,
+      // pointHoverRadius: 8,
+      pointHoverBackgroundColor: "yellow",
+      pointHoverBorderColor: "brown",
+      pointHoverBorderWidth: 2,
+      pointRadius: 4,
+      pointHitRadius: 10,
+      // notice the gap in the data and the spanGaps: true
+      data: [10, 20, 60, 95, 64, 78, 90,800,40,70,1000],
+      spanGaps: true,
+    }
+  ]
+};
+
+// Notice the scaleLabel at the same level as Ticks
+var options ={
+                    scales: {
+                      yAxes: [
+                        {
+                          id: 'y-axis-1',
+                          type: 'linear',
+                          display: true,
+                          position: 'left'
+                        }
+                      ]
+                    },
+                    elements: {
+                        line: {
+                                fill: false
+                        }
+                    }
+                };
+
+var color =[{
+        backgroundColor : '#0062ff',
+        pointBackgroundColor: '#0062ff',
+        pointHoverBackgroundColor: '#0062ff',
+        borderColor: '#0062ff',
+        pointBorderColor: '#0062ff',
+        pointHoverBorderColor: '#0062ff',
+        fill: false /* this option hide background-color */
+    }, '#00ADF9', '#FDB45C', '#46BFBD'];
+
+
+
+// Chart declaration:
+var myBarChart = new Chart(ctx, {
+  type: 'line',
+  data: data,
+  options: options
+});
+
+
+
+</script>
 
 
