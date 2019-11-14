@@ -29,6 +29,8 @@ object-fit: cover;
 
 .fa .fa-times {
   color: gray !important;
+  background-color: transparent;
+  border: transparent;
   &:hover {
     text-decoration: none;
     color: #e26757;

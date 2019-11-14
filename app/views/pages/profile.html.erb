@@ -78,10 +78,15 @@
           <p><%= collection.pins.length %> meals</p>
           </div>
             <div class="d-flex justify-content-end mt-2" style="width: 50%">
-              <%= link_to collection_path(collection), method: :delete,
-                    data: { confirm: "Are you sure?" } do %>
-                    <i class="fa fa-times link-color" ></i>
-              <% end %>
+
+
+
+
+              <button id="sweet-alert-demo" class="link-color"> <%= link_to collection_path(collection), method: :delete do %>
+                    <i class="fa fa-trash" ></i>
+              <% end %></button>
+
+
             </div>
         </div>
       </div>

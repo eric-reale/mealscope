@@ -15,7 +15,7 @@
 .search-and-filter a {
   color: gray !important;
     &:hover {
-      color: #f84e41 !important;
+      color: $primary !important;
       cursor: pointer;
     }
 }
@@ -66,7 +66,7 @@ input:focus{outline: none;}
   //   }
   &:hover {
   text-decoration: none;
-    color: #f84e41;
+    color: $primary;
   }
 }
 
@@ -74,16 +74,16 @@ input:focus{outline: none;}
   align-items: center;
   &:hover {
     background-color: white;
-    color: #f84e41;
+    color: $primary;
 
   }
 }
 
 .nav-text-buttons .link-color-darker {
-  color: #3D3D38;
+  color: $dark-gray;
     &:hover {
       text-decoration: none;
-      color: #e26757;
+      color: $primary;
     }
 }
 
@@ -99,7 +99,7 @@ input:focus{outline: none;}
     color: gray;
     // align-text: center !important;
        &:hover {
-        color: #f84e41;
+        color: $primary;
        }
 }
 

@@ -14,12 +14,12 @@
   &.active {
     opacity: 1;
     border: transparent;
-    border-bottom: 4px solid #e26757;
+    border-bottom: 4px solid $primary;
 
   }
   &:hover {
     border: transparent;
-    color: #e26757 !important;
+    color: $primary !important;
   }
 
 }

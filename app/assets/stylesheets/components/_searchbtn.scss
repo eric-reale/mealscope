@@ -6,11 +6,10 @@
 }
 
 .searchbox {
-
   width: 200px;
-    display: flex;
+  display: flex;
     // margin-left: 8%;
-    inline-size: auto;
+  inline-size: auto;
 }
 
 #filtre {
@@ -29,30 +28,29 @@
 
 .loopicon {
   width: 40px;
-  color: #eb4a3d;
+  color: $primary;
   border: transparent;
   margin-left: 0;
-    box-shadow: none;
-outline: none;
+  box-shadow: none;
+  outline: none;
   // background-color: #eb4a3d;
   // border-radius: 10px;
   // padding: 5px;
   height: 40px;
   &:focus {
     outline: none;
-        box-shadow: none;
-  border: transparent;
-
+    box-shadow: none;
+    border: transparent;
       // background-color: #f84e41;
-}
+  }
 }
 
 
 .addamealbtn a{
   padding: 10px;
-  background-color: #eb4a3d;
+  background-color: $primary;
   text-decoration: none;
-  color:white;
+  color: white;
   border-radius: 10px;
     &:hover{
       background-color: #f84e41;
@@ -63,7 +61,7 @@ outline: none;
 .addamealbtn {
   margin: 10px;
   padding: 11px;
-  background-color: #eb4a3d;
+  background-color: $primary;
   text-decoration: none;
   color:white;
   border-radius: 10px;
