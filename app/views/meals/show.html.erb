@@ -248,8 +248,9 @@
           <h2 class="card-trip-pricing"><% m1.price %></h2>
         </div>
       </div>
+      <% end %>
         <% end %>
-      <% elsif m2 %>
+      <% if m2 %>
           <%= link_to(m2) do %>
          <div class="card-trip">
             <% m2 = selected[1] %>
@@ -262,8 +263,9 @@
           <h2 class="card-trip-pricing"><% m2.price %></h2>
         </div>
       </div>
+      <% end %>
         <% end %>
-      <% elsif m3 %>
+      <% if m3 %>
       <%= link_to(m3) do %>
        <div class="card-trip">
             <% m3 = selected[2] %>
