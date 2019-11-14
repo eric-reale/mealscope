@@ -10,8 +10,8 @@ class MealsController < ApplicationController
     skip_authorization
     @collection = Collection.new # Instantiating a new collection to be made from the model index page
     @pin = Pin.new
-    session[:hq] = params[:query] unless params[:query].empty?
-    @home_query = params[:query] if params[:query].present?
+    # session[:hq] = params[:query] unless params[:query].empty?
+    # @home_query = params[:query] if params[:query].present?
     ###################################
     # CASE 1 if search query but filters are not present
     if params[:query].present? && (!params[:diet_tags].present? &&
