@@ -23,7 +23,7 @@ class PagesController < ApplicationController
           counter += 1
         end
       rescue
-      @photos = []
+      instance_variable_set("@photos_#{restaurant.id}", [])
     end
   end
   end

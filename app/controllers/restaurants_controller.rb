@@ -41,7 +41,7 @@ class RestaurantsController < ApplicationController
     rescue
       @photos = []
     end
-    # if @restaurant.user = current_user
+    p @photos # if @restaurant.user = current_user
   end
 
   def edit
