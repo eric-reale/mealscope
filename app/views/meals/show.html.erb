@@ -83,7 +83,7 @@
             <span class="<%#= @meal.class_colors %>"><%#= @meal.average_rating %></span><small>/ 5</small></h4>
         </div> -->
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-top: 30px">
         <ol class="carousel-indicators">
           <% count = @meal.mealphotos.count %>
           <% if count > 1 %>
@@ -271,8 +271,9 @@
           <h2 class="card-trip-pricing"><% m1.price %></h2>
         </div>
       </div>
+      <% end %>
         <% end %>
-      <% elsif m2 %>
+      <% if m2 %>
           <%= link_to(m2) do %>
          <div class="card-trip">
             <% m2 = selected[1] %>
@@ -286,7 +287,8 @@
         </div>
       </div>
         <% end %>
-      <% elsif m3 %>
+        <% end %>
+      <% if m3 %>
       <%= link_to(m3) do %>
        <div class="card-trip">
             <% m3 = selected[2] %>

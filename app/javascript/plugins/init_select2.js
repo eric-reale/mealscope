@@ -1,4 +1,4 @@
-import $ from "jquery"
+  import $ from "jquery"
 import select2 from "select2"
 
 const selectdropdown = () => {
@@ -61,8 +61,24 @@ const mealtype = () => {
 };
 }
 
+const restaurantDropdown = () => {
+  if (document.querySelector("#restaurant_search")) {
+  console.log($("#restaurant_search").data().options)
+  const options = {
+    data: $("#restaurant_search").data().options,
+    width: "100%"
+  }
+    console.log(options)
+  console.log(options.data)
+  $(document).ready(function() {
+    $("#restaurant_search").select2(options)
+  })
+};
+}
+
 
 export { selectdropdown }
 export { cuisinetype }
 export { dietrestrict }
 export { mealtype }
+export { restaurantDropdown }
