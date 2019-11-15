@@ -50,11 +50,11 @@
        label: false,
        placeholder: "Price" %>
 
-       <div class="d-flex flex-column mx-auto" style="margin-bottom: 10px">
+       <div class="filter-form d-flex flex-column mx-auto" style="margin-bottom: 10px;">
           <h5>Cuisines</h5>
 
 
-
+            <div class="mx-0" style="width: 100%;">
             <%= f.association :cuisine_meal_tags,
             label: false,
             placeholder: 'Cuisine',
@@ -62,10 +62,10 @@
             id:"cuisine_addameal_type",
             input_html: { multiple: true, id: "cuisine_addameal_type" },
             legend: false %>
-
+            </div>
       </div>
 
-      <div class="d-flex flex-column mx-auto" style="margin-bottom: 10px">
+      <div class="filter-form d-flex flex-column mx-auto" style="margin-bottom: 10px">
           <h5>Dietary restrictions</h5>
 
             <%= f.association :diet_meal_tags,
@@ -77,7 +77,7 @@
       </div>
 
 
-      <div class="d-flex flex-column mx-auto" style="margin-bottom: 50px">
+      <div class="filter-form d-flex flex-column mx-auto" style="margin-bottom: 50px">
           <h5>Type of Meal</h5>
 
             <%= f.association :meal_type_tags,
@@ -101,7 +101,7 @@
 
       </div>
 
-         <%= link_to "Cancel", url_for(:back), class: "link-color mb-5" %>
+         <%= link_to "Cancel", url_for(:back), class: "link-color pb-5 mb-5" %>
 
 
 <!-- UNCOMENT THIS AFTER DEMO (NEEDED FOR LOGO RIGHT) -->
