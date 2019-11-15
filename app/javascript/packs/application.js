@@ -14,6 +14,7 @@ import { selectdropdown } from '../plugins/init_select2';
 import { cuisinetype } from '../plugins/init_select2';
 import { dietrestrict } from '../plugins/init_select2';
 import { mealtype } from '../plugins/init_select2';
+import { restaurantDropdown } from '../plugins/init_select2';
 // import ahoy from "ahoy.js";
 
 // ahoy.trackAll();
@@ -21,10 +22,19 @@ selectdropdown()
 cuisinetype()
 dietrestrict()
 mealtype()
+restaurantDropdown()
 // typedJS();
 // starsOnIndex();
 
 let currentMealId;
+
+
+// input.addEventListener('keyup', (event) => {
+//  console.log(event);
+//  // console.log(event.currentTarget.value);
+//   const phrase = event.currentTarget.value;
+//   searchDictionaryAPI(phrase);
+// });
 
 
 initSweetalert('#sweet-alert-demo', {
@@ -158,6 +168,8 @@ if (inputBox) {
 
 
 // heartToggle();
+
+
 
 
 
