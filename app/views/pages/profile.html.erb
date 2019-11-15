@@ -8,140 +8,122 @@
     <% end %>
   </div>
 
-<div class="profile-body">
-  <div class='d-flex justify-content-center'>
-  <h1 class="profile-name"><%= current_user.first_name %></h1>
-  <% if current_user.trusted_reviewer == true %>
-  <div class='ml-2'>
-    <h2 style='color: blue'><i class="fas fa-medal"></i></h2>
-  </div>
-  <% end %>
-</div>
-  <tr><td><p class="location my-1"><i class="fas fa-map-marker-alt" style="color: #e26757;"></i> <%= current_user.location %></p></td></tr>
-
-  <hr class="my-0 mx-auto" style="width: 30%;">
-  <div class="about">
-  <p class="mt-0 pt-0">"<%= current_user.about_me %>"</p>
-  </div>
-</div>
-
-
-<div class="profile-footer">
-      <div class="tabs">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link profile-tab active" id="collections-tab" data-toggle="tab" href="#collections" role="tab" aria-controls="collections" aria-selected="true">Collections</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link profile-tab" id="my_reviews-tab" data-toggle="tab" href="#my_reviews" role="tab" aria-controls="my_reviews" aria-selected="false">My reviews</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link profile-tab" id="edit_profile-tab" data-toggle="tab" href="#edit_profile" role="tab" aria-controls="edit_profile" aria-selected="false">Edit profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link profile-tab" id="change_password-tab" data-toggle="tab" href="#change_password" role="tab" aria-controls="change_password" aria-selected="false">Change password</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link profile-tab" id="change_password-tab" data-toggle="tab" href="#my_restaurants" role="tab" aria-controls="change_password" aria-selected="false">My Restaurants</a>
-          </li>
-        </ul>
+  <div class="profile-body">
+    <div class='d-flex justify-content-center'>
+      <h1 class="profile-name"><%= current_user.first_name %></h1>
+        <% if current_user.trusted_reviewer == true %>
+          <div class='ml-2'>
+            <h2 style='color: blue'><i class="fas fa-medal"></i></h2>
+          </div>
+        <% end %>
+    </div>
+    <tr><td><p class="location my-1"><i class="fas fa-map-marker-alt" style="color: #e26757;"></i> <%= current_user.location %></p></td></tr>
+    <hr class="my-0 mx-auto" style="width: 30%;">
+      <div class="about">
+        <p class="mt-0 pt-0">"<%= current_user.about_me %>"</p>
       </div>
+  </div>
 
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="collections" role="tabpanel" aria-labelledby="collections-tab">
+  <div class="profile-footer">
+    <div class="tabs">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link profile-tab active" id="collections-tab" data-toggle="tab" href="#collections" role="tab" aria-controls="collections" aria-selected="true">Collections</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="my_reviews-tab" data-toggle="tab" href="#my_reviews" role="tab" aria-controls="my_reviews" aria-selected="false">My reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="edit_profile-tab" data-toggle="tab" href="#edit_profile" role="tab" aria-controls="edit_profile" aria-selected="false">Edit profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="change_password-tab" data-toggle="tab" href="#change_password" role="tab" aria-controls="change_password" aria-selected="false">Change password</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link profile-tab" id="my_restaurants-tab" data-toggle="tab" href="#my_restaurants" role="tab" aria-controls="my_restaurants" aria-selected="false">My Restaurants</a>
+        </li>
+      </ul>
+    </div>
+      <!-- tab content -->
+      <div class="tab-content" id="myTabContent">
+        <!-- collections -->
+        <div class="tab-pane fade show active" id="collections" role="tabpanel" aria-labelledby="collections-tab">
+          <div class="cards">
+            <% @collections.each do |collection| %>
+              <% unless collection.pins.empty? %>
+              <% @photos = [] %>
+              <% @meals_ids = collection.pins.pluck(:meal_id) %>
+              <% @meals_ids.each { |id| @photos << Meal.find(id).mealphotos.first.photo unless Meal.find(id).mealphotos.empty? } %>
 
-  <!-- collections -->
-            <div class="cards">
-              <% @collections.each do |collection| %>
-                <% unless collection.pins.empty? %>
-                <% @photos = [] %>
-                <% @meals_ids = collection.pins.pluck(:meal_id) %>
-                <% @meals_ids.each { |id| @photos << Meal.find(id).mealphotos.first.photo unless Meal.find(id).mealphotos.empty? } %>
 
-
-                <div class="card mt-2">
-                  <!-- carousel -->
-                  <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                      <%= link_to collection_path(collection) do %>
-                    <div class="carousel-inner">
-                      <div class="card-delete mx-2 d-flex justify-content-end"></div>
-                      <% @photos.each_with_index do |photo, index|  %>
-                        <div class="carousel-item <%= 'active' if index == 0 %>">
-                          <%= cl_image_tag photo, class: "" %>
-                        </div>
+              <div class="card mt-2">
+                <!-- carousel -->
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <%= link_to collection_path(collection) do %>
+                      <div class="carousel-inner">
+                        <!-- <div class="card-delete mx-2 d-flex justify-content-end"></div> -->
+                        <% @photos.each_with_index do |photo, index|  %>
+                          <div class="carousel-item <%= 'active' if index == 0 %>">
+                            <%= cl_image_tag photo, class: "" %>
+                          </div>
                         <% end %>
-                    </div>
-                      <% end %>
-                  </div>
-                  <!-- carousel? -->
-                  <div class="card-info d-flex justify-content-between mx-3">
-                    <div class="card-text" style="width: 50%">
+                      </div>
+                    <% end %>
+                </div>
+                <!-- carousel? -->
+                <div class="card-info d-flex justify-content-between mx-3">
+                  <div class="card-text" style="width: 50%">
                     <h2 class="mb-0"> <%= link_to collection.name, collection_path(collection) %></h2>
                     <p><%= collection.pins.length %> meals</p>
-                    </div>
-                      <div class="d-flex justify-content-end mt-2" style="width: 50%">
-
-
-
-
-                        <button id="sweet-alert-demo" class="link-color"> <%= link_to collection_path(collection), method: :delete do %>
-                              <i class="fa fa-trash" ></i>
-                        <% end %></button>
-
-
-                      </div>
+                  </div>
+                  <div class="d-flex justify-content-end mt-2" style="width: 50%">
+                    <button id="sweet-alert-demo" class="link-color"> <%= link_to collection_path(collection), method: :delete do %>
+                    <i class="fa fa-trash" ></i><% end %></button>
                   </div>
                 </div>
-
-
+              </div>
               <% end %>
-              <% end %>
-            </div>
-
+            <% end %>
           </div>
+        </div>
+        <!-- collections -->
 
-
-  <!-- collections -->
-
-          <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab">
-             <div class="review-card ">
-              <%# raise %>
-                <% if @reviews.present? %> <!-- new line -->
-               <% @reviews.each do |review| %>
-                <div class="review mt-3 bg-white">
-                 <!-- box avatar/name + rating overall -->
-                 <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
-                   <!-- box avatar and name -->
-                   <div class="avatar-name ">
-                    <% if review.meal.mealphotos.present? %>
-                     <%= link_to cl_image_tag(review.meal.mealphotos[0].photo, class: "avatar-review"), meal_path(review.meal_id) %>
-                     <% end %>
-                    <strong><%= link_to review.meal.name, meal_path(review.meal_id), class: "link-color my-auto ml-3" %></strong>
-                     @<%= review.meal.restaurant.name %>
-
+        <!-- my reviews -->
+        <div class="tab-pane fade" id="my_reviews" role="tabpanel" aria-labelledby="my_reviews-tab">
+           <div class="review-card ">
+              <% if @reviews.present? %>
+                <% @reviews.each do |review| %>
+                  <div class="review mt-3 bg-white">
+                   <!-- box avatar/name + rating overall -->
+                   <div class='review-top d-flex justify-content-between border-shadow mt-0 pt-0 mb-2'>
+                     <!-- box avatar and name -->
+                     <div class="avatar-name ">
+                      <% if review.meal.mealphotos.present? %>
+                        <%= link_to cl_image_tag(review.meal.mealphotos[0].photo, class: "avatar-review"), meal_path(review.meal_id) %>
+                      <% end %>
+                      <strong><%= link_to review.meal.name, meal_path(review.meal_id), class: "link-color my-auto ml-3" %></strong>
+                        @<%= review.meal.restaurant.name %>
+                     </div>
+                     <div class="my-auto" style="color: yellow">
+                       <p> <%= review.display_ratings  %></p>
+                     </div>
                    </div>
-                   <div class="my-auto" style="color: yellow">
-                     <p> <%= review.display_ratings  %></p>
-                     <!-- <p class="my-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p> -->
-                   </div>
-                 <!-- box text -->
-                 </div>
-                 <p><em>"<%= review.content %>"</em></p>
-                </div>
-                <hr>
+                    <p><em>"<%= review.content %>"</em></p>
+                  </div>
+                  <hr>
                 <% end %>
-             <% end %> <!-- new line -->
-           </div>
+              <% end %> <!-- new line -->
+            </div>
+        </div>
+        <!-- my reviews -->
 
-          </div>
-
-          <div class="tab-pane fade" id="edit_profile" role="tabpanel" aria-labelledby="edit_profile-tab">
-            <!-- edit profile page form -->
-            <div class="mt-4 mb-5">
-              <div class="card d-flex justify-content-center text-center align-items-column m-auto py-4" style="max-width: 550px">
+        <!-- edit profile -->
+        <div class="tab-pane fade" id="edit_profile" role="tabpanel" aria-labelledby="edit_profile-tab">
+          <!-- edit profile page form -->
+          <div class="mt-4 mb-5">
+            <div class="card d-flex justify-content-center text-center align-items-column m-auto py-4" style="max-width: 550px">
               <%= simple_form_for(current_user,  url: registration_path(current_user), html: { method: :put }) do |f| %>
                 <%= f.error_notification %>
-
                 <div class="form-inputs mx-auto" style="max-width: 350px">
                   <%= f.input :email,
                               hint: "leave it blank if you don't want to change it",
@@ -165,33 +147,33 @@
                               # placeholder,
                               :as => :text,
                               :input_html => { 'rows' => 4, 'cols' => 10 } %>
-                  <div class="mx-auto my-3" style="width: 55%;">
-                    <%= f.input :avatar,
-                                label: false %>
-                    <%= f.input :avatar_cache,
-                                as: :hidden %>
-                  </div>
+                    <div class="mx-auto my-3" style="width: 55%;">
+                      <%= f.input :avatar,
+                                  label: false %>
+                      <%= f.input :avatar_cache,
+                                  as: :hidden %>
+                    </div>
                   <%= f.input :current_password,
                               input_html: {value: ''},
                               hint: "we need your current password to confirm your changes",
                               required: true %>
                 </div>
-
                 <div class="form-actions mx-auto" style="max-width: 350px">
                   <%= f.button :submit, "Update", class: 'formbtn' %>
                 </div>
               <% end %>
-              </div>
             </div>
-            <!-- edit profile page form -->
           </div>
+          <!-- edit profile page form -->
+        </div>
+        <!-- edit profile -->
 
-          <div class="tab-pane fade" id="change_password" role="tabpanel" aria-labelledby="change_password-tab">
-            <!-- edit password page form -->
-            <div class="mt-4 mb-5">
-              <div class="card d-flex justify-content-center text-center align-items-column m-auto py-4" style="max-width: 550px">
-                  <h2>Change your password</h2>
-
+        <!-- edit password -->
+        <div class="tab-pane fade" id="change_password" role="tabpanel" aria-labelledby="change_password-tab">
+          <!-- edit password page form -->
+          <div class="mt-4 mb-5">
+            <div class="card d-flex justify-content-center text-center align-items-column m-auto py-4" style="max-width: 550px">
+                <h2>Change your password</h2>
                   <%= simple_form_for(current_user,  url: password_path(current_user), html: { method: :put }) do |f| %>
                     <%= f.error_notification %>
 
@@ -212,59 +194,52 @@
                                   required: true,
                                   input_html: { autocomplete: "new-password" } %>
                     </div>
-
                     <div class="form-actions mx-auto" style="max-width: 350px">
                       <%= f.button :submit, "Change", class: "formbtn mb-2" %>
                     </div>
                   <% end %>
-
-              </div>
             </div>
-            <!-- edit password page form -->
           </div>
-
-
-      <!-- MY RESTAURANT CODE -->
-
-        <div class="tab-pane fade" id="my_restaurants" role="tabpanel" aria-labelledby="my_restaurants">
-
-                <div class="row">
-                                <div class="col-lg-8  mx-auto">
-                                  <div class="add-resto my-3 d-flex justify-content-between">
-                                    <a class="btn btn-hover cuisine-taggy" href="/restaurants/new"> + Add your restaurant</a></div>
-                                  <div>
-                                    <p>"Manage your restaurant! Simply add your restaurant and enable reviews, post photos, and create ads on mealscope to grow your business."</p>
-                                  </div>
-                                  <% @my_restaurants.each do |b| %>
-                                    <div class="dashboard-card">
-                                    <%= link_to restaurant_path(b), :class => "text-cards" do %>
-                                    <%#= cl_image_tag b.cameraphotos[0].photo, height: 300, width: 400, crop: :fill %>
-                                      <div class="dashboard-info mt-0 pt-2">
-                                        <div class="card-top-line" id="resto_dashboard" >
-                                            <h2 ><%=  b.name %> </h2>
-                                              <p ><%=  b.address %></p>
-
-                                            <div class="cards-my-restos">
-                                              <% if @photos.present? %>
-                                              <% instance_variable_get("@photos_#{b.id}").each do |photo| %>
-                                                <%= image_tag photo %>
-                                              <% end %>
-                                              <% end %>
-                                            </div>
-                                            </div>
-                                          <% end %>
-                                          <% end %>
-                                        </div>
-                                    </div>
-
-                                  <hr>
-                                </div>
-
-                          </div>
+          <!-- edit password page form -->
         </div>
-       </div>
-  </div>
+        <!-- edit password -->
 
+        <!-- MY RESTAURANT CODE -->
+        <div class="tab-pane fade" id="my_restaurants" role="tabpanel" aria-labelledby="my_restaurants-tab">
+          <div class="row">
+            <div class="col-lg-8  mx-auto">
+              <div class="add-resto my-3 d-flex justify-content-between">
+                <a class="btn btn-hover cuisine-taggy" href="/restaurants/new"> + Add your restaurant</a></div>
+              <div>
+                <p>"Manage your restaurant! Simply add your restaurant and enable reviews, post photos, and create ads on mealscope to grow your business."</p>
+              </div>
+              <% @my_restaurants.each do |b| %>
+                <div class="dashboard-card">
+                  <%= link_to restaurant_path(b), :class => "text-cards" do %>
+                    <div class="dashboard-info mt-0 pt-2">
+                      <div class="card-top-line" id="resto_dashboard" >
+                        <h2><%=  b.name %></h2>
+                        <p ><%=  b.address %></p>
+                        <div class="cards-my-restos">
+                          <% if @photos.present? %>
+                            <% instance_variable_get("@photos_#{b.id}").each do |photo| %>
+                              <%= image_tag photo %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <!-- MY RESTAURANT CODE -->
+     </div>
+     <!-- tab content -->
+  </div>
 
 </div>
 
