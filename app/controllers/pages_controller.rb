@@ -25,6 +25,7 @@ class PagesController < ApplicationController
       rescue
       @photos = []
     end
+    p @photos
   end
   end
 
