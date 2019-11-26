@@ -6,9 +6,19 @@ json.array! @meals do |meal|
     json.extract! review, :id, :rating, :content
   end
 
-    json.diet_meal_tags meal.diet_meal_tags do |diet|
-    json.extract! diet, :id, :diet_tag_id
-      # json.diet diet.diet_tag_id, :name
+  json.diet_meal_tags meal.diet_meal_tags do |diet|
+    json.extract! diet # :id, :diet_tag_id
+      json.extract! diet.diet_tag, :name
+  end
+
+  json.diet_meal_tags meal.diet_meal_tags do |diet|
+    json.extract! diet # :id, :diet_tag_id
+      json.extract! diet.diet_tag, :name
+  end
+
+  json.diet_meal_tags meal.diet_meal_tags do |diet|
+    json.extract! diet # :id, :diet_tag_id
+      json.extract! diet.diet_tag, :name
   end
 
 end
