@@ -11,14 +11,13 @@ json.array! @meals do |meal|
       json.extract! diet.diet_tag, :name
   end
 
-  json.diet_meal_tags meal.diet_meal_tags do |diet|
-    json.extract! diet # :id, :diet_tag_id
-      json.extract! diet.diet_tag, :name
+  json.cuisine_meal_tags meal.cuisine_meal_tags do |cuisine|
+    json.extract! cuisine # :id, :diet_tag_id
+      json.extract! cuisine.cuisine_tag, :name
   end
 
-  json.diet_meal_tags meal.diet_meal_tags do |diet|
-    json.extract! diet # :id, :diet_tag_id
-      json.extract! diet.diet_tag, :name
+  json.meal_type_tags meal.meal_type_tags do |type|
+    json.extract! type # :id, :diet_tag_id
+      json.extract! type.meal_type, :name
   end
-
 end
