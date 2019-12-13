@@ -1,151 +1,127 @@
-
-
 <!--              index-container        -->
-<div class="container-fluid" >
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 mt-4 mb-5">
-
       <% if @meals.count.zero? %>
-
-
-<!-- ERROR SECTION -->
-
+        <!-- ERROR SECTION -->
           <section class="page_404">
-                <div class="container">
-                  <div class="row">
-                  <div class="col-sm-12 ">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12 ">
                   <div class="col-sm-10 col-sm-offset-1  text-center">
-                  <div class="four_zero_four_bg">
-                    <h1 class="text-center ">Oops</h1> <br>
-
-
-                  </div>
-
-                  <div class="contant_box_404">
-                  <h3 class="h2">
-                  We didn't find any corresponding <strong>meals</strong>!
-                  </h3>
-                  <br>
-                  <br>
-                  <a href="/meals" class="addamealbtn" >Go back</a>
-                </div>
-                  </div>
-                  </div>
+                    <div class="four_zero_four_bg">
+                      <h1 class="text-center ">Oops</h1> <br>
+                    </div>
+                    <div class="contant_box_404">
+                      <h3 class="h2">We didn't find any corresponding <strong>meals</strong>!</h3>
+                      <br>
+                      <br>
+                      <a href="/meals" class="addamealbtn" >Go back</a>
+                    </div>
                   </div>
                 </div>
-              </section>
-
-
-<!-- END OF ERROR  -->
-
-<!--           <div class="meal-card">
- -->        <% else %>
-              <div id="gallery" class="ml-auto mr-0 pr-0" style="display: none; width: 96%;">
-                <% if @meals %>
-                  <% @meals.each do |m| %>
-                    <% if !m.orders.empty? %>
-                      <% sponsored = "Sponsored" %>
-                    <% else %>
-                      <% sponsored = "" %>
-                    <% end %>
-                <%# #if !@filtered_meal.blank? %>
-
-                    <%# if m == @filtered_meal[0] %>
-                    <%# end %>
-                  <% alt = "<div class=\"d-flex justify-content-between\">
-
-                  <div><p class='index-rating' style='font-weight: lighter; color: white;'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
-                  <div><strong>#{sponsored}</strong></div>
-
-                  </div>
-
-                  <div class='index-font my-auto' style='font-weight: lighter;'>#{m.name} </div>
-                  <div class=\"d-flex justify-content-between\">
-                  <div class='index-font my-auto' style='font-weight: lighter;'> @#{m.restaurant.name}</div>
-
-                  <div><a data-toggle='modal' data-target='#heart-modal'
-                   class='index-heart'href=\"/\"><i class='far fa-heart' data-meal-id=#{m.id}></i></a></div>
-
-                  </div>" %>
-                    <% unless m.mealphotos.empty? %>
-                     <% photo = m.mealphotos[0].photo %>
-                    <%= link_to cl_image_tag(photo, alt: alt, class:""), meal_path(m), data: {longitude: m.restaurant.longitude, latitude: m.restaurant.latitude} %>
-                    <% end %>
-                  <% end %>
-                <% end %>
               </div>
-       <% end %>
+            </div>
+          </section>
+        <!-- END OF ERROR  -->
+
+<!--           <div class="meal-card"> -->
+      <% else %>
+        <div id="gallery" class="" style="display: none;">
+          <% if @meals %>
+            <% @meals.each do |m| %>
+              <% if !m.orders.empty? %>
+                <% sponsored = "Sponsored" %>
+              <% else %>
+                <% sponsored = "" %>
+              <% end %>
+              <%# #if !@filtered_meal.blank? %>
+
+              <%# if m == @filtered_meal[0] %>
+              <%# end %>
+              <% alt = "<div class=\"d-flex justify-content-between\">
+
+              <div><p class='index-rating' style='font-weight: lighter; color: white;'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+              <div><strong>#{sponsored}</strong></div>
+
+              </div>
+
+              <div class='index-font my-auto' style='font-weight: lighter;'>#{m.name} </div>
+              <div class=\"d-flex justify-content-between\">
+              <div class='index-font my-auto' style='font-weight: lighter;'> @#{m.restaurant.name}</div>
+
+              <div><a data-toggle='modal' data-target='#heart-modal'
+               class='index-heart'href=\"/\"><i class='far fa-heart' data-meal-id=#{m.id}></i></a></div>
+
+              </div>" %>
+              <% unless m.mealphotos.empty? %>
+                <% photo = m.mealphotos[0].photo %>
+                <%= link_to cl_image_tag(photo, alt: alt, class:""), meal_path(m), data: {longitude: m.restaurant.longitude, latitude: m.restaurant.latitude} %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
- <!--              </div> -->
+ <!--  </div> -->
 
-<!-- Modal for adding a pin -->
-
-
-<div class="modal" id="heart-modal" tabindex="-1" role="dialog" style="height: auto;">
-  <div class="modal-dialog-heart"  role="document">
-    <div class="modal-content-heart" style="height: auto;">
-      <div class="modal-header">
-        <h4 class="modal-title" style="color: gray;">Add to collection</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-left mx-auto mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <h6 class="my-auto" style="width: 80%; font-size: 20px;"><a>
-    <i class="fas fa-plus mx-1"></i> Create a new collection
-  </a></h6>
-  <div class="collapse add-collection" id="collapseExample" style="border: none">
-  <div class="card card-body card-body-new-collection">
-
-    <%= render 'collections/form', collection: @collection %>
-
-  </div>
-</div>
-</div>
-<div class='collection-modal-container' id="collections">
-      <% current_user.collections.reverse.each do |c| %>
-      <div class="collection row d-flex justify-content-between m-3 py-2 px-3">
-       <h5 class="my-auto" style="font-weight: normal; color: gray;"> <%= c.name %></h5>
-
-      <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
-     <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
-      <%# end %>
-
-      </div>
-        <% end %>
-    </div>
-         <div class="modal-footer justify-content-center">
-        <button type="button" class="mt-3 py-2 px-5" style="border-radius: 4px; margin-top: 18px;" data-dismiss="modal" id="button">Done</button>
+  <!-- Modal for adding a pin -->
+    <div class="modal" id="heart-modal" tabindex="-1" role="dialog" style="height: auto;">
+      <div class="modal-dialog-heart"  role="document">
+        <div class="modal-content-heart" style="height: auto;">
+          <div class="modal-header">
+            <h4 class="modal-title" style="color: gray;">Add to collection</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-left mx-auto mt-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <h6 class="my-auto" style="width: 80%; font-size: 20px;">
+              <a><i class="fas fa-plus mx-1"></i> Create a new collection</a>
+            </h6>
+            <div class="collapse add-collection" id="collapseExample" style="border: none">
+              <div class="card card-body card-body-new-collection">
+                <%= render 'collections/form', collection: @collection %>
+              </div>
+            </div>
+          </div>
+          <div class='collection-modal-container' id="collections">
+            <% current_user.collections.reverse.each do |c| %>
+              <div class="collection row d-flex justify-content-between m-3 py-2 px-3">
+                <h5 class="my-auto" style="font-weight: normal; color: gray;"> <%= c.name %></h5>
+                <%# link_to meal_pins_path do %> <!-- need to bring in meal_id for path -->
+                <a id = "#heart-toggle" class='index-heart-toggle my-auto heart-toggle-<%= c.id %>' href="/meals/:meal_id/pins?collection_id=<%= c.id %>" data-controller="pins" data-method="post" data-remote="true"><i class='far fa-heart'></i></a>
+                <%# end %>
+              </div>
+            <% end %>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="mt-3 py-2 px-5" style="border-radius: 4px; margin-top: 18px;" data-dismiss="modal" id="button">Done</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- End of Pin Modal -->
+  <!-- End of Pin Modal -->
 
 <!-- END CARDS INDEX -->
 
-    <div class="col-sm-4">
+    <div class="col-sm-4 mt-1">
       <div
         id="map"
-
         style="width: 100%;
-        height: 745px;
-        "
-
-
-        data-markers="<%= @markers.to_json %>"
-      ></div>
+        height: 745px;"
+        data-markers="<%= @markers.to_json %>">
+      </div>
     </div>
   </div>
 
- </div>
+</div>
 
 
 <!-- END CARDS INDEX -->
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
 
-    <script>
+<script>
   // JavaScript for label effects only
   $(window).load(function(){
     $(".col-3 input").val("");
@@ -173,6 +149,8 @@
           // tile_outline_color:"#8B8B8B",
           // tile_enable_shadow:true,
           // tile_shadow_color:"#8B8B8B",
+          tiles_min_columns: 1,         //min columns
+          tiles_max_columns: 3,
           tile_overlay_opacity:0.3,
           tile_enable_icons:false,
           tile_as_link: true,
@@ -180,7 +158,6 @@
           tile_image_effect_reverse:true,
           tile_enable_textpanel:true,
           lightbox_textpanel_title_color:"e5e5e5",
-          tiles_col_width:230,
           tiles_space_between_cols:20
 
         });
