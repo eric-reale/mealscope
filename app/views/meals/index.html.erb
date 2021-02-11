@@ -41,12 +41,12 @@
               <%# end %>
               <% alt = "<div class=\"d-flex justify-content-between\">
 
-              <div><p class='index-rating' style='font-weight: lighter; color: white;'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
+              <div><p class='index-rating' style='font-weight: lighter; color: white; font-size: 14px;'>#{m.check_rating(m.average_rating)} #{m.display_rating_count(m.reviews.count)}</p></div>
               <div><strong>#{sponsored}</strong></div>
 
               </div>
 
-              <div class='index-font my-auto' style='font-weight: lighter;'>#{m.name} </div>
+              <div class='index-font my-auto' style='font-weight: lighter; font-size: 17px;'>#{m.name} </div>
               <div class=\"d-flex justify-content-between\">
               <div class='index-font my-auto' style='font-weight: lighter;'> @#{m.restaurant.name}</div>
 
@@ -149,6 +149,7 @@
           // tile_outline_color:"#8B8B8B",
           // tile_enable_shadow:true,
           // tile_shadow_color:"#8B8B8B",
+          tile_textpanel_padding_top: 0,
           tiles_min_columns: 1,         //min columns
           tiles_max_columns: 3,
           tile_overlay_opacity:0.3,
@@ -157,6 +158,9 @@
           tile_image_effect_type:"sepia",
           tile_image_effect_reverse:true,
           tile_enable_textpanel:true,
+          tile_textpanel_always_on: true,
+          tile_textpanel_bg_opacity: 0.5,
+          tile_textpanel_title_font_size: 10,
           lightbox_textpanel_title_color:"e5e5e5",
           tiles_space_between_cols:20
 
