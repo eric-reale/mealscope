@@ -5,7 +5,7 @@
     "@rails/webpacker": "^4.0.7",
     "ahoy.js": "^0.3.4",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.9.2",
+    "chart.js": "^2.9.4",
     "chartkick": "^3.2.0",
     "gmaps": "^0.4.24",
     "jquery": "^3.4.1",
